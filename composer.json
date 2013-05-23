@@ -7,8 +7,6 @@
 
         "michelf/php-markdown": "1.3.*@dev",
         "loic-sharma/profiler": "1.*",
-        "symfony/finder": "2.3.*@dev",
-        "kriswallsmith/assetic": "1.1.*@dev",
 
         "embed/embed": "dev-master"
 	},
