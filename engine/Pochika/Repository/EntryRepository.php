@@ -21,7 +21,7 @@ abstract class EntryRepository extends Repository {
 
     public function onAfterConvert($params)
     {
-        $class = $this->getItemClass();
+        $class = $this->itemClass();
 
         $entry = $params->entry;
         if ($entry instanceof $class) {
@@ -38,7 +38,7 @@ abstract class EntryRepository extends Repository {
 
             Log::debug('converted '.$cache_id.' detected');
 
-            $class = $this->getItemClass();
+            $class = $this->itemClass();
 
             $items = $this->cache($cache_id);
             foreach ($this->converted_keys as $key) {
