@@ -8,13 +8,14 @@ theme: mono
 markdown: markdown-extra
 
 url: /
+
 title: Pochika
 subtitle: a lightweight blog engine
-author: author
+
 description:
 
+author: author
 author_fullname: Author Name
-aboutme: about me
 
 paginate: 6
 archives_paginate: 25
