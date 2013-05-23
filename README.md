@@ -34,7 +34,7 @@ Run `pochika:new_post` command
 or
 
 Put a markdown file in the posts directory (`source/posts`).
-File name must be yyyy-mm-dd-title.md(markdown) and have yaml-frontmatter like [jekyll(http://jekyllrb.com/docs/frontmatter/)].
+File name must be yyyy-mm-dd-title.md(markdown) and have yaml-frontmatter like [jekyll](http://jekyllrb.com/docs/frontmatter/).
 
 ### License
 
