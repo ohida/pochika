@@ -12,7 +12,4 @@
 */
 
 Artisan::add(new PochikaClearCacheCommand);
-Artisan::add(new PochikaPostsCommand);
 Artisan::add(new PochikaNewPostCommand);
-Artisan::add(new PochikaOpenCommand);
-Artisan::add(new PochikaInitCommand);
