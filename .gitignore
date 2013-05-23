@@ -3,8 +3,6 @@
 composer.phar
 composer.lock
 cache
-source/posts
-source/pages
 public/docs
 /env.php
 .sass-cache
