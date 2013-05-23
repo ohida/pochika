@@ -1,6 +1,6 @@
 ## Pochika
 
-Pochika is a lightweight blog engine.  
+*Pochika* is a lightweight blog engine.  
 It's built on [Laravel4](http://four.laravel.com/).
 
 ### Features
