@@ -29,11 +29,11 @@ It's built on [Laravel4](http://four.laravel.com/).
 ### How to use
 
 #### new post
-Run `pochika:new_post` command
+Run `php artisan pochika:new_post` command
 
 or
 
-Put a markdown file in the posts directory (`source/posts`).
+Put a markdown file in the posts directory (`source/posts`).  
 File name must be yyyy-mm-dd-title.md(markdown) and have yaml-frontmatter like [jekyll](http://jekyllrb.com/docs/frontmatter/).
 
 ### License
