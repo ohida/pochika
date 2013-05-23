@@ -1,0 +1,87 @@
+/**
+ * search
+ */
+//#search
+//  display: none
+//  text-align: center
+//  //border-top: 2px dashed #ddd
+//  //border-bottom: 2px dashed #ddd
+//  margin-top: 15px
+//  padding: 10px 0 10px
+//
+//  input[type="text"]
+//    width: 140px
+//    padding: 6px 6px 6px 6px
+//    border: 1px solid #999
+//    font-size: 0.85em
+//    //background: url(/assets/solvalou/images/search.png) no-repeat 8px 9px
+//    background: #444
+//    color: #ccc
+//    +respond-to('handhelds')
+//      &:focus
+//        font-size: 16px
+//        padding-top: 5px
+//
+//  +input-placeholder(#ccc)
+
+/**
+ * search result
+ */
+.search-result,
+.tag-result
+  margin-top: 0px
+  border-bottom: 1px solid #ccc
+  padding-bottom: 20px
+  margin-bottom: $blank-size
+  h2
+    margin: 0 0 10px
+    font-size: 1.4em
+
+.search-form
+  input[type*=text]
+    margin: 0
+    font-size: 1.1em
+    padding: 5px
+    border: 1px solid #ccc
+    &:focus
+      border: 1px solid #ccf
+
+.tag-result .tag-name
+  margin-top: 0
+  //background: #666
+  display: inline-block
+  padding: 10px
+  font-weight: bold
+  border: 1px solid #999
+  //color: #fff
+  font-size: 1.0em
+  font-family: 'proxima-nova', sans-serif
+  text-transform: uppercase
+  letter-spacing: 0.1rem
+
+.pagination-info
+  margin-top: 20px
+
+/**
+ * highlight color
+ */
+.highlight
+  background-color: #ff8
+  padding: 3px
+
+.top-tags
+  margin: 35px 0 0
+  ul
+    +horizontal-list
+    font-size: .75em
+  li
+    margin: 5px
+    padding: 0 8px
+  a
+    line-height: 1.2em
+    +link-colors($mono-link-color, $mono-hover-color)
+  .tag-count
+    color: #aaa
+    font-size: .8em
+    margin-left: 5px
+

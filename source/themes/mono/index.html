@@ -1,0 +1,24 @@
+{% extends "default.html" %}
+
+{% block content %}
+  {% if tag %}
+    <section class="tag-result">
+      <!--<h2 class="page-header">Tag</h2>-->
+      <span class="tag-name">{{ tag }}</span>
+      <div class="pagination-info">
+        {{ paginator.start_pos }} - {{ paginator.end_pos }} of {{ paginator.total }}
+      </div>
+    </section>
+  {% endif %}
+
+
+  <ul class="posts">
+    {% for post in paginator.posts %}
+      <li>
+      {% include "inc/post.html" with {"index":true} %}
+      </li>
+    {% endfor %}
+  </ul>
+
+  {% include "inc/paginator.html" with {"archives":true} %}
+{% endblock %}

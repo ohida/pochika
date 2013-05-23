@@ -1,0 +1,27 @@
+# ----------------------- #
+#      Main Configs       #
+# ----------------------- #
+
+cache: off
+theme: mono
+
+markdown: markdown-extra
+
+url: /
+title: Pochika
+subtitle: a lightweight blog engine
+author: author
+description:
+
+author_fullname: Author Name
+aboutme: about me
+
+paginate: 6
+archives_paginate: 25
+
+#emoji_plugin:
+#  enabled: false
+#fenced_code_block_plugin:
+#  enabled: false
+
+profiler: off

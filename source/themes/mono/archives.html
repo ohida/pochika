@@ -1,0 +1,36 @@
+{% extends "default.html" %}
+
+{% block content %}
+  <h2 class="page-header">Archives</h2>
+
+  {% for year in paginator.posts|paginate('year') %}
+    <div class="year-posts">
+      <h3>{{ year.posts.0.date|date('Y') }}</h3>
+      <ul class="posts">
+        {% for post in year.posts %}
+          <li>
+            <article class="post">
+              {% include "inc/post_title.html" %}
+              <time>{{ post.date|date('M d') }}</time>
+              <footer>
+                {% if post.tags %}
+                  <!--<span data-icon="&#x2a;"></span>-->
+                  {% for tag in post.tags %}
+                    <a class="tag" href="/tag/{{ tag|url_encode }}">{{ tag }}</a>
+                  {% endfor %}
+                {% endif %}
+                <!--{% if post.external_url %}-->
+                  <!--<div class="external-link-url">-->
+                    <!--{{ post.external_url|raw }}-->
+                  <!--</div>-->
+                <!--{% endif %}-->
+              </footer>
+            </article>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+
+  {% include "inc/paginator.html" %}
+{% endblock %}

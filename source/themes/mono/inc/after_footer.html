@@ -1,0 +1,76 @@
+{{ js_tag('jquery.pjax, jquery.highlight, prettify') }}
+
+<div id="loading">
+  LOADING
+</div>
+
+<script>
+  $(function(){
+    prettify();
+
+    $(window).scroll(function() {
+      var yPos = $(window).scrollTop();
+      if (yPos > 240) {
+        $("#subnav").fadeIn();
+      } else {
+        $("#subnav").fadeOut();
+      }
+    });
+
+  });
+</script>
+
+<script>
+  /**
+   * pjax initialize
+   */
+  $(document).pjax('[data-pjax] a, a[data-pjax]', {
+    container: '#pjax-container',
+    fragment: '#pjax-container'
+  })
+  .on('pjax:send', function() {
+    $('#loading').show();
+  })
+  .on('pjax:complete', function() {
+    $('#loading').fadeOut('slow');
+    prettify();
+  })
+  .on('pjax:end', function() {
+  });
+
+  function prettify() {
+    $('.post pre, .content pre, table code').addClass('prettyprint');
+    prettyPrint();
+  }
+
+  function highlight(keyword) {
+    $('article h2,.post-content,.tags').highlight(keyword, {element:'mark'});
+  }
+
+  /**
+   * pjax for read more
+   */
+  function load_post(e) {
+    var url = e.href + '?format=content';
+    //todo
+    var p = $(e).parent().parent();
+    $.ajax({
+      url: url,
+      dataType: 'html',
+      success: function(res) {
+        p.html(res);
+      },
+      complete: function() {
+        $('#loading').fadeOut('slow')
+        prettify();
+        {% if query %}
+          highlight('{{ query }}');
+        {% endif %}
+      }
+    });
+    $('#loading').show()
+    return false;
+  }
+</script>
+
+{% include "inc/forkme.html" %}

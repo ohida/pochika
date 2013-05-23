@@ -1,0 +1,23 @@
+{% extends "default.html" %}
+
+{% block content %}
+{% if query %}
+<h3>search result</h3>
+{% endif %}
+{% for post in paginator.posts %}
+{% include "_inc/post.html" with{'index':true} %}
+{% endfor %}
+
+<div>
+    {% if paginator.next_page %}
+    <a href="{{paginator.next_url}}">&larr; Older</a>
+    {% endif %}
+    {#
+    <a href="/archives">Blog Archives</a>
+    #}
+    {% if paginator.prev_page %}
+    <a href="{{paginator.prev_url}}">Newer &rarr;</a>
+    {% endif %}
+</div>
+
+{% endblock %}

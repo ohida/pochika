@@ -1,0 +1,267 @@
+/*code {*/
+    /*background: none;*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*border: 0px black solid;*/
+/*}*/
+/*pre {*/
+    /*background: none;*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*border: 0px black solid;*/
+/*}*/
+
+pre {
+    font-size: 1.1em;
+    font-family: Monaco,Consolas,"Lucida Console",monospace;
+}
+
+.clearfix:before,.clearfix:after {
+    content: " ";
+    display: table
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1
+}
+
+.laradoc {
+    font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    font-weight: 300;
+    font-size: 14px
+}
+
+/*header {*/
+    /*border-bottom: 1px solid #eee;*/
+    /*margin-bottom: 2em*/
+/*}*/
+
+.content footer {
+    border-top: 1px solid #eee;
+    margin-top: 2em;
+    padding-top: 1em
+}
+
+/*.content footer p {*/
+    /*font-size: .8em;*/
+    /*color: #999;*/
+    /*margin: .5em 0;*/
+    /*line-height: 1em;*/
+    /*text-transform: uppercase*/
+/*}*/
+
+.wrapper {
+    width: 840px;
+    margin: 3em auto
+}
+
+.sidebar {
+    width: 220px;
+    float: left
+}
+
+.content {
+    width: 580px;
+    float: right
+}
+
+a {
+    color: #349dc7;
+    text-decoration: none
+}
+
+/*a:visited {*/
+    /*color: #92a6ad*/
+/*}*/
+
+a:hover {
+    text-decoration: underline;
+    color: #66d0fa
+}
+
+.sidebar>ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0
+}
+
+.sidebar>ul ul {
+    list-style-type: none;
+    margin: 1em 0;
+    padding: 0 0 0 1.5em
+}
+
+.sidebar>ul ul li {
+    margin: .3em 0
+}
+
+/*.content h1:first-child {*/
+    /*line-height: 1em;*/
+    /*margin: 0 0 1em 0*/
+/*}*/
+
+.content p {
+    line-height: 1.6em;
+    color: #444;
+    margin: 1.5em 0
+}
+
+/*.content p code {*/
+    /*background-color: #eee;*/
+    /*padding: .2em .5em;*/
+    /*font-family: Monaco,Consolas,"Lucida Console",monospace;*/
+    /*font-size: .8em;*/
+    /*-webkit-box-shadow: 2px 2px 0 rgba(0,0,0,0.1);*/
+    /*-moz-box-shadow: 2px 2px 0 rgba(0,0,0,0.1);*/
+    /*box-shadow: 2px 2px 0 rgba(0,0,0,0.1)*/
+/*}*/
+
+.content blockquote {
+    display: block;
+    margin: 2em auto;
+    padding: 1em;
+    background-color: #c1d2de;
+    font-size: .9em;
+    border: 1px solid #a3b4bf;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -moz-background-clip: padding-box;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box
+}
+
+.content blockquote p {
+    color: #4d5a63;
+    margin: 0
+}
+
+.content blockquote p code {
+    background-color: #a3b4bf;
+    color: #fff;
+    -webkit-box-shadow: 2px 2px 0 #7d97a8;
+    -moz-box-shadow: 2px 2px 0 #7d97a8;
+    box-shadow: 2px 2px 0 #7d97a8
+}
+
+.content table {
+    width: 100%
+}
+
+.content table th,.content table td {
+    padding: .5em;
+    border: 1px solid #666;
+    font-size: .9em
+}
+
+.content table th {
+    background-color: #666;
+    color: #eee;
+    text-align: left
+}
+
+.content table td {
+    border: 1px solid #666
+}
+
+.content table td code {
+    font-size: .8em;
+    display: block;
+    padding: .5em 1em;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -moz-background-clip: padding-box;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box
+}
+
+.content table tr td:first-child {
+    background-color: #333;
+    color: #fff
+}
+
+/*.prettyprint {*/
+    /*font-family: Monaco,Consolas,"Lucida Console",monospace;*/
+    /*background-color: #333;*/
+    /*padding: 1.5em;*/
+    /*font-size: .75em;*/
+    /*border: 0;*/
+    /*color: #e9e4e5;*/
+    /*line-height: 1.9em;*/
+    /*-webkit-border-radius: 5px;*/
+    /*-moz-border-radius: 5px;*/
+    /*border-radius: 5px;*/
+    /*-moz-background-clip: padding-box;*/
+    /*-webkit-background-clip: padding-box;*/
+    /*background-clip: padding-box*/
+/*}*/
+
+/*.prettyprint .pln {*/
+    /*color: #e9e4e5*/
+/*}*/
+
+/*.prettyprint .str {*/
+    /*color: #bcd42a*/
+/*}*/
+
+/*.prettyprint .kwd {*/
+    /*color: #4bb1b1*/
+/*}*/
+
+/*.prettyprint .com {*/
+    /*color: #888*/
+/*}*/
+
+/*.prettyprint .typ {*/
+    /*color: #ef7c61*/
+/*}*/
+
+/*.prettyprint .lit {*/
+    /*color: #bcd42a*/
+/*}*/
+
+/*.prettyprint .pun,.prettyprint .opn,.prettyprint .clo {*/
+    /*color: #fff*/
+/*}*/
+
+/*.prettyprint .tag {*/
+    /*color: #4bb1b1*/
+/*}*/
+
+/*.prettyprint .atn {*/
+    /*color: #ef7c61*/
+/*}*/
+
+/*.prettyprint .atv {*/
+    /*color: #bcd42a*/
+/*}*/
+
+/*.prettyprint .dec,.prettyprint .var {*/
+    /*color: #606*/
+/*}*/
+
+/*.prettyprint .fun {*/
+    /*color: #f00*/
+/*}*/
+
+/*.prettyprint code {*/
+    /*font-family: Monaco,Consolas,"Lucida Console",monospace*/
+/*}*/
+
+.contribute {
+    background-color: #f0f7fa;
+    border: 1px solid #c4e7f5;
+    padding: 1em;
+    line-height: 1.6em;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -moz-background-clip: padding-box;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box
+}

@@ -1,0 +1,22 @@
+.paginator
+  border-top: 1px solid $border-color
+  padding: 38px 0
+  margin-top: $blank-size
+  display: table
+  width: 100%
+  text-align: center
+  +respond-to(handhelds)
+    font-size: 0.95em
+  a
+    display: table-cell
+    width: 33%
+    +link-colors($text-color, $link-hover-color)
+  a.prev
+    text-align: left
+  a.next
+    text-align: right
+
+.year-posts + .paginator
+  margin-top: 10px
+  margin-bottom: 0
+  padding-bottom: 0

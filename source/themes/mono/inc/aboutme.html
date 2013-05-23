@@ -1,0 +1,15 @@
+<aside id="aboutme">
+  <img src="{{ asset('images/ohida.jpg') }}">
+  <hgroup class="ore">
+    <h2 class="name">{{ site.author_fullname }}</h2>
+    {# <h3 class="detail">{{ site.aboutme }} | <a href="/about">more</a></h3> #}
+  </hgroup>
+  <section class="social">
+    <ul>
+      <li><a href="https://github.com/{{ site.github_id }}" target="_blank"><img src="{{ site.assets_dir }}/svg/github.svg" width="32" height="32" /></a></li>
+      <li><a href="https://www.facebook.com/{{ site.facebook_id }}" target="_blank"><img src="{{ site.assets_dir }}/svg/facebook.svg" width="32" height="32" /></a></li>
+      <li><a href="http://twitter.com/{{ site.twitter_id }}" target="_blank"><img src="{{ site.assets_dir }}/svg/twitter.svg" width="32" height="32" /></a></li>
+      <li><a href="/feed" target="_blank"><img src="{{ site.assets_dir }}/svg/feed.svg" width="32" height="32" /></a></li>
+    </ul>
+  </section>
+</aside>

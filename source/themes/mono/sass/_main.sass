@@ -1,0 +1,150 @@
+/**
+ * variables
+ */
+$bg-color: #fefefe
+$text-color: #333
+$link-color: #12c
+//$link-hover-color: #4d90fe
+$link-hover-color: #aaa
+$mono-link-color: #333
+$mono-hover-color: #999
+//$border-color: #e0e0e0
+$border-color: #ccc
+$base-font-size: 1.1em
+$blank-size: 60px
+$main-blank-size: 70px
+$handhelds-blank-size: 40px
+$handhelds-main-blank-size: 50px
+//+respond-to(handhelds)
+//  $blank-size: 45px
+//  $main-blank-size: 50px
+$header-bg-color: #fff
+$tag-color: #093
+$font-family: 'Helvetica Neue', Helvetica, Arial, menlo, 'andale mono', consolas, "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "Meiryo", "メイリオ", "Osaka", "MS PGothic", 'ＭＳ Ｐゴシック', sans-serif
+//$font-family: "Helvetica Neue", helvetica, "ヒラギノ角ゴ Pro N", "Hiragino Kaku Gothic ProN", sans-serif
+$header-font: $font-family
+$header-weight: 600 // 500 or 600
+
+//-----------------------------------------------------------------------------//
+
+body
+  background: $bg-color
+  line-height: 1.375em
+  font-size: $base-font-size
+  color: $text-color
+  border-top: solid 5px #333
+  -webkit-text-size-adjust: 100%
+  a
+    text-decoration: none
+
+body, html
+  font-family: $font-family
+
+// header
+h1, h2, h3, h4, h5, h6
+  font-family: $header-font
+  font-weight: $header-weight
+h1
+  font-size: 1.5em
+  line-height: 1.1em
+  margin-top: 1.1em
+  margin-bottom: 1.5em
+h2
+  font-size: 1.125em
+  line-height: 2.444em
+  margin-top: 1.222em
+  margin-bottom: 1.222em
+h3
+  font-size: 1.3em
+  margin: 0 0 15px
+  padding: 0
+
+// list
+ul
+  list-style-type: disc
+  ul
+    list-style-type: circle
+    ul
+      list-style-type: square
+ol
+  list-style-type: decimal
+  ol
+    list-style-type: lower-alpha
+    ol
+      list-style-type: lower-roman
+ul
+  margin-left: 1.3em
+  ul, ol
+    margin-left: 1.3em
+ol
+  margin-left: 1.3em
+  ul, ol
+    margin-left: 1.3em
+
+//-----------------------------------------------------------------------------//
+
+/**
+ * main section
+ */
+.main
+  margin: 0 auto
+  padding: $main-blank-size 0
+  +respond-to(handhelds)
+    padding: $handhelds-main-blank-size 0
+  padding: 100 0
+  width: 88%
+  max-width: 700px
+  word-wrap: break-word
+
+h2.page-header
+  font-size: 1.55em
+  line-height: 1.0em
+  //margin-bottom: 0.3em
+  margin-top: 0
+  margin-bottom: 26px
+  +respond-to(handhelds)
+    font-size: 1.3em
+  a
+    text-decoration: none
+    +link-colors($mono-link-color, $mono-hover-color)
+
+// not found
+section.notfound
+  text-align: center
+  margin: 70px
+  font-color: $text-color
+
+// github fork-me ribbon
+.github-ribbon
+  +respond-to(handhelds)
+    img
+      width: 100px
+
+// loading indicator
+#loading
+  position: fixed
+  left: 0
+  top: 0
+  padding: 3px 7px
+  font-size: 0.6em
+  background: #f33
+  color: white
+  font-weight: bold
+  font-family: 'proxima-nova', sans-serif
+  letter-spacing: 0.1rem
+  +opacity(.8)
+  display: none
+  z-index: 999
+
+.tag
+  font-family: 'proxima-nova', sans-serif
+  text-transform: uppercase
+  letter-spacing: 0.1rem
+  margin-top: 5px
+  padding: 3px
+  border: 1px solid #ccc
+  color: inherit
+
+%translucent-box
+  background: rgba(255,255,255,.5)
+  border: 1px solid #ccc

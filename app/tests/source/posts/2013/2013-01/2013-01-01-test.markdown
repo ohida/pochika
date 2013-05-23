@@ -1,0 +1,25 @@
+---
+layout: post
+title: "test"
+published: true
+date: 2013-01-01 00:00
+comments: true
+tags: [test, express, post]
+---
+
+this is a test post
+
+    echo 'hello world'
+
+search target
+
+i love cats.
+
+の
+
+アルクマ
+
+<!-- more -->
+
+dog cat penguin
+

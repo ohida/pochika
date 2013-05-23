@@ -1,0 +1,176 @@
+section:not(.index)
+  header + .post-content
+    margin-top: 35px
+
+article.post
+
+  margin: 0
+
+  // post title
+  >header h2
+    //letter-spacing: 0.1rem
+    //background: yellow
+    margin: 0
+    padding: 0
+    font-size: 1.65em
+    line-height: 1.0em
+    margin-bottom: 20px
+    font-family: $header-font
+    text-shadow: -1px -1px 0 rgba(255, 255, 255, 1)
+    +respond-to(handhelds)
+      font-size: 1.3em
+    a
+      color: #333
+      text-decoration: none
+      +link-colors($mono-link-color, $mono-hover-color)
+
+  .meta
+    font-size: 1em
+    //margin-bottom: 25px
+    //time, footer
+    //  display: inline-block
+    .tags
+      margin: 0px 0 30px
+      li
+        list-style: none
+        display: inline
+        margin-right: 10px
+        font-size: .5em
+    a.tag
+      color: inherit
+      background: rgba(255,255,255,.7)
+      &:hover
+        background: #eee
+      padding: 7px
+      font-weight: bold
+      font-size: 1.4em
+    .icon
+      font-size: .8em
+      margin-right: 3px
+
+  .external-url-link
+    margin: 35px 0 0
+    border-top: 1px dashed #ccc
+    padding-top: 15px
+    font-size: .86em
+    a
+      +link-colors(#666, #ba4234)
+
+  .meta-date
+    display: block
+    margin: 30px 0 0
+    font-size: 0.9em
+    text-align: right
+    color: #666
+
+  .link-icon,
+  .lock-icon
+    margin-left: 10px
+    font-size: .85em
+  .link-icon
+    &:hover
+      color: #ba4234
+  .lock-icon
+    color: darkorange
+
+.post-content
+  //margin-top: 25px
+  line-height: 1.6em
+  //margin-top: 100px
+
+  h2, h3
+    margin: 0
+    padding: 0
+    line-height: 1em
+    padding-top: 16px
+    &:first-child
+      padding-top: 0
+  h2
+    font-size: 1.2em
+    margin-bottom: 26px
+  h3
+    font-size: 1.1em
+    margin-bottom: 26px
+
+  // margin-bottom
+  p, blockquote, ul, ol, pre
+    margin-bottom: 1.5em
+    margin-bottom: 18px
+    &:last-child
+      margin-bottom: 0
+
+  p>code
+    @extend %translucent-box
+    margin: 0 2px
+    padding: 2px 3px
+    font-size: .9em
+
+  .post pre
+    margin-bottom: 24px
+    padding: 0!important
+    &:last-child
+      margin-bottom: 0
+
+  .post pre code
+    border: 0
+    padding: 10px
+    display: block
+    background: #fbfbfb
+    margin: 0
+    word-wrap: normal
+    overflow: auto
+    font-size: .85em
+
+  pre.prettyprint
+    @extend %translucent-box
+    font-size: .80em
+    overflow: scroll
+    word-wrap: normal
+    +respond-to(handhelds)
+      font-size: .8em
+
+  img
+    display: block
+    margin: 5px auto
+    max-width: 95%
+    @media only screen and (min-width: 550px)
+      max-width: 500px
+
+  img.emoji
+    margin: 0
+    padding: 0
+    border: 0
+    display: inline
+    width: 20px
+    height: 20px
+    +box-shadow(none)
+
+  iframe
+    display: block
+    margin: 5px auto
+    max-width: 100%
+
+  blockquote
+    font-size: .93em
+    font-style: italic
+    position: relative
+    padding-left: 17px
+    border-left: 10px solid rgba(230,230,230,.5)
+    margin-bottom: 24px
+    +respond-to(handhelds)
+      padding-left: 10px
+    &:last-child
+      margin-bottom: 0
+    a
+      color: inherit
+    cite
+      font-style: italic
+      a
+        color: #555 !important
+        word-wrap: break-word
+      &:before
+        content: '\2014'
+        padding-right: .3em
+        padding-left: .3em
+        color: #666
+

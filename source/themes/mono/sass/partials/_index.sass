@@ -1,0 +1,40 @@
+.index
+  padding: $main-blank-size 0 0
+  +respond-to(handhelds)
+    padding: $handhelds-main-blank-size 0 0
+
+.index ul.posts,
+.search ul.posts
+  padding: 0
+  margin: 0
+  > li
+    display: block
+    list-style: none
+    border-bottom: 1px solid rgba(0,0,0,.1)
+    +box-shadow(rgba(255,255,255,.4) 0 1px 0)
+    padding: $blank-size 0
+    +respond-to(handhelds)
+      padding: $handhelds-blank-size 0
+    &:first-child
+      padding-top: 0
+    &:last-child
+      padding-bottom: 0
+      border-bottom: none
+
+  .post > header h2
+    margin-bottom: 22px
+
+  .read-on
+    .icon
+      font-size: .85em
+    a
+      font-weight: bold
+      //border: 1px solid #ccc
+      //padding: 4px 6px
+      font-size: .95em
+      +link-colors(#444, $link-hover-color)
+
+  ul
+    list-style-type: disc
+    ul
+      list-style-type: circle

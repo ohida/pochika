@@ -1,0 +1,16 @@
+---
+layout: post
+title: "test-0301"
+published: true
+date: 2013-03-01 00:00
+tags: [test, pochika, post, test-tag]
+---
+
+this is a test post
+
+    echo 'hello world'
+
+<!-- more -->
+
+dog cat penguin
+

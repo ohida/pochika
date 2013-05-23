@@ -1,0 +1,28 @@
+#subnav
+  position: fixed
+  display: none
+  top: 0
+  font-size: .85em
+  width: 100%
+  background: rgba(255,255,255,.98)
+  color: #333
+  border-bottom: 1px solid #aaa
+  .wrap
+    display: block
+    margin: 1px auto
+    +respond-to(handhelds)
+      margin: 1px auto
+    width: 88%
+    max-width: 700px
+    +clearfix
+  .site-title
+    float: left
+  ul.nav
+    float: right
+    +horizontal-list
+    li
+      margin: 0 0 0 10px
+      +respond-to(handhelds)
+        margin: 0 0 0 5px
+  a
+    color: inherit

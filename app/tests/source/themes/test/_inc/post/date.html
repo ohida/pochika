@@ -1,0 +1,31 @@
+{% set date %}{{ page.date }}{{ post.date }}{% endset %}
+{% set date_formatted %}{{ page.date_formatted }}{{ post.date_formatted }}{% endset %}
+{#
+{% set has_date %}{{ date > 0 }}{% endset %}
+#}
+
+{% set updated %}{{ page.updated }}{{ post.updated }}{% endset %}
+{% set updated_formatted %}{{ page.updated_formatted }}{{ post.updated_formatted }}{% endset %}
+{% set was_updated %}{{ updated > 0 }}{% endset %}
+
+{% if has_date != '0' %}
+{#
+{% set time %}
+<time datetime="{{ date | datetime | date_to_xmlschema }}"
+      pubdate{% if updated %} data-updated="true"{% endif %}>{{ date_formatted }}</time>{% endset %}
+#}
+{% set time %}
+<time datetime="{{ date }}"
+      pubdate{% if updated %} data-updated="true"{% endif %}>{{ date_formatted }}</time>{% endset %}
+{% endif %}
+
+{% if was_updated != '0' %}
+{#
+{% set updated %}
+<time datetime="{{ updated | datetime | date_to_xmlschema }}" class="updated">Updated {{ updated_formatted }}
+</time>{% endset %}
+#}
+{{ page.date }}
+{% set updated %}
+<time datetime="{{ updated }}" class="updated">Updated {{ updated_formatted }}</time>{% endset %}
+{% else %}{% set updated = false %}{% endif %}

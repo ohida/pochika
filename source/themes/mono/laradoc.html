@@ -1,0 +1,54 @@
+{% extends "default.html" %}
+
+{% block content %}
+  <header>
+    <h1><a href="/{{ dir }}" style="color:#000;">{{ title }}</a></h1>
+  </header>
+
+  {# search #}
+  <section style="padding-bottom:30px; margin-bottom:30px; border-bottom:1px solid #eee;">
+    <form method="get" action="/laradoc">
+      {% if query %}
+        <span style="padding-right:5px;">Search result for</span>
+      {% endif %}
+      <input type="text" name="q" value="{{ query }}">
+      <input type="submit" value="search">
+    </form>
+  </section>
+  {# /search #}
+
+  <div class="wrapper">
+    <aside class="sidebar" data-pjax>
+      {% block sidebar %}{{ sidebar|raw }}{% endblock %}
+    </aside>
+
+    <section class="content">
+      {{ page.content|raw }}
+      <nav>
+      {#
+      @if($prev)
+        <a href="{{ $prev['URI'] }}" title="Previous: {{ $prev['title'] }}">← {{ $prev['title'] }}</a> |
+      @endif
+      @if($next)
+        <a href="{{ $next['URI'] }}" title="Next: {{ $next['title'] }}">{{ $next['title'] }} →</a>
+      @endif
+      #}
+      </nav>
+      <footer>
+        {# <p><a href="http://github.com/daylerees/docs-reader" title="Documentation reader by Dayle Rees.">Docs reader</a> by <a href="http://daylerees.com" title="Dayle Rees">Dayle Rees</a>.</p> #}
+      </footer>
+    </section>
+  </div>
+  <div class="clearfix"></div>
+
+  <script>
+    jQuery(document).ready(function($) {
+//    $('.content pre, table code').addClass('prettyprint');
+    });
+  </script>
+  <script>
+    $(function(){
+        $('.sidebar,.content').highlight('{{ query }}', {element:'mark'});
+    });
+  </script>
+{% endblock %}
