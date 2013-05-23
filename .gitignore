@@ -2,9 +2,13 @@
 /vendor
 composer.phar
 composer.lock
+<<<<<<< HEAD
 cache
 public/docs
 /env.php
 .sass-cache
 .DS_Store
 app/storage/*
+=======
+.DS_Store
+>>>>>>> upstream/develop
