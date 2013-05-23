@@ -5,30 +5,30 @@ It's built on [Laravel4](http://four.laravel.com/).
 
 ### Features
 
-* index / archives
-* entries
-  * markdown files
-  * posts / pages
-* themes
-* plugins
-* cache
+* Index / Archives
+* Entries
+  * Markdown files
+  * Posts / Pages
+* Themes
+* Plugins
+* Cache
 
 ### Requirements
 
-* php5.4 or more
-* [composer](https://github.com/composer/composer)
+* PHP5.4 or more
+* [Composer](https://github.com/composer/composer)
 
 ### Installation
 
-1. run `git clone http://github.com/ohida/pochika.git`
-1. change into pochika dir `cd pochika`
-1. install dependencies `composer install`
-1. set permission `chmod -R a+w app/storage`
-1. run web server `php artisan serve`
+1. Run `git clone http://github.com/ohida/pochika.git`
+1. Change into pochika dir `cd pochika`
+1. Install dependencies `composer install`
+1. Set permission `chmod -R a+w app/storage`
+1. Run web server `php artisan serve`
 
 ### How to use
 
-#### new post
+#### Create a new post
 Run `php artisan pochika:new_post` command
 
 or
