@@ -26,6 +26,10 @@ It's built on [Laravel4](http://four.laravel.com/).
 1. Set permission `chmod -R a+w app/storage`
 1. Run web server `php artisan serve`
 
+### Unit Test
+
+run `phounit`
+
 ### How to use
 
 #### Configure
