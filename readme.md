@@ -13,6 +13,10 @@ It's built on [Laravel4](http://four.laravel.com/).
 * Plugins
 * Cache
 
+### Demo
+
+http://solvalou.net/
+
 ### Requirements
 
 * PHP5.4 or more
