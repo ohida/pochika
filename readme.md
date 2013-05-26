@@ -48,6 +48,14 @@ or
 Put a markdown file in the posts directory (`source/posts`).  
 File name must be yyyy-mm-dd-title.md(markdown) and have yaml-frontmatter like [jekyll](http://jekyllrb.com/docs/frontmatter/).
 
+### For better performance
+
+* msgpack extension
+  * reduce cache size
+
+* sundown extension
+  * faster markdown translation
+
 ### License
 
 Pochika is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
