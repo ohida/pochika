@@ -1,7 +1,11 @@
 ## Pochika
 
-*Pochika* is a lightweight blog engine.  
+'Pochika' is a lightweight blog engine.  
 It's built on [Laravel4](http://four.laravel.com/).
+
+### Demo
+
+http://solvalou.net/
 
 ### Features
 
@@ -12,10 +16,6 @@ It's built on [Laravel4](http://four.laravel.com/).
 * Themes
 * Plugins
 * Cache
-
-### Demo
-
-http://solvalou.net/
 
 ### Requirements
 
@@ -50,11 +50,17 @@ File name must be yyyy-mm-dd-title.md(markdown) and have yaml-frontmatter like [
 
 ### For better performance
 
-* msgpack extension
-  * reduce cache size
+* yaml extension
+  * faster yaml reading
+  * `pecl install yaml`
 
 * sundown extension
   * faster markdown translation
+  * `pecl install sundown-beta`
+
+* msgpack extension
+  * reduce cache size
+  * `pecl install msgpack-beta`
 
 ### License
 
