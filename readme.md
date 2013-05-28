@@ -7,7 +7,7 @@ It's built on [Laravel4](http://four.laravel.com/).
 
 http://solvalou.net/
 
-### Features
+## Features
 
 * Index / Archives
 * Entries
