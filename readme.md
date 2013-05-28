@@ -34,7 +34,7 @@ http://solvalou.net/
 
 ### Unit Test
 
-run `phounit`
+run `phpunit`
 
 ## How to use
 
