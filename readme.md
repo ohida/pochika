@@ -66,3 +66,6 @@ File name must be yyyy-mm-dd-title.md(markdown) and have yaml-frontmatter like [
 
 Pochika is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
 
+### Build Status
+
+[![Build Status](https://travis-ci.org/ohida/pochika.png?branch=master)](https://travis-ci.org/ohida/pochika)
