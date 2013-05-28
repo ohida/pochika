@@ -1,9 +1,9 @@
-## Pochika
+# Pochika
 
 'Pochika' is a lightweight blog engine.  
 It's built on [Laravel4](http://four.laravel.com/).
 
-### Demo
+## Demo
 
 http://solvalou.net/
 
@@ -17,12 +17,12 @@ http://solvalou.net/
 * Plugins
 * Cache
 
-### Requirements
+## Requirements
 
 * PHP5.4 or more
 * [Composer](https://github.com/composer/composer)
 
-### Installation
+## Installation
 
 1. Run `git clone http://github.com/ohida/pochika.git`
 1. Change into pochika dir `cd pochika`
@@ -34,13 +34,13 @@ http://solvalou.net/
 
 run `phounit`
 
-### How to use
+## How to use
 
-#### Configure
+### Configure
 
 Edit `config.yml`
 
-#### Create a new post
+### Create a new post
 Run `php artisan pochika:new_post` command
 
 or
@@ -62,10 +62,10 @@ File name must be yyyy-mm-dd-title.md(markdown) and have yaml-frontmatter like [
   * reduce cache size
   * `pecl install msgpack-beta`
 
-### License
+## License
 
 Pochika is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
 
-### Build Status
+## Build Status
 
 [![Build Status](https://travis-ci.org/ohida/pochika.png?branch=master)](https://travis-ci.org/ohida/pochika)
