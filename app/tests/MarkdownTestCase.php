@@ -109,4 +109,16 @@ EOF;
         $this->assertFalse(strpos('<br', $html));
     }
 
+    public function testUrlInCodeBlock()
+    {
+        $md = <<<EOF
+```
+http://www.google.com/
+```
+EOF;
+        $html = $this->markdown->convert($md);
+
+        $this->assertRegExp('|google\.com/</code>|', $html);
+    }
+
 }

@@ -20,6 +20,8 @@ class GfmPlugin extends Plugin {
 
         $extractions = [];
 
+        $text = $this->fencedCodeBlock($text);
+
         $text = $this->extractPreBlocks($text, $extractions);
 
         $text = $this->underscores($text);
@@ -27,8 +29,6 @@ class GfmPlugin extends Plugin {
         $text = $this->newlines($text);
 
         $text = $this->autolink($text);
-
-        $text = $this->fencedCodeBlock($text);
 
         $text = $this->insertPreBlocks($text, $extractions);
     }
@@ -88,7 +88,7 @@ class GfmPlugin extends Plugin {
         // URL must not be inside markdown tags already.
         // If a URL has a ", <, ( or [ in front, then don't match it.
         return preg_replace(
-            '/'.'(^|[^\[\(<"]\s*)'.'('.$regex.')'.'/',
+            '/(^|[^\[\(<"]\s*)'.'('.$regex.')/',
             '$1[$2]($2)',
             $text
         );
