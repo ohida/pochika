@@ -10,6 +10,6 @@ before_script:
   - printf "\n" | pecl install yaml
   - echo "extension=yaml.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - pecl install sundown-beta && echo "extension=sundown.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  - pecl install msgpack-beta && echo "extension=msgpack.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+# - pecl install msgpack-beta && echo "extension=msgpack.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - composer install
 
