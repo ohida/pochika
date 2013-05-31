@@ -92,4 +92,10 @@ class TwigExtensionTest extends TestCase {
         $this->e->paginate([], 'xxx');
     }
 
+    public function testAssetUrl()
+    {
+        $res = $this->e->asset('favicon.ico');
+        $this->assertRegExp('|http://.*/assets/favicon.ico|', $res);
+    }
+
 }

@@ -126,7 +126,7 @@ class Extension extends \Twig_Extension {
 
     protected function getAssetsDir()
     {
-        return '/assets';
+        return app('url.root').'assets';
     }
 
     public function url($name)
