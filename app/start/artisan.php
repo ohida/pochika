@@ -13,3 +13,4 @@
 
 Artisan::add(new PochikaClearCacheCommand);
 Artisan::add(new PochikaNewPostCommand);
+Artisan::add(new PochikaPublishAssetsCommand);
