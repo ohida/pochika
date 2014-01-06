@@ -41,7 +41,7 @@ return array(
 
 //	'timezone' => 'UTC',
 //  'timezone' => ini_get('date.timezone') ?: 'UTC',
-    'timezone' => 'asia/tokyo',
+    'timezone' => 'Asia/Tokyo',
 
 	/*
 	|--------------------------------------------------------------------------
