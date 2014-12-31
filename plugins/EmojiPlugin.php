@@ -28,7 +28,7 @@ class EmojiPlugin extends Plugin {
 
     protected function names()
     {
-        if (!$this->names) {
+        if ($this->names) {
             return $this->names;
         }
 
