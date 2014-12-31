@@ -4,6 +4,8 @@ class EmojiPlugin extends Plugin {
 
     const PATH = '/emoji';
 
+    protected $names;
+
     public function register()
     {
         $this->listen('entry.after_convert', 'convert');
@@ -26,6 +28,10 @@ class EmojiPlugin extends Plugin {
 
     protected function names()
     {
+        if (!$this->names) {
+            return $this->names;
+        }
+
         $cache_id = 'emoji-names';
 
         $loader = function() {
@@ -37,10 +43,12 @@ class EmojiPlugin extends Plugin {
         };
 
         if ('production' == App::environment()) {
-            return Cache::rememberForever($cache_id, $loader);
+            $this->names = Cache::rememberForever($cache_id, $loader);
         } else {
-            return call_user_func($loader);
+            $this->names = call_user_func($loader);
         }
+
+        return $this->names;
     }
 
 }
