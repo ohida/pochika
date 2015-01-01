@@ -39,7 +39,8 @@ return [
 	|
 	*/
 
-	'timezone' => 'UTC',
+//	'timezone' => 'UTC',
+	'timezone' => 'Asia/Tokyo',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -78,7 +79,7 @@ return [
 	|
 	*/
 
-	'key' => env('APP_KEY') ?: 'YourSecretKey!!!',
+	'key' => env('APP_KEY') ?: '8UbemubzZO2kstHdZHQFJKmEH6kyBIVC',
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 
@@ -117,6 +118,15 @@ return [
 		'App\Providers\BusServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
+
+		'App\Providers\PochikaServiceProvider',
+		'Pochika\Yaml\YamlServiceProvider',
+		'Pochika\Markdown\MarkdownServiceProvider',
+		'Pochika\Renderer\RendererServiceProvider',
+		'Pochika\Feed\FeedServiceProvider',
+
+		'Barryvdh\Debugbar\ServiceProvider',
+		//'Roumen\Sitemap\SitemapServiceProvider',
 
 		/*
 		 * Laravel Framework Service Providers...
@@ -190,6 +200,37 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
+		// Added by ohida
+		'Collection' => 'Illuminate\Support\Collection',
+		'Finder'	 => 'Symfony\Component\Finder\Finder',
+		'Debugbar'   => 'Barryvdh\Debugbar\Facade',
+
+		// Pochika
+		'Conf'	 	 => 'Pochika\Support\Facades\Conf',
+		'Feed'       => 'Pochika\Support\Facades\Feed',
+		'Layout'	 => 'Pochika\Layout\Layout',
+		'Markdown'	 => 'Pochika\Support\Facades\Markdown',
+		'Page'		 => 'Pochika\Entry\Page',
+		'Paginator'  => 'Pochika\Support\Paginator',
+		'Plugin'	 => 'Pochika\Plugin\Plugin',
+		'Pochika'	 => 'Pochika\Support\Facades\Pochika',
+		'Post'		 => 'Pochika\Entry\Post',
+		'Renderer'	 => 'Pochika\Support\Facades\Renderer',
+		'Theme'	 	 => 'Pochika\Layout\Theme',
+		'Yaml'		 => 'Pochika\Support\Facades\Yaml',
+		'Tag'		 => 'Pochika\Support\Facades\Tag',
+		//'Cache'		 => 'Pochika\Support\Facades\Cache',
+		'Sitemap'    => 'Pochika\Support\Facades\Sitemap',
+
+		// Pochika Repogitories
+		'PageRepository' => 'Pochika\Support\Facades\PageRepository',
+		'PostRepository' => 'Pochika\Support\Facades\PostRepository',
+		'PluginRepository' => 'Pochika\Support\Facades\PluginRepository',
+
+		// Pochika Exceptions
+		'InvalidEntryException' => 'Pochika\Exception\InvalidEntryException',
+		'NotFoundException' => 'Pochika\Exception\NotFoundException',
+		'NotInitializedException' => 'Pochika\Exception\NotInitializedException',
 	],
 
 ];
