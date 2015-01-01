@@ -3,13 +3,12 @@
 # ----------------------- #
 
 cache: off
-theme: mono
 
-markdown: markdown-extra
+theme: mono
 
 url: /
 
-title: Pochika
+title: POCHIKA
 subtitle: a lightweight blog engine
 
 description:
@@ -20,9 +19,3 @@ author_fullname: Author Name
 paginate: 6
 archives_paginate: 25
 
-#emoji_plugin:
-#  enabled: false
-#fenced_code_block_plugin:
-#  enabled: false
-
-profiler: off

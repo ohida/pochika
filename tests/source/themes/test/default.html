@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ site.title }}</title>
+    <link href="{{ url('feed') }}" rel="alternate" type="application/atom+xml">
+</head>
+<body>
+<header>
+    <h1 id="title">{{ site.title }}</h1>
+    <p id="subtitle">{{ site.subtitle }}</p>
+</header>
+<div id="container">
+    {% block content %}{% endblock %}
+</div>
+<footer></footer>
+</body>
+</html>

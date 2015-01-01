@@ -1,9 +1,9 @@
 # Pochika
 
 'Pochika' is a lightweight blog engine.  
-It's built on [Laravel4](http://four.laravel.com/).
+It's built with [Laravelt](http://laravel.com/).
 
-[![Build Status](https://travis-ci.org/ohida/pochika.png?branch=master)](https://travis-ci.org/ohida/pochika)
+[![Build Status](https://travis-ci.org/ohida/pochika.png?branch=develop)](https://travis-ci.org/ohida/pochika)
 
 ## Demo
 
@@ -13,28 +13,28 @@ http://solvalou.net/
 
 * Index / Archives
 * Entries
-  * Markdown files
   * Posts / Pages
+  * Markdown files
 * Themes
 * Plugins
 * Cache
 
 ## Requirements
 
-* PHP5.4 or more
+* PHP5.6 or more
 * [Composer](https://github.com/composer/composer)
 
 ## Installation
 
-1. Run `git clone http://github.com/ohida/pochika.git`
+1. Run `git clone -b develop http://github.com/ohida/pochika.git`
 1. Change into pochika dir `cd pochika`
 1. Install dependencies `composer install`
-1. Set permission `chmod -R a+w app/storage`
-1. Run web server `php artisan serve`
+1. Set permission `chmod -R a+w storage`
+1. Run web server `php -S localhost:3000 -t public`
 
 ### Unit Test
 
-run `phpunit`
+run `phpunit --configuration=./phpunit.xml`
 
 ## How to use
 
@@ -43,7 +43,7 @@ run `phpunit`
 Edit `config.yml`
 
 ### Create a new post
-Run `php artisan pochika:new_post` command
+Run `php artisan pochika:new` command
 
 or
 
@@ -55,14 +55,6 @@ File name must be yyyy-mm-dd-title.md(markdown) and have yaml-frontmatter like [
 * yaml extension
   * faster yaml reading
   * `pecl install yaml`
-
-* sundown extension
-  * faster markdown translation
-  * `pecl install sundown-beta`
-
-* msgpack extension
-  * reduce cache size
-  * `pecl install msgpack-beta`
 
 ## License
 

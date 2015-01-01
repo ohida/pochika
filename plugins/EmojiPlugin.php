@@ -2,9 +2,7 @@
 
 class EmojiPlugin extends Plugin {
 
-    const PATH = '/emoji';
-
-    protected $names;
+    protected $data;
 
     public function register()
     {
@@ -14,41 +12,29 @@ class EmojiPlugin extends Plugin {
     public function convert($params)
     {
         $content = &$params->entry->content;
+        $data = $this->data();
+        $css_class = element('class', $this->config, 'emoji');
 
-        $names = $this->names();
-        $class = element('class', $this->config, 'emoji');
-
-        $content = preg_replace_callback('/:([\w\+\-]+):/', function($matches) use ($names, $class) {
-            if (in_array($name = $matches[1], $names)) {
-                $url = self::PATH.'/'.rawurlencode($name).'.png';
-                return sprintf('<img alt="%s" src="%s" class="%s">', $name, $url, $class);
+        $content = preg_replace_callback('/:([\w\+\-]+):/', function($matches) use ($data, $css_class) {
+            if (array_key_exists($name = $matches[1], $data)) {
+                Log::debug('emoji convert: :'.$name.':');
+                $url = $data[$name];
+                return sprintf('<img alt="%s" src="%s" class="%s">', $name, $url, $css_class);
             }
         }, $content);
     }
 
-    protected function names()
+    protected function data()
     {
-        if ($this->names) {
-            return $this->names;
+        if ($this->data) {
+            return $this->data;
         }
-
-        $cache_id = 'emoji-names';
-
-        $loader = function() {
-            $dir = app('path.public').self::PATH;
-            foreach (glob($dir.'/*.png') as $file) {
-                $names[] = pathinfo($file, PATHINFO_FILENAME);
-            }
-            return $names;
-        };
-
-        if ('production' == App::environment()) {
-            $this->names = Cache::rememberForever($cache_id, $loader);
-        } else {
-            $this->names = call_user_func($loader);
-        }
-
-        return $this->names;
+        
+        $path = storage_path('emoji/emojis.json');
+        $buff = file_get_contents($path);
+        $this->data = json_decode($buff, true);
+        
+        return $this->data;
     }
 
 }
