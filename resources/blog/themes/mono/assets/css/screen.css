@@ -516,11 +516,19 @@ article.post {
     .post-content h2:first-child, .post-content h3:first-child {
       padding-top: 0; }
   .post-content h2 {
-    font-size: 1.2em;
+    font-size: 1.25em;
     margin-bottom: 26px; }
   .post-content h3 {
     font-size: 1.1em;
-    margin-bottom: 26px; }
+    margin-bottom: 26px;
+    font-weight: normal; }
+    .post-content h3:before {
+      content: "\a";
+      width: 10px;
+      height: 10px;
+      background: #333;
+      margin-right: 8px;
+      display: inline-block; }
   .post-content p, .post-content blockquote, .post-content ul, .post-content ol, .post-content pre {
     margin-bottom: 1.5em;
     margin-bottom: 18px; }

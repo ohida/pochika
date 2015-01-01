@@ -75,6 +75,7 @@ article.post
 .post-content
   margin-top: 34px
   line-height: 1.6em
+  
 
   h2, h3
     margin: 0
@@ -84,11 +85,20 @@ article.post
     &:first-child
       padding-top: 0
   h2
-    font-size: 1.2em
+    font-size: 1.25em
     margin-bottom: 26px
   h3
     font-size: 1.1em
     margin-bottom: 26px
+    font-weight: normal
+    &:before
+      content: "\A"
+      width: 10px
+      height: 10px
+      //border-radius: 50%
+      background: $text-color
+      margin-right: 8px
+      display: inline-block
 
   // margin-bottom
   p, blockquote, ul, ol, pre
