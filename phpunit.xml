@@ -12,11 +12,10 @@
     <testsuites>
         <testsuite name="Application Test Suite">
             <!-- directory>./tests/</directory -->
-            <file>./tests/TagTest.php</file>
-            
-            <file>./tests/L5Test.php</file>
-            <file>./tests/CacheTest.php</file>
-            <file>./tests/DependencyTest.php</file>
+            <!--<file>./tests/TagTest.php</file>-->
+            <!--<file>./tests/L5Test.php</file>-->
+            <!--<file>./tests/CacheTest.php</file>-->
+            <!--<file>./tests/DependencyTest.php</file>-->
             <file>./tests/PochikaTest.php</file>
             <file>./tests/HelpersTest.php</file>
             <file>./tests/ConfigTest.php</file>
