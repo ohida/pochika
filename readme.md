@@ -25,10 +25,11 @@ http://solvalou.net/
 
 ## Installation
 
-1. Run `git clone -b develop http://github.com/ohida/pochika.git`
-1. Change into pochika dir `cd pochika`
+1. Clone repo `git clone -b develop http://github.com/ohida/pochika.git`
+1. Change into pochika's root dir `cd pochika`
 1. Install dependencies `composer install`
-1. Set permission `chmod -R a+w storage`
+1. Set permission of storage dir `chmod -R a+w storage`
+1. Create .env file `cp .env.example .env`
 1. Run web server `php -S localhost:3000 -t public`
 
 ### Unit Test
