@@ -17,6 +17,10 @@ class Config {
             $config_path = 'config.yml';
         }
 
+        d(env('APP_ENV'));
+        d($this->app('config_path'));
+        d($config_path);
+
         $this->path = base_path($config_path);
 
         if (!file_exists($this->path())) {
