@@ -18,13 +18,14 @@ class ThemeTest extends TestCase {
         $this->assertTrue(Theme::exists());
     }
 
-    public function testCheckAssetsLink()
-    {
-        unlink(public_path('assets'));
-        $this->assertFalse(Theme::hasAssetsLink());
-
-        $this->assertTrue(Theme::createAssetsLink());
-        $this->assertTrue(Theme::hasAssetsLink());
-    }
+    // #todo
+    //public function testCheckAssetsLink()
+    //{
+    //    unlink(public_path('assets'));
+    //    $this->assertFalse(Theme::hasAssetsLink());
+    //
+    //    $this->assertTrue(Theme::createAssetsLink());
+    //    $this->assertTrue(Theme::hasAssetsLink());
+    //}
 
 }
