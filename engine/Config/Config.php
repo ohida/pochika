@@ -12,14 +12,12 @@ class Config {
     {
         #todo L5 returns testing/pochika.php's value even if env is 'local'
         if ('testing' == env('APP_ENV')) {
-            $config_path = $this->app('config_path') ?: 'tests/config.yml';
+            //todo
+            //$config_path = $this->app('config_path') ?: 'tests/config.yml';
+            $config_path = 'tests/config.yml';
         } else {
             $config_path = 'config.yml';
         }
-
-        d(env('APP_ENV'));
-        d($this->app('config_path'));
-        d($config_path);
 
         $this->path = base_path($config_path);
 
