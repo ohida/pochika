@@ -1,7 +1,6 @@
 # Pochika
 
-'Pochika' is a lightweight blog engine.  
-It's built with [Laravelt](http://laravel.com/).
+'Pochika' is a lightweight blog engine built with [Laravel5](http://laravel.com/).
 
 [![Build Status](https://travis-ci.org/ohida/pochika.png?branch=develop)](https://travis-ci.org/ohida/pochika)
 
