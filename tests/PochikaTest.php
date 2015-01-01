@@ -15,6 +15,10 @@ class PochikaTest extends TestCase {
     public function testLoaded()
     {
         Pochika::init();
+        
+        // for debug
+        d(Conf::get('source'));
+        
         $this->assertGreaterThan(0, PostRepository::count());
         $this->assertGreaterThan(0, PageRepository::count());
         $this->assertGreaterThan(0, PluginRepository::count());
