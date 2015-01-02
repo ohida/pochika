@@ -112,23 +112,6 @@ return [
 	'providers' => [
 
 		/*
-		 * Application Service Providers...
-		 */
-		'App\Providers\AppServiceProvider',
-		'App\Providers\BusServiceProvider',
-		'App\Providers\EventServiceProvider',
-		'App\Providers\RouteServiceProvider',
-
-		'App\Providers\PochikaServiceProvider',
-		'Pochika\Yaml\YamlServiceProvider',
-		'Pochika\Markdown\MarkdownServiceProvider',
-		'Pochika\Renderer\RendererServiceProvider',
-		'Pochika\Feed\FeedServiceProvider',
-
-		'Barryvdh\Debugbar\ServiceProvider',
-		//'Roumen\Sitemap\SitemapServiceProvider',
-
-		/*
 		 * Laravel Framework Service Providers...
 		 */
 		'Illuminate\Foundation\Providers\ArtisanServiceProvider',
@@ -153,6 +136,23 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
+
+		/*
+		 * Application Service Providers...
+		 */
+		'App\Providers\AppServiceProvider',
+		'App\Providers\BusServiceProvider',
+		'App\Providers\ConfigServiceProvider',
+		'App\Providers\EventServiceProvider',
+		'App\Providers\RouteServiceProvider',
+
+		'App\Providers\PochikaServiceProvider',
+		'Pochika\Yaml\YamlServiceProvider',
+		'Pochika\Markdown\MarkdownServiceProvider',
+		'Pochika\Renderer\RendererServiceProvider',
+		'Pochika\Feed\FeedServiceProvider',
+
+		'Barryvdh\Debugbar\ServiceProvider',
 
 	],
 
