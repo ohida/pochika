@@ -111,10 +111,12 @@ article.post
       margin-bottom: 0
 
   p>code
-    @extend %translucent-box
-    margin: 0 2px
-    padding: 2px 3px
+    //  @extend %translucent-box
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace
+    margin: 0 3px
+    padding: 3px 4px
     font-size: .9em
+    background: #eee
 
   p em
     font-style: italic
@@ -187,7 +189,23 @@ article.post
         padding-right: .3em
         padding-left: .3em
         color: #666
-      
+
+  ul li
+    font-size: 0.960em
+    margin-bottom: 4px
+
+  //ul li ul
+  //  margin-top: 6px
+
+  //ul li ul li:last-child
+  //  margin-bottom: 8px
+  
+  ul li:first-child
+    margin-top: 6px
+    
+  ul li:last-child
+    margin-bottom: 6px
+
   .toc
     padding: 0px 0 10px 10px
     float: right
@@ -201,7 +219,7 @@ article.post
       margin-left: 0
       padding: 0
     >ul
-      list-style-type: none
+      //list-style-type: none
       padding: 10px
       border: 1px solid #ccc
       background: #fefefe
@@ -212,10 +230,15 @@ article.post
         &:hover
           background: #eee
     ul
-      list-style-type: none
+      //list-style-type: none
+      list-style-position: inside
       margin-left: 0
+    >ul
+      list-style-type: none
     ul li ul li
       margin-left: 20px
+    ul li
+      margin: 0
 
 section.page
   article.post
@@ -236,5 +259,3 @@ section.page
         margin-bottom: 15px
         font-weight: normal
         text-decoration: underline
-
-        
