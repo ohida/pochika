@@ -34,8 +34,9 @@ class PochikaInstallCommand extends Command {
 		try {
 			$this->info('Pochika Installing...');
 
-			// create config.yml
-			$this->copyConfigFile();
+			// create config files
+			$this->copyFile('config.yml');
+			$this->copyFile('.env');
 
 			$this->source_path = Conf::get('source', 'source');
 
@@ -58,19 +59,19 @@ class PochikaInstallCommand extends Command {
 		}
 	}
 
-	public function copyConfigFile()
+	public function copyFile($name)
 	{
-		if (file_exists(base_path('config.yml'))) {
-			$this->line('exists: config.yml');
+		if (file_exists(base_path($name))) {
+			$this->line('exists: '.$name);
 			return;
 		}
 
-		$src = base_path('/resources/blog/config.yml');
-		$dst = base_path('/config.yml');
+		$src = base_path('/resources/blog/'.$name);
+		$dst = base_path('/'.$name);
 		if (!copy($src, $dst)) {
-			throw new \LogicException('cannot copy config.yml');
+			throw new \LogicException('cannot copy '.$name);
 		}
-		$this->line('created: config.yml');
+		$this->line('created: '.$name);
 	}
 
 	protected function copyResource($name)
