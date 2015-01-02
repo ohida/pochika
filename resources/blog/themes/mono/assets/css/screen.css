@@ -58,8 +58,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 body {
   background: #fefefe;
   line-height: 1.375em;
-  font-size: 1.1em;
-  color: #333;
+  font-size: 1.09em;
+  color: #333343;
   border-top: solid 5px #333;
   -webkit-text-size-adjust: 100%; }
   body a {
@@ -144,7 +144,7 @@ h2.page-header {
 section.notfound {
   text-align: center;
   margin: 70px;
-  font-color: #333; }
+  font-color: #333343; }
 
 @media only screen and (max-width: 480px) {
   .github-ribbon img {
@@ -200,7 +200,7 @@ body > header {
       body > header h1 {
         font-size: 2.3em; } }
     body > header h1 a {
-      color: #333; }
+      color: #333343; }
   body > header .subtitle {
     margin: 10px 0 30px;
     font-size: 1.2em; }
@@ -222,14 +222,14 @@ body > header {
         margin: 0 5px;
         font-size: 1em; } }
     body > header nav li a {
-      color: #333; }
+      color: #333343; }
       body > header nav li a:hover {
         color: #aaa; }
       @media only screen and (max-width: 480px) {
         body > header nav li a {
-          color: #333; }
+          color: #333343; }
           body > header nav li a:hover {
-            color: #333; } }
+            color: #333343; } }
 
 .bg-banner {
   top: 74px;
@@ -313,7 +313,7 @@ body > header {
   .paginator a {
     display: table-cell;
     width: 33%;
-    color: #333; }
+    color: #333343; }
     .paginator a:hover {
       color: #aaa; }
   .paginator a.prev {
@@ -456,7 +456,7 @@ article.post {
       article.post > header h2 {
         font-size: 1.3em; } }
     article.post > header h2 a {
-      color: #333;
+      color: #333343;
       text-decoration: none;
       color: #333; }
       article.post > header h2 a:hover {
@@ -518,19 +518,12 @@ article.post {
     .post-content h2:first-child, .post-content h3:first-child {
       padding-top: 0; }
   .post-content h2 {
-    font-size: 1.25em;
+    font-size: 1.3em;
     margin-bottom: 26px; }
   .post-content h3 {
     font-size: 1.1em;
     margin-bottom: 26px;
-    font-weight: normal; }
-    .post-content h3:before {
-      content: "\a";
-      width: 10px;
-      height: 10px;
-      background: #333;
-      margin-right: 8px;
-      display: inline-block; }
+    font-weight: bold; }
   .post-content p, .post-content blockquote, .post-content ul, .post-content ol, .post-content pre {
     margin-bottom: 1.5em;
     margin-bottom: 18px; }
@@ -609,23 +602,47 @@ article.post {
         padding-left: 0.3em;
         color: #666; }
   .post-content .toc {
-    font-size: 0.8em;
-    border: 1px solid #ccc;
-    padding: 10px;
+    padding: 0px 0 10px 10px;
     float: right;
-    margin-left: 15px;
-    margin-bottom: 15px; }
+    background: #fff;
+    border: none; }
     @media only screen and (max-width: 480px) {
       .post-content .toc {
         float: none;
-        margin-left: 0; } }
-    .post-content .toc ul {
-      margin-bottom: 0; }
-      .post-content .toc ul li a {
-        color: #333;
+        margin-left: 0;
+        padding: 0; } }
+    .post-content .toc > ul {
+      list-style-type: none;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background: #fefefe; }
+      .post-content .toc > ul li a {
+        font-size: 0.8em;
+        color: #555;
         display: block; }
-        .post-content .toc ul li a:hover {
+        .post-content .toc > ul li a:hover {
           background: #eee; }
+    .post-content .toc ul {
+      list-style-type: none;
+      margin-left: 0; }
+    .post-content .toc ul li ul li {
+      margin-left: 20px; }
+
+section.page article.post > header h2 {
+  font-size: 2em; }
+section.page article.post .post-content h2 {
+  font-size: 1.4em;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px; }
+section.page article.post .post-content h3 {
+  font-size: 1.15em;
+  font-weight: bold; }
+section.page article.post .post-content h4 {
+  font-size: 1em;
+  margin-bottom: 15px;
+  font-weight: normal;
+  text-decoration: underline; }
 
 .index {
   padding: 70px 0 0; }
@@ -735,12 +752,12 @@ article.post {
       margin-left: 0; } }
   .archives article h2 {
     margin: 0;
-    color: #333;
+    color: #333343;
     font-size: 1.1em;
     font-weight: normal;
     line-height: 1em; }
     .archives article h2 a {
-      color: #333; }
+      color: #333343; }
       .archives article h2 a:hover {
         color: #aaa; }
   .archives article time {
@@ -781,7 +798,7 @@ article.post {
    * /*box-shadow: 2px 2px 0 rgba(0,0,0,0.1) */
   /*} */ }
   .laradoc a {
-    color: #333; }
+    color: #333343; }
     .laradoc a:hover {
       color: #aaa; }
   .laradoc pre {

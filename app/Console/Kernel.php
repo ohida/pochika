@@ -19,6 +19,7 @@ class Kernel extends ConsoleKernel {
 		'App\Console\Commands\ThemeListCommand',
 		'App\Console\Commands\PochikaListCommand',
 		'App\Console\Commands\EmojiUpdateCommand',
+		'App\Console\Commands\PostNewCommand',
 	];
 
 	/**

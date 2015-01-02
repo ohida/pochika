@@ -19,7 +19,7 @@ article.post
     +respond-to(handhelds)
       font-size: 1.3em
     a
-      color: #333
+      color: $text-color
       text-decoration: none
       +link-colors($mono-link-color, $mono-hover-color)
 
@@ -86,20 +86,22 @@ article.post
     &:first-child
       padding-top: 0
   h2
-    font-size: 1.25em
+    font-size: 1.3em
     margin-bottom: 26px
+    //border-bottom: 1px solid #ccc
+    //padding-bottom: 15px
   h3
     font-size: 1.1em
     margin-bottom: 26px
-    font-weight: normal
-    &:before
-      content: "\A"
-      width: 10px
-      height: 10px
-      //border-radius: 50%
-      background: $text-color
-      margin-right: 8px
-      display: inline-block
+    font-weight: bold
+    //&:before
+    //  content: "\A"
+    //  width: 10px
+    //  height: 10px
+    //  //border-radius: 50%
+    //  background: $text-color
+    //  margin-right: 8px
+    //  display: inline-block
 
   // margin-bottom
   p, blockquote, ul, ol, pre
@@ -187,23 +189,52 @@ article.post
         color: #666
       
   .toc
-    font-size: 0.8em
-    border: 1px solid #ccc
-    padding: 10px
+    padding: 0px 0 10px 10px
     float: right
-    margin-left: 15px
-    margin-bottom: 15px
+    background: #fff
+    border: none
     //&:before
     //  content: "Table of Contents"
     @extend %translucent-box
     +respond-to(handhelds)
       float: none
       margin-left: 0
-    ul
-      margin-bottom: 0
+      padding: 0
+    >ul
+      list-style-type: none
+      padding: 10px
+      border: 1px solid #ccc
+      background: #fefefe
       li a
-        color: $text-color
+        font-size: 0.8em
+        color: #555
         display: block
         &:hover
           background: #eee
+    ul
+      list-style-type: none
+      margin-left: 0
+    ul li ul li
+      margin-left: 20px
 
+section.page
+  article.post
+    >header h2
+      font-size: 2.0em
+    .post-content
+      h2
+        font-size: 1.40em
+        margin-bottom: 20px
+        border-bottom: 1px solid #ccc
+        padding-bottom: 15px
+        //text-decoration: underline
+      h3
+        font-size: 1.15em
+        font-weight: bold
+      h4
+        font-size: 1.00em
+        margin-bottom: 15px
+        font-weight: normal
+        text-decoration: underline
+
+        
