@@ -2,9 +2,15 @@
 
   <h1><a href="{{ site.url }}" data-pjax>{{ site.title }}</a></h1>
 
-  <div class="subtitle">
-    {{ site.subtitle }}
-  </div>
+  {% if site.with_cat or site.cat %}
+    <figure>
+      <img src="{{ asset('images/cat.png') }}">
+    </figure>
+  {% else %}
+    <div class="subtitle">
+      {{ site.subtitle }}
+    </div>
+  {% endif %}
 
   <nav role="navigation">
     <ul data-pjax>

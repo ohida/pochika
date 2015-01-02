@@ -75,7 +75,8 @@ article.post
 .post-content
   margin-top: 34px
   line-height: 1.6em
-  
+  &:after
+    clear: both
 
   h2, h3
     margin: 0
@@ -184,4 +185,25 @@ article.post
         padding-right: .3em
         padding-left: .3em
         color: #666
+      
+  .toc
+    font-size: 0.8em
+    border: 1px solid #ccc
+    padding: 10px
+    float: right
+    margin-left: 15px
+    margin-bottom: 15px
+    //&:before
+    //  content: "Table of Contents"
+    @extend %translucent-box
+    +respond-to(handhelds)
+      float: none
+      margin-left: 0
+    ul
+      margin-bottom: 0
+      li a
+        color: $text-color
+        display: block
+        &:hover
+          background: #eee
 

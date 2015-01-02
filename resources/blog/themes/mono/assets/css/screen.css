@@ -175,7 +175,7 @@ section.notfound {
   border: 1px solid #ccc;
   color: inherit; }
 
-.post-content p > code, .post-content pre.prettyprint {
+.post-content p > code, .post-content pre.prettyprint, .post-content .toc {
   background: rgba(255, 255, 255, 0.5);
   border: 1px solid #ccc; }
 
@@ -508,6 +508,8 @@ article.post {
 .post-content {
   margin-top: 34px;
   line-height: 1.6em; }
+  .post-content:after {
+    clear: both; }
   .post-content h2, .post-content h3 {
     margin: 0;
     padding: 0;
@@ -606,6 +608,24 @@ article.post {
         padding-right: 0.3em;
         padding-left: 0.3em;
         color: #666; }
+  .post-content .toc {
+    font-size: 0.8em;
+    border: 1px solid #ccc;
+    padding: 10px;
+    float: right;
+    margin-left: 15px;
+    margin-bottom: 15px; }
+    @media only screen and (max-width: 480px) {
+      .post-content .toc {
+        float: none;
+        margin-left: 0; } }
+    .post-content .toc ul {
+      margin-bottom: 0; }
+      .post-content .toc ul li a {
+        color: #333;
+        display: block; }
+        .post-content .toc ul li a:hover {
+          background: #eee; }
 
 .index {
   padding: 70px 0 0; }

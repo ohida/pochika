@@ -14,25 +14,37 @@ class PluginTest extends TestCase {
         $this->assertRegExp('/<img .*?>/', $post->content);
     }
 
-//    public function testTocPlugin()
-//    {
-//        $plugin = PluginRepository::find('toc');
-//
-//        $html = <<<EOF
-//<h2>one</h2>
-//Hello world!
-//
-//<h2>two</h2>
-//This is pochika.
-//EOF;
-//
-//        $post = (object)['content' => $html];
-//        $params = (object)['entry' => &$post];
-//
-//        $plugin->handle($params);
-//
-//    }
-    
+    public function testTocPlugin()
+    {
+        $plugin = PluginRepository::find('toc');
+
+        $html = <<<EOF
+{:TOC}
+
+<h2>one</h2>
+Hello world!
+<h3>one-child1</h3>
+I love dogs.
+<h3>one-child2</h3>
+I love cats.
+<h2>two</h2>
+This is pochika.
+<h2>three</h2>
+php
+EOF;
+        
+        $post = (object)['content' => $html];
+        $params = (object)['entry' => &$post];
+        $plugin->handle($params);
+        $this->assertNotFalse(strpos($post->content, '<div class="toc">'));
+        
+        // should not work if content has no {:TOC} tag
+        $post = (object)['content' => 'hello'];
+        $params = (object)['entry' => &$post];
+        $plugin->handle($params);
+        $this->assertFalse(strpos($post->content, '<div class="toc">'));
+    }
+
 //    // gfm - fenced code block
 //    public function testFencedCodeBlock()
 //    {
