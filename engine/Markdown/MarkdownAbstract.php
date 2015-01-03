@@ -8,11 +8,11 @@ abstract class MarkdownAbstract {
     {
         $event_params = (object) ['md' => &$md];
 
-        Event::fire('markdown.before_convert', $event_params);
+        //Event::fire('markdown.before_convert', $event_params);
 
         $html = $this->run($md);
 
-        Event::fire('markdown.after_convert', $event_params);
+        //Event::fire('markdown.after_convert', $event_params);
 
         return $html;
     }

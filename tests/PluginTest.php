@@ -1,24 +1,33 @@
 <?php
 
+use Mockery as m;
+
 class PluginTest extends TestCase {
 
     public function testEmojiPlugin()
     {
+        $event = m::mock('App\Events\AfterConvert');
+        $post = m::mock('Pochika\Entry\Post');
+        
+        $event->entry = $post;
+        $post->content = ':octocat:';
+
         $plugin = PluginRepository::find('emoji');
-
-        $post = (object)['content' => ':octocat:'];
-        $params = (object)['entry' => &$post];
-
-        $plugin->convert($params);
+        $plugin->convert($event);
 
         $this->assertRegExp('/<img .*?>/', $post->content);
     }
 
     public function testTocPlugin()
     {
+        $event = m::mock('App\Events\AfterConvert');
+        $post = m::mock('Pochika\Entry\Post');
+        
+        $event->entry = $post;
+        
         $plugin = PluginRepository::find('toc');
 
-        $html = <<<EOF
+        $post->content = <<<EOF
 {:TOC}
 
 <h2>one</h2>
@@ -33,18 +42,20 @@ This is pochika.
 php
 EOF;
         
-        $post = (object)['content' => $html];
-        $params = (object)['entry' => &$post];
-        $plugin->handle($params);
+        $plugin->handle($event);
         $this->assertNotFalse(strpos($post->content, '<div class="toc">'));
         
         // should not work if content has no {:TOC} tag
-        $post = (object)['content' => 'hello'];
-        $params = (object)['entry' => &$post];
-        $plugin->handle($params);
+        $post->content = 'hello';
+        $plugin->handle($event);
         $this->assertFalse(strpos($post->content, '<div class="toc">'));
     }
 
+    public function tearDown()
+    {
+        m::close();
+    }
+    
 //    // gfm - fenced code block
 //    public function testFencedCodeBlock()
 //    {

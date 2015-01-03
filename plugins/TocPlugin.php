@@ -1,17 +1,19 @@
 <?php
 
+use App\Events\AfterConvert;
+
 class TocPlugin extends Plugin {
     
-    protected $content = null;
+    protected $content;
 
     public function register()
     {
-        $this->listen('entry.after_convert', 'handle');
+        $this->listen(EntryConverted::class, 'handle');
     }
 
-    public function handle($params)
+    public function handle(AfterConvert $event)
     {
-        $this->content = &$params->entry->content;
+        $this->content = &$event->entry->content;
 
         if (false === strpos($this->content, '{:TOC}')) {
             return;

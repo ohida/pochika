@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4434659657641755856fb3499caf9711",
+    "hash": "1682008208bc38b90a5dff6a712d9b6a",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1075,12 +1075,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "de660d595ff02f520e6ad280d96e68eb753f35fe"
+                "reference": "22b9311b16ec0081ad780ff1ae1da0a883fa59d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/de660d595ff02f520e6ad280d96e68eb753f35fe",
-                "reference": "de660d595ff02f520e6ad280d96e68eb753f35fe",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/22b9311b16ec0081ad780ff1ae1da0a883fa59d3",
+                "reference": "22b9311b16ec0081ad780ff1ae1da0a883fa59d3",
                 "shasum": ""
             },
             "require": {
@@ -1123,7 +1123,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2014-12-31 09:20:32"
+            "time": "2015-01-03 08:01:59"
         },
         {
             "name": "symfony/debug",
@@ -1132,12 +1132,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Debug.git",
-                "reference": "55281335c334eb6b22899fa3c08fd3a3e4f2d12c"
+                "reference": "b65a5ffc25cc9df8636f27a19eaaedfe071cf7db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Debug/zipball/55281335c334eb6b22899fa3c08fd3a3e4f2d12c",
-                "reference": "55281335c334eb6b22899fa3c08fd3a3e4f2d12c",
+                "url": "https://api.github.com/repos/symfony/Debug/zipball/b65a5ffc25cc9df8636f27a19eaaedfe071cf7db",
+                "reference": "b65a5ffc25cc9df8636f27a19eaaedfe071cf7db",
                 "shasum": ""
             },
             "require": {
@@ -1180,7 +1180,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "http://symfony.com",
-            "time": "2014-12-31 09:46:23"
+            "time": "2015-01-03 08:01:59"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -1189,12 +1189,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "fb1e482e75cca7eb24e6ed4a8c0b75756fcd3e5a"
+                "reference": "93fbc47507b4509602c5abf8c5a2e33096f32138"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/fb1e482e75cca7eb24e6ed4a8c0b75756fcd3e5a",
-                "reference": "fb1e482e75cca7eb24e6ed4a8c0b75756fcd3e5a",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/93fbc47507b4509602c5abf8c5a2e33096f32138",
+                "reference": "93fbc47507b4509602c5abf8c5a2e33096f32138",
                 "shasum": ""
             },
             "require": {
@@ -1238,7 +1238,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "http://symfony.com",
-            "time": "2014-12-27 11:44:51"
+            "time": "2015-01-03 08:02:46"
         },
         {
             "name": "symfony/filesystem",
@@ -1247,12 +1247,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Filesystem.git",
-                "reference": "ed229b7d4f31c344fcaa29ca9e9ae12c574f2617"
+                "reference": "dcf38d0fedb1c018a03cd9f7e675798286513fdf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/ed229b7d4f31c344fcaa29ca9e9ae12c574f2617",
-                "reference": "ed229b7d4f31c344fcaa29ca9e9ae12c574f2617",
+                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/dcf38d0fedb1c018a03cd9f7e675798286513fdf",
+                "reference": "dcf38d0fedb1c018a03cd9f7e675798286513fdf",
                 "shasum": ""
             },
             "require": {
@@ -1285,7 +1285,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "http://symfony.com",
-            "time": "2014-12-30 13:34:24"
+            "time": "2015-01-03 09:42:51"
         },
         {
             "name": "symfony/finder",
@@ -1294,12 +1294,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Finder.git",
-                "reference": "f652acf33bfe7f7ace948d27d8a2db8b030884d3"
+                "reference": "16513333bca64186c01609961a2bb1b95b5e1355"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Finder/zipball/f652acf33bfe7f7ace948d27d8a2db8b030884d3",
-                "reference": "f652acf33bfe7f7ace948d27d8a2db8b030884d3",
+                "url": "https://api.github.com/repos/symfony/Finder/zipball/16513333bca64186c01609961a2bb1b95b5e1355",
+                "reference": "16513333bca64186c01609961a2bb1b95b5e1355",
                 "shasum": ""
             },
             "require": {
@@ -1332,7 +1332,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "http://symfony.com",
-            "time": "2014-12-30 13:34:16"
+            "time": "2015-01-03 08:01:59"
         },
         {
             "name": "symfony/http-foundation",
@@ -1341,12 +1341,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/HttpFoundation.git",
-                "reference": "6dda7f5fbe83c67d37d3309df69a47f2b52415d8"
+                "reference": "714ccfd21118cdfbc99c17eac40fb96f4448d707"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/6dda7f5fbe83c67d37d3309df69a47f2b52415d8",
-                "reference": "6dda7f5fbe83c67d37d3309df69a47f2b52415d8",
+                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/714ccfd21118cdfbc99c17eac40fb96f4448d707",
+                "reference": "714ccfd21118cdfbc99c17eac40fb96f4448d707",
                 "shasum": ""
             },
             "require": {
@@ -1385,7 +1385,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "http://symfony.com",
-            "time": "2014-12-30 13:34:16"
+            "time": "2015-01-03 08:01:59"
         },
         {
             "name": "symfony/http-kernel",
@@ -1394,18 +1394,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/HttpKernel.git",
-                "reference": "b4eefe3bfb6406b5dcb763e3e7d2acde614fb690"
+                "reference": "f501b24bc145397c42daa82ca3659ded8f50098e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/HttpKernel/zipball/b4eefe3bfb6406b5dcb763e3e7d2acde614fb690",
-                "reference": "b4eefe3bfb6406b5dcb763e3e7d2acde614fb690",
+                "url": "https://api.github.com/repos/symfony/HttpKernel/zipball/f501b24bc145397c42daa82ca3659ded8f50098e",
+                "reference": "f501b24bc145397c42daa82ca3659ded8f50098e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
                 "psr/log": "~1.0",
-                "symfony/debug": "~2.6",
+                "symfony/debug": "~2.6,>=2.6.2",
                 "symfony/event-dispatcher": "~2.5.9|~2.6,>=2.6.2",
                 "symfony/http-foundation": "~2.5,>=2.5.4"
             },
@@ -1462,7 +1462,7 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "http://symfony.com",
-            "time": "2014-12-30 13:34:16"
+            "time": "2015-01-03 15:33:07"
         },
         {
             "name": "symfony/process",
@@ -1471,12 +1471,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process.git",
-                "reference": "8ad191ca460b3b6b5438b33eca373ecb55110beb"
+                "reference": "dee20c9f0ffd4f93f1bac2dcf5fb7ce04f353f04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Process/zipball/8ad191ca460b3b6b5438b33eca373ecb55110beb",
-                "reference": "8ad191ca460b3b6b5438b33eca373ecb55110beb",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/dee20c9f0ffd4f93f1bac2dcf5fb7ce04f353f04",
+                "reference": "dee20c9f0ffd4f93f1bac2dcf5fb7ce04f353f04",
                 "shasum": ""
             },
             "require": {
@@ -1509,7 +1509,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "http://symfony.com",
-            "time": "2014-12-31 09:20:32"
+            "time": "2015-01-03 08:01:59"
         },
         {
             "name": "symfony/routing",
@@ -1518,12 +1518,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Routing.git",
-                "reference": "257de72921284cd96ed5a8054b8be5c812a18f33"
+                "reference": "e50ad76236275a3b14981929cdf99df8fbe03bf1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Routing/zipball/257de72921284cd96ed5a8054b8be5c812a18f33",
-                "reference": "257de72921284cd96ed5a8054b8be5c812a18f33",
+                "url": "https://api.github.com/repos/symfony/Routing/zipball/e50ad76236275a3b14981929cdf99df8fbe03bf1",
+                "reference": "e50ad76236275a3b14981929cdf99df8fbe03bf1",
                 "shasum": ""
             },
             "require": {
@@ -1577,7 +1577,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2014-12-22 16:44:09"
+            "time": "2015-01-03 08:01:59"
         },
         {
             "name": "symfony/security-core",
@@ -1586,12 +1586,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-core.git",
-                "reference": "84234946a232dd0b09068b4525c17702a87e1d33"
+                "reference": "e8a523eb9bc6008f5b2226f3fdf685d46c60a745"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-core/zipball/84234946a232dd0b09068b4525c17702a87e1d33",
-                "reference": "84234946a232dd0b09068b4525c17702a87e1d33",
+                "url": "https://api.github.com/repos/symfony/security-core/zipball/e8a523eb9bc6008f5b2226f3fdf685d46c60a745",
+                "reference": "e8a523eb9bc6008f5b2226f3fdf685d46c60a745",
                 "shasum": ""
             },
             "require": {
@@ -1640,7 +1640,7 @@
             ],
             "description": "Symfony Security Component - Core Library",
             "homepage": "http://symfony.com",
-            "time": "2014-12-30 13:34:16"
+            "time": "2015-01-03 08:01:59"
         },
         {
             "name": "symfony/translation",
@@ -1649,12 +1649,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Translation.git",
-                "reference": "1d246da6c61f8f99d04243ecb29a5239826e220e"
+                "reference": "6f993004d31a2a3698de9905469a9eda61cfb4a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Translation/zipball/1d246da6c61f8f99d04243ecb29a5239826e220e",
-                "reference": "1d246da6c61f8f99d04243ecb29a5239826e220e",
+                "url": "https://api.github.com/repos/symfony/Translation/zipball/6f993004d31a2a3698de9905469a9eda61cfb4a3",
+                "reference": "6f993004d31a2a3698de9905469a9eda61cfb4a3",
                 "shasum": ""
             },
             "require": {
@@ -1698,7 +1698,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "http://symfony.com",
-            "time": "2014-12-30 09:04:52"
+            "time": "2015-01-03 08:01:59"
         },
         {
             "name": "symfony/var-dumper",
@@ -2028,60 +2028,70 @@
             "time": "2014-12-17 09:51:25"
         },
         {
-            "name": "patchwork/utf8",
+            "name": "mockery/mockery",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/tchwork/utf8.git",
-                "reference": "3024ee72d0ce7fc4bf87421f2954f956d3ad2ee5"
+                "url": "https://github.com/padraic/mockery.git",
+                "reference": "ee277735d9dea95553ee667bee3292cdd6947574"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tchwork/utf8/zipball/3024ee72d0ce7fc4bf87421f2954f956d3ad2ee5",
-                "reference": "3024ee72d0ce7fc4bf87421f2954f956d3ad2ee5",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/ee277735d9dea95553ee667bee3292cdd6947574",
+                "reference": "ee277735d9dea95553ee667bee3292cdd6947574",
                 "shasum": ""
             },
             "require": {
-                "lib-pcre": ">=7.3",
-                "php": ">=5.3.0"
+                "lib-pcre": ">=7.0",
+                "php": ">=5.3.2"
             },
-            "suggest": {
-                "ext-iconv": "Use iconv for best performance",
-                "ext-intl": "Use Intl for best performance",
-                "ext-mbstring": "Use Mbstring for best performance"
+            "require-dev": {
+                "hamcrest/hamcrest-php": "~1.1",
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "~0.7@dev"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "0.9.x-dev"
                 }
             },
             "autoload": {
                 "psr-0": {
-                    "Patchwork": "class/",
-                    "Normalizer": "class/"
+                    "Mockery": "library/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "(Apache-2.0 or GPL-2.0)"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
+                    "name": "Pádraic Brady",
+                    "email": "padraic.brady@gmail.com",
+                    "homepage": "http://blog.astrumfutura.com"
+                },
+                {
+                    "name": "Dave Marshall",
+                    "email": "dave.marshall@atstsolutions.co.uk",
+                    "homepage": "http://davedevelopment.co.uk"
                 }
             ],
-            "description": "Portable and performant UTF-8, Unicode and Grapheme Clusters for PHP",
-            "homepage": "https://github.com/tchwork/utf8",
+            "description": "Mockery is a simple yet flexible PHP mock object framework for use in unit testing with PHPUnit, PHPSpec or any other testing framework. Its core goal is to offer a test double framework with a succint API capable of clearly defining all possible object operations and interactions using a human readable Domain Specific Language (DSL). Designed as a drop in alternative to PHPUnit's phpunit-mock-objects library, Mockery is easy to integrate with PHPUnit and can operate alongside phpunit-mock-objects without the World ending.",
+            "homepage": "http://github.com/padraic/mockery",
             "keywords": [
-                "grapheme",
-                "i18n",
-                "unicode",
-                "utf-8",
-                "utf8"
+                "BDD",
+                "TDD",
+                "library",
+                "mock",
+                "mock objects",
+                "mockery",
+                "stub",
+                "test",
+                "test double",
+                "testing"
             ],
-            "time": "2014-11-10 16:16:54"
+            "time": "2014-12-31 11:42:06"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -2996,12 +3006,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "7918f04ec3f38d2069b91b2d2e0e3a10d9cfc6c4"
+                "reference": "eb042601b714a675b36a5af4de352695fcf33db7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/7918f04ec3f38d2069b91b2d2e0e3a10d9cfc6c4",
-                "reference": "7918f04ec3f38d2069b91b2d2e0e3a10d9cfc6c4",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/eb042601b714a675b36a5af4de352695fcf33db7",
+                "reference": "eb042601b714a675b36a5af4de352695fcf33db7",
                 "shasum": ""
             },
             "require": {
@@ -3034,7 +3044,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2014-12-30 09:05:46"
+            "time": "2015-01-03 08:02:46"
         }
     ],
     "aliases": [],
@@ -3042,6 +3052,7 @@
     "stability-flags": {
         "embed/embed": 20,
         "erusev/parsedown": 20,
+        "mockery/mockery": 20,
         "barryvdh/laravel-debugbar": 20
     },
     "prefer-stable": false,

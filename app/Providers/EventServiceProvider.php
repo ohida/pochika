@@ -1,5 +1,10 @@
 <?php namespace App\Providers;
 
+use App\Events\End;
+use App\Events\AfterConvert;
+use App\Handlers\Events\StoreConvertedKeys;
+use App\Handlers\Events\UpdateCache;
+
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider {
@@ -13,6 +18,12 @@ class EventServiceProvider extends ServiceProvider {
 		//'event.name' => [
 		//	'EventListener',
 		//],
+		AfterConvert::class => [
+			StoreConvertedKeys::class,
+		],
+		End::class => [
+			UpdateCache::class,
+		],
 	];
 
 }

@@ -76,13 +76,13 @@ class TwigRenderer {
             'payload' => &$payload
         ];
 
-        Event::fire('renderer.before_render', $event_params);
+        //Event::fire(new \App\Events\BeforeRender, $event_params);
 
         // render
         $html = $this->twig->render($template, $payload);
 
         $event_params->html = &$html;
-        Event::fire('renderer.after_render', $event_params);
+        //Event::fire(new \App\Events\AfterRender, $event_params);
 
         return $html;
     }
