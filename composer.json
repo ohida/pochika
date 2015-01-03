@@ -19,7 +19,6 @@
 	"autoload": {
 		"classmap": [
 			"database"
-//			"plugins"
 		],
 		"psr-4": {
 			"App\\": "app/",
