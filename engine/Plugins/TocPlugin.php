@@ -1,6 +1,8 @@
-<?php
+<?php namespace Pochika\Plugins;
 
 use App\Events\AfterConvert;
+use DOMDocument;
+use DOMXPath;
 
 class TocPlugin extends Plugin {
     

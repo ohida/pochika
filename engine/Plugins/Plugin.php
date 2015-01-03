@@ -1,4 +1,4 @@
-<?php namespace Pochika\Plugin;
+<?php namespace Pochika\Plugins;
 
 use Conf;
 use Event;
@@ -6,7 +6,7 @@ use Event;
 abstract class Plugin {
 
     public $key;
-    public $name;
+    //public $name;
 
     protected $config = [];
 
@@ -23,10 +23,14 @@ abstract class Plugin {
 
     public function __construct()
     {
-        $class = get_class($this);
+        //$class = get_class($this);
+        //$class = static::class;
+        //d($class);
 
-        $this->name = snake_case($class);
-        $this->key = str_replace('_plugin', '', $this->name);
+        //$this->name = snake_case($class);
+        //dd($this->name);
+        
+        //dd($this->key);
 
         $this->config = $this->loadConfig();
 
@@ -34,15 +38,21 @@ abstract class Plugin {
             throw new \InvalidEntryException;
         }
     }
+    
+    //protected function makeKey()
+    //{
+    //    $this->key = str_replace('_plugin', '', $this->name);
+    //}
 
+    #todo write a test
     public function loadConfig()
     {
-        return Conf::get($this->name);
+        return Conf::get($this->key);
     }
 
     /**
      * Listen event
-     *
+     * 
      * @param $event
      * @param null $handler
      */

@@ -2,7 +2,7 @@
 
 class PluginRepositoryTest extends TestCase {
 
-    const PLUGIN_COUNT = 2;
+    const PLUGIN_COUNT = 3;
 
     public function testLoad()
     {
