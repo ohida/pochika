@@ -7,21 +7,20 @@ trait ContentCacheTrait {
 
     protected $converted_keys = [];
 
-    public function enableContentCache()
+    public function storeConvertedKey($entry)
     {
-        Event::listen('entry.after_convert', [$this, 'storeKey']);
-        Event::listen('site.after_process', [$this, 'updateCache']);
-    }
-
-    public function storeKey($params)
-    {
-        $class = $this->itemClass();
-        $entry = $params->entry;
-        if ($entry instanceof $class) {
-            if (!$entry->nocache) {
-                $this->converted_keys[] = $params->entry->key;
-            }
+        if (!$entry->nocache) {
+            $this->converted_keys[] = $entry->key;
         }
+        return;
+
+        //$class = $this->itemClass();
+        //$entry = $params->entry;
+        //if ($entry instanceof $class) {
+        //    if (!$entry->nocache) {
+        //        $this->converted_keys[] = $params->entry->key;
+        //    }
+        //}
     }
 
     public function updateCache()
@@ -39,10 +38,6 @@ trait ContentCacheTrait {
 
         foreach ($this->converted_keys as $key) {
             $items[$key] = $class::find($key);
-            //$obj = $class::find($key);
-            //$item = &$items[$key];
-            //$item->converted = true;
-            //$item->content = $obj->content;
         }
 
         $this->remember($items, true);

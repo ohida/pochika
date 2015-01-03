@@ -1,6 +1,7 @@
 <?php namespace Pochika;
 
 use Cache;
+use Event;
 use Log;
 use PageRepository;
 use PluginRepository;
@@ -30,6 +31,8 @@ class Pochika {
             $this->load();
             $this->initialized = true;
         });
+        
+        Event::fire(new \App\Events\Init);
     }
 
     public function check()
@@ -77,11 +80,13 @@ class Pochika {
 
     /**
      * Finalize
-     * called from PochikaMiddleware
+     * notice: called from PochikaMiddleware only
      */
     public function end()
     {
         Log::debug('pochika::end');
+        
+        Event::fire(new \App\Events\End);
 
         $this->unload();
         $this->initialized = false;

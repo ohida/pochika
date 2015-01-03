@@ -115,4 +115,9 @@ class Page extends Entry {
         }
     }
 
+    public static function getRepository()
+    {
+        return app('page_repo');
+    }
+
 }

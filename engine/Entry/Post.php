@@ -198,4 +198,9 @@ class Post extends Entry {
         }
     }
 
+    public static function getRepository()
+    {
+        return app('post_repo');
+    }
+
 }

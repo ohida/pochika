@@ -31,7 +31,7 @@ class PochikaMiddleware implements Middleware {
 
             $response = $next($request);
 
-            Event::fire("site.after_process");
+            //Event::fire("site.after_process");
 
 			Pochika::end();
 		} catch (\Exception $e) {

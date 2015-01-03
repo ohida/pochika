@@ -11,9 +11,9 @@ class PageRepository extends Repository {
 
     public function __construct()
     {
-        if (Conf::get('cache')) {
-            $this->enableContentCache();
-        }
+        //if (Conf::get('cache')) {
+        //    $this->enableContentCache();
+        //}
     }
 
     /**

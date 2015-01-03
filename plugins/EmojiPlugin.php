@@ -1,17 +1,19 @@
 <?php
 
+use App\Events\AfterConvert;
+
 class EmojiPlugin extends Plugin {
 
     protected $data;
 
     public function register()
     {
-        $this->listen('entry.after_convert', 'convert');
+        $this->listen(AfterConvert::class);
     }
-
-    public function convert($params)
+    
+    public function handle(AfterConvert $event)
     {
-        $content = &$params->entry->content;
+        $content = &$event->entry->content;
         $data = $this->data();
         $css_class = element('class', $this->config, 'emoji');
 
