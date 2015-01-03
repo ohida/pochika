@@ -40,9 +40,18 @@ abstract class Plugin {
         return Conf::get($this->name);
     }
 
-    protected function listen($event, $method)
+    /**
+     * Listen event
+     *
+     * @param $event
+     * @param null $handler
+     */
+    protected function listen($event, $handler = null)
     {
-        Event::listen($event, $this->key.'@'.$method);
+        if (!$handler) {
+            $handler = static::class;
+        }
+        Event::listen($event, $handler);
     }
 
 }

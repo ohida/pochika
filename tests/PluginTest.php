@@ -13,7 +13,7 @@ class PluginTest extends TestCase {
         $post->content = ':octocat:';
 
         $plugin = PluginRepository::find('emoji');
-        $plugin->convert($event);
+        $plugin->handle($event);
 
         $this->assertRegExp('/<img .*?>/', $post->content);
     }

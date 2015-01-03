@@ -8,7 +8,7 @@ class TocPlugin extends Plugin {
 
     public function register()
     {
-        $this->listen(EntryConverted::class, 'handle');
+        $this->listen(AfterConvert::class);
     }
 
     public function handle(AfterConvert $event)
