@@ -4,8 +4,6 @@ use App\Events\AfterConvert;
 use DOMDocument;
 use DOMXPath;
 
-use App\Events\AfterConvert;
-
 class TocPlugin extends Plugin {
     
     protected $content;

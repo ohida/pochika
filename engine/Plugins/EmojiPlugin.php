@@ -2,8 +2,6 @@
 
 use App\Events\AfterConvert;
 
-use App\Events\AfterConvert;
-
 class EmojiPlugin extends Plugin {
 
     protected $data;
