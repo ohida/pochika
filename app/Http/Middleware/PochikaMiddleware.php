@@ -4,9 +4,7 @@ use Closure;
 use Illuminate\Contracts\Routing\Middleware;
 
 use Debugbar;
-use Event;
 use Illuminate\Http\Response;
-use Log;
 use Pochika;
 
 class PochikaMiddleware implements Middleware {
@@ -28,11 +26,7 @@ class PochikaMiddleware implements Middleware {
 
 		try {
 			Pochika::init();
-
             $response = $next($request);
-
-            //Event::fire("site.after_process");
-
 			Pochika::end();
 		} catch (\Exception $e) {
 			return $this->handleException($e);

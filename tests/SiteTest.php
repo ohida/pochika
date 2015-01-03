@@ -4,7 +4,8 @@ class SiteTest extends TestCase {
 
     public function setUp()
     {
-        $this->app = $this->createApplication();
+        //$this->app = $this->createApplication();
+        $this->refreshApplication();
     }
 
     public function testMainPagesStatus()

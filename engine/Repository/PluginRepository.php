@@ -48,8 +48,6 @@ class PluginRepository extends Repository {
                 $items[$key] = new $class;
             } catch (\InvalidEntryException $e) {
                 continue;
-            } catch (\Exception $e) {
-                continue;
             }
         }
 
