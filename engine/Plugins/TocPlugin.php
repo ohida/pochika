@@ -1,4 +1,8 @@
-<?php
+<?php namespace Pochika\Plugins;
+
+use App\Events\AfterConvert;
+use DOMDocument;
+use DOMXPath;
 
 use App\Events\AfterConvert;
 

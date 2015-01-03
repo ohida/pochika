@@ -212,7 +212,7 @@ return [
 		'Markdown'	 => 'Pochika\Support\Facades\Markdown',
 		'Page'		 => 'Pochika\Entry\Page',
 		'Paginator'  => 'Pochika\Support\Paginator',
-		'Plugin'	 => 'Pochika\Plugin\Plugin',
+		'Plugin'	 => 'Pochika\Plugins\Plugin',
 		'Pochika'	 => 'Pochika\Support\Facades\Pochika',
 		'Post'		 => 'Pochika\Entry\Post',
 		'Renderer'	 => 'Pochika\Support\Facades\Renderer',

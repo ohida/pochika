@@ -1,4 +1,6 @@
-<?php
+<?php namespace Pochika\Plugins;
+
+use App\Events\AfterConvert;
 
 use App\Events\AfterConvert;
 
@@ -19,7 +21,7 @@ class EmojiPlugin extends Plugin {
 
         $content = preg_replace_callback('/:([\w\+\-]+):/', function($matches) use ($data, $css_class) {
             if (array_key_exists($name = $matches[1], $data)) {
-                Log::debug('emoji convert: :'.$name.':');
+                \Log::debug('emoji convert: :'.$name.':');
                 $url = $data[$name];
                 return sprintf('<img alt="%s" src="%s" class="%s">', $name, $url, $css_class);
             }
