@@ -6,7 +6,7 @@ use Illuminate\Contracts\Queue\ShouldBeQueued;
 use Pochika\Support\Facades\PostRepository;
 use Pochika\Support\Facades\PageRepository;
 
-class updateCache {
+class UpdateCache {
 
 	/**
 	 * Create the event handler.
