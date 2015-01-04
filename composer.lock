@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c79466195163fb448a25385e15c68e66",
+    "hash": "dd9d62fb405557b6a9c878196a4e3371",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -89,31 +89,32 @@
         },
         {
             "name": "danielstjules/stringy",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/danielstjules/Stringy.git",
-                "reference": "d60422d19734a6058b0c3abf89c8287188577752"
+                "reference": "d661047fb347cc384591fe3dbe5f62886f203416"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/d60422d19734a6058b0c3abf89c8287188577752",
-                "reference": "d60422d19734a6058b0c3abf89c8287188577752",
+                "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/d661047fb347cc384591fe3dbe5f62886f203416",
+                "reference": "d661047fb347cc384591fe3dbe5f62886f203416",
                 "shasum": ""
             },
             "require": {
+                "ext-mbstring": "*",
                 "php": ">=5.3.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.0.*"
+                "phpunit/phpunit": "~4.0"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Stringy\\": "src/"
                 },
-                "classmap": [
-                    "tests"
+                "files": [
+                    "src/Create.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -140,7 +141,7 @@
                 "utility",
                 "utils"
             ],
-            "time": "2014-10-15 06:32:13"
+            "time": "2015-01-04 06:54:13"
         },
         {
             "name": "doctrine/annotations",
@@ -1132,12 +1133,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Debug.git",
-                "reference": "04dc3b229d12db51bd2992e1690477cf58650a86"
+                "reference": "17cd4b901a9ffd5f1db992442cfdfac2e057a0b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Debug/zipball/04dc3b229d12db51bd2992e1690477cf58650a86",
-                "reference": "04dc3b229d12db51bd2992e1690477cf58650a86",
+                "url": "https://api.github.com/repos/symfony/Debug/zipball/17cd4b901a9ffd5f1db992442cfdfac2e057a0b6",
+                "reference": "17cd4b901a9ffd5f1db992442cfdfac2e057a0b6",
                 "shasum": ""
             },
             "require": {
@@ -1180,7 +1181,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "http://symfony.com",
-            "time": "2015-01-03 15:33:07"
+            "time": "2015-01-04 12:31:37"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -1247,12 +1248,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Filesystem.git",
-                "reference": "dcf38d0fedb1c018a03cd9f7e675798286513fdf"
+                "reference": "afaca2a33dc0d9442a7ca4d87def8aff7d937b87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/dcf38d0fedb1c018a03cd9f7e675798286513fdf",
-                "reference": "dcf38d0fedb1c018a03cd9f7e675798286513fdf",
+                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/afaca2a33dc0d9442a7ca4d87def8aff7d937b87",
+                "reference": "afaca2a33dc0d9442a7ca4d87def8aff7d937b87",
                 "shasum": ""
             },
             "require": {
@@ -1285,7 +1286,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "http://symfony.com",
-            "time": "2015-01-03 09:42:51"
+            "time": "2015-01-04 09:06:13"
         },
         {
             "name": "symfony/finder",
@@ -1586,12 +1587,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-core.git",
-                "reference": "bb83db0a4ddb530278ec95c225650817bf4552ac"
+                "reference": "365e7010e29bc7a9e6d30cb73f128612b4623a11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-core/zipball/bb83db0a4ddb530278ec95c225650817bf4552ac",
-                "reference": "bb83db0a4ddb530278ec95c225650817bf4552ac",
+                "url": "https://api.github.com/repos/symfony/security-core/zipball/365e7010e29bc7a9e6d30cb73f128612b4623a11",
+                "reference": "365e7010e29bc7a9e6d30cb73f128612b4623a11",
                 "shasum": ""
             },
             "require": {
@@ -1640,7 +1641,7 @@
             ],
             "description": "Symfony Security Component - Core Library",
             "homepage": "http://symfony.com",
-            "time": "2015-01-03 15:33:07"
+            "time": "2015-01-03 20:59:06"
         },
         {
             "name": "symfony/translation",
