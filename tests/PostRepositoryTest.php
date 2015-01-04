@@ -173,4 +173,34 @@ class PostRepositoryTest extends TestCase {
         $this->assertEquals('Post', $method->invoke($repo));
     }
 
+    public function testContentCaching()
+    {
+        Cache::flush();
+        Conf::set('cache', true);
+
+        $repo = app('post_repo');
+
+        $repo->unload();
+        $repo->load();
+
+        $post = Post::find(0);
+        $this->assertFalse($post->converted);
+        
+        $post->content = 'test';
+        $post->converted = true;
+
+        $repo->storeConvertedKey($post);
+        $repo->updateCache();
+        
+        $repo->unload();
+        $repo->load();
+        
+        $post = Post::find(0);
+        $this->assertEquals('test', $post->content);
+        $this->assertTrue($post->converted);
+
+        Cache::flush();
+        Conf::set('cache', false);
+    }
+
 }

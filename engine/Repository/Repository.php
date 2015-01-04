@@ -102,7 +102,7 @@ abstract class Repository {
 
         $cache_id = $this->cacheID();
         if (!Cache::has($cache_id)) {
-            throw new \LogicException('Cache does\'nt not exist: '.$cache_id);
+            throw new \LogicException('Cache not exists: '.$cache_id);
         }
 
         return Cache::get($cache_id);
