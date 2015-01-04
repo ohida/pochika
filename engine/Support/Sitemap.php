@@ -4,7 +4,7 @@ use Pochika\Entry\Page;
 use Pochika\Entry\Post;
 
 class Sitemap {
-    
+
     protected $items = [];
 
     public function __construct()
@@ -22,14 +22,14 @@ class Sitemap {
 
         $this->append(Post::all());
         $this->append(Page::all());
-        
+
         return $this->render();
     }
 
     protected function append($item)
     {
         if (is_object($item) && 'Illuminate\Support\Collection' == get_class($item)) {
-            $item->each(function($row){
+            $item->each(function ($row) {
                 $this->append($row);
             });
             return;
@@ -52,7 +52,7 @@ class Sitemap {
         if (isset($item['date'])) {
             $arr['lastmod'] = date('c', $item['date']);
         }
-        
+
         $this->items[] = $arr;
     }
 

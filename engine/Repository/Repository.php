@@ -25,8 +25,8 @@ abstract class Repository {
         if ($this->count()) {
             throw new \LogicException('Already loaded: '.$this->cacheID());
         }
-        
-        $items = $this->remember(function() {
+
+        $items = $this->remember(function () {
             return $this->collect();
         });
 
@@ -48,7 +48,7 @@ abstract class Repository {
                 throw new \LogicException('Cache is not enabled');
             }
         }
-        
+
         if ($value) {
             return $this->saveCache($value, $force);
         } else {
@@ -72,11 +72,12 @@ abstract class Repository {
         if ($force) {
             $this->clearCache();
         }
-        
+
         $cache_id = $this->cacheID();
 
         if (Cache::has($cache_id)) {
             \Log::debug('cache load: '.$cache_id);
+
             return Cache::get($cache_id);
         }
 
@@ -199,7 +200,7 @@ abstract class Repository {
 
     /**
      * Get count of items
-     * 
+     *
      * @return int
      */
     public function count()
@@ -317,7 +318,7 @@ abstract class Repository {
      */
     protected function itemClass()
     {
-        if (preg_match('/([\w]+)Repository$/', get_class($this), $matches)) {
+        if (preg_match('/([\w]+)Repository$/', static::class, $matches)) {
             return $matches[1];
         }
 
