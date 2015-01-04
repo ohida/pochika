@@ -24,19 +24,21 @@
   /**
    * pjax initialize
    */
-//  $(document).pjax('[data-pjax] a, a[data-pjax]', {
-//    container: '#pjax-container',
-//    fragment: '#pjax-container'
-//  })
-//  .on('pjax:send', function() {
-//    $('#loading').show();
-//  })
-//  .on('pjax:complete', function() {
-//    $('#loading').fadeOut('slow');
-//    prettify();
-//  })
-//  .on('pjax:end', function() {
-//  });
+  {% if not site.nopjax %}
+    $(document).pjax('[data-pjax] a, a[data-pjax]', {
+      container: '#pjax-container',
+      fragment: '#pjax-container'
+    })
+    .on('pjax:send', function() {
+      $('#loading').show();
+    })
+    .on('pjax:complete', function() {
+      $('#loading').fadeOut('slow');
+      prettify();
+    })
+    .on('pjax:end', function() {
+    });
+  {% endif %}
 
   function prettify() {
     $('.post pre, .content pre, table code').addClass('prettyprint');
