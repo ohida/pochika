@@ -6,7 +6,6 @@ use Event;
 abstract class Plugin {
 
     public $key;
-    //public $name;
 
     protected $config = [];
 
@@ -23,15 +22,7 @@ abstract class Plugin {
 
     public function __construct()
     {
-        //$class = get_class($this);
-        //$class = static::class;
-        //d($class);
-
-        //$this->name = snake_case($class);
-        //dd($this->name);
-        
-        //dd($this->key);
-
+        $this->key = $this->makeKey();
         $this->config = $this->loadConfig();
 
         if (!bool(element('enabled', $this->config, true))) {
@@ -39,10 +30,18 @@ abstract class Plugin {
         }
     }
     
-    //protected function makeKey()
-    //{
-    //    $this->key = str_replace('_plugin', '', $this->name);
-    //}
+    protected function makeKey()
+    {
+        $class = static::class;
+        
+        if (false !== strpos($class, '\\')) {
+            $class = str_replace('Pochika\\Plugins\\', '', $class);
+        }
+        
+        $class = substr($class, 0, strlen($class) - 6);
+
+        return snake_case($class);
+    }
 
     #todo write a test
     public function loadConfig()

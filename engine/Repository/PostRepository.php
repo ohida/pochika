@@ -16,6 +16,11 @@ class PostRepository extends Repository {
         //}
     }
 
+    public function __deconstruct()
+    {
+        Log::debug('decon');
+    }
+
     /**
      * collect items
      * 

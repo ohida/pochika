@@ -1,6 +1,5 @@
 <?php namespace Pochika\Repository;
 
-use Event;
 use Log;
 
 trait ContentCacheTrait {
@@ -12,15 +11,6 @@ trait ContentCacheTrait {
         if (!$entry->nocache) {
             $this->converted_keys[] = $entry->key;
         }
-        return;
-
-        //$class = $this->itemClass();
-        //$entry = $params->entry;
-        //if ($entry instanceof $class) {
-        //    if (!$entry->nocache) {
-        //        $this->converted_keys[] = $params->entry->key;
-        //    }
-        //}
     }
 
     public function updateCache()
@@ -28,11 +18,13 @@ trait ContentCacheTrait {
         if (!$this->converted_keys) {
             return;
         }
+        
+        \Log::debug('update cache');
 
         $cache_id = $this->cacheID();
 
         Log::debug('converted '.$cache_id.' detected ('.count($this->converted_keys).')');
-
+        
         $class = $this->itemClass();
         $items = $this->remember();
 

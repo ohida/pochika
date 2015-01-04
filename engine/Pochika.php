@@ -1,5 +1,6 @@
 <?php namespace Pochika;
 
+use App\Events\End;
 use Cache;
 use Event;
 use Log;
@@ -32,7 +33,7 @@ class Pochika {
             $this->initialized = true;
         });
         
-        Event::fire(new \App\Events\Init);
+        //Event::fire(new \App\Events\AppInit);
     }
 
     public function check()
@@ -85,8 +86,8 @@ class Pochika {
     public function end()
     {
         Log::debug('pochika::end');
-        
-        Event::fire(new \App\Events\End);
+
+        Event::fire(new End);
 
         $this->unload();
         $this->initialized = false;

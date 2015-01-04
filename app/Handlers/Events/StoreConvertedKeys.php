@@ -1,5 +1,6 @@
 <?php namespace App\Handlers\Events;
 
+use App\Events\Converted;
 use Pochika\Entry\Entry;
 
 use Illuminate\Queue\InteractsWithQueue;
@@ -23,7 +24,7 @@ class StoreConvertedKeys {
 	 * @param  EntryConverted  $event
 	 * @return void
 	 */
-	public function handle(\App\Events\AfterConvert $event)
+	public function handle(Converted $event)
 	{
 		$entry = $event->entry;
 		$entry->getRepository()->storeConvertedKey($entry);

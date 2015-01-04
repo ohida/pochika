@@ -1,7 +1,6 @@
 <?php namespace Pochika\Repository;
 
 use App;
-use Collection;
 use Conf;
 use Finder;
 use Log;
@@ -25,33 +24,45 @@ class PluginRepository extends Repository {
      */
     protected function collect()
     {
-        $dirs = [
-            base_path('engine/Plugins'),
-            base_path(Conf::get('plugins', 'plugins')),
-        ];
+        $items = [];
+        $items += $this->collectUserPlugin();
+        $items += $this->collectCorePlugin();
 
-        $finder = new Finder;
-        $finder->files()->name('/.+Plugin\.php$/')->in($dirs);
+        Log::debug(sprintf('%d plugins loaded', count($items)));
 
+        return $items;
+    }
+
+    protected function collectUserPlugin()
+    {
+        $dir = base_path(Conf::get('plugins', 'plugins'));
+        
+        return $this->collectPlugin($dir);
+    }
+
+    protected function collectCorePlugin()
+    {
+        $dir = base_path('engine/Plugins');
         $ns = '\\Pochika\\Plugins\\';
+
+        return $this->collectPlugin($dir, $ns);
+    }
+
+    protected function collectPlugin($dir, $ns = null)
+    {
+        $finder = new Finder;
+        $finder->files()->name('/.+Plugin\.php$/')->in($dir);
+
         $items = [];
         foreach ($finder as $file) {
             try {
                 $class = $ns.$file->getBasename('.php');
-                $key = str_slug(str_replace([$ns, 'Plugin'], '', $class));
-                if (in_array($key, $items)) {
-                    throw new \RuntimeException('plugin key duplicated: '.$key);
-                }
-                if (!class_exists($class)) {
-                    include_once $file;
-                }
-                $items[$key] = new $class;
+                $obj = new $class;
+                $items[$obj->key] = $obj;
             } catch (\InvalidEntryException $e) {
                 continue;
             }
         }
-
-        Log::debug(sprintf('%d plugins loaded', count($items)));
         
         return $items;
     }

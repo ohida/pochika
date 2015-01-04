@@ -25,7 +25,7 @@ abstract class Repository {
         if ($this->count()) {
             throw new \LogicException('Already loaded: '.$this->cacheID());
         }
-
+        
         $items = $this->remember(function() {
             return $this->collect();
         });

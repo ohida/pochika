@@ -1,5 +1,6 @@
 <?php namespace App\Handlers\Events;
 
+use App\Events\End;
 use Conf;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldBeQueued;
@@ -24,9 +25,8 @@ class UpdateCache {
 	 * @param  PochikaEnded  $event
 	 * @return void
 	 */
-	public function handle(\App\Events\End $event)
+	public function handle(End $event)
 	{
-		\Log::debug(__METHOD__);
 		if (!Conf::get('cache')) {
 			return;
 		}
