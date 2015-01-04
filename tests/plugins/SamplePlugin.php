@@ -1,10 +1,8 @@
-<?php namespace Pochika\Plugins;
+<?php
 
 use App\Events\AfterConvert;
 
 class SamplePlugin extends Plugin {
-
-    protected $data;
 
     public function register()
     {
