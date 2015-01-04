@@ -17,6 +17,20 @@ class PluginTest extends TestCase {
 
         $this->assertRegExp('/<img .*?>/', $post->content);
     }
+    
+    public function testEmojiEscape()
+    {
+        $event = m::mock('App\Events\Converted');
+        $post = m::mock('Pochika\Entry\Post');
+
+        $event->entry = $post;
+        $post->content = '\\:octocat:';
+
+        $plugin = PluginRepository::find('emoji');
+        $plugin->handle($event);
+
+        $this->assertRegExp('/:octocat:/', $post->content);
+    }
 
     public function testTocPlugin()
     {
@@ -49,6 +63,21 @@ EOF;
         $post->content = 'hello';
         $plugin->handle($event);
         $this->assertFalse(strpos($post->content, '<div class="toc">'));
+    }
+    
+    public function testTocEscape()
+    {
+        $event = m::mock('App\Events\Converted');
+        $post = m::mock('Pochika\Entry\Post');
+
+        $event->entry = $post;
+
+        $plugin = PluginRepository::find('toc');
+
+        $post->content = '\{:TOC}';
+
+        $plugin->handle($event);
+        $this->assertEquals('{:TOC}', $post->content);
     }
 
     public function tearDown()

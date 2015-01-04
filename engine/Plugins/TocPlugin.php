@@ -17,7 +17,12 @@ class TocPlugin extends Plugin {
     {
         $this->content = &$event->entry->content;
 
+        $escaped = $this->escape($this->content);
+
         if (false === strpos($this->content, '{:TOC}')) {
+            if ($escaped) {
+                $this->unescape($this->content);
+            }
             return;
         }
 
@@ -27,6 +32,23 @@ class TocPlugin extends Plugin {
             $html = '<div class="toc">'.$this->makeList($headers).'</div>';
             $this->content = str_replace('{:TOC}', $html, $this->content);
         }
+        
+        if ($escaped) {
+            $this->unescape($this->content);
+        }
+    }
+
+    protected function escape(&$text)
+    {
+        if (false !== strpos($text, '\{:TOC}')) {
+            $text = str_replace('\{:TOC}', "<!--[toc]-->", $text);
+            return true;
+        }
+    }
+    
+    protected function unescape(&$text)
+    {
+        $text = str_replace('<!--[toc]-->', '{:TOC}', $text);
     }
 
     /**
