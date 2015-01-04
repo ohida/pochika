@@ -7,6 +7,7 @@ use Page;
 
 class PageRepository extends Repository {
 
+    use MarkdownFinder;
     use ContentCacheTrait;
 
     public function __construct()
@@ -24,20 +25,9 @@ class PageRepository extends Repository {
      */
     protected function collect()
     {
-        $dir = source_path('pages');
-
-        if (!file_exists($dir)) {
-            return [];
-        }
-
-        $ext = '/\.(?:md|markdown|mkdn?|mdown)$/';
-
-        $finder = new Finder;
-        $finder->files()->name($ext)->in($dir);
-
         $items = [];
 
-        foreach ($finder as $file) {
+        foreach ($this->finder() as $file) {
             try {
                 $page = new Page($file);
                 $items[$page->key] = $page;
@@ -67,14 +57,5 @@ class PageRepository extends Repository {
             );
         });
     }
-
-    //public function find($key)
-    //{
-    //    if ($key[0] == ':') {
-    //        dd(substr($key, 1));
-    //        //theme_path();
-    //    }
-    //    return parent::find($key);
-    //}
 
 }

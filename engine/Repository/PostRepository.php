@@ -7,6 +7,7 @@ use Post;
 
 class PostRepository extends Repository {
 
+    use MarkdownFinder;
     use ContentCacheTrait;
 
     public function __construct()
@@ -24,20 +25,9 @@ class PostRepository extends Repository {
      */
     protected function collect()
     {
-        $dir = source_path('posts');
-
-        if (!file_exists($dir)) {
-            return [];
-        }
-
-        $ext = '/\.(?:md|markdown|mkdn?|mdown)$/';
-
-        $finder = new Finder;
-        $finder->files()->name($ext)->in($dir);
-
         $items = [];
 
-        foreach ($finder->in($dir) as $file) {
+        foreach ($this->finder() as $file) {
             try {
                 $post = new Post($file->getRealPath());
                 $items[$post->key] = $post;
@@ -49,12 +39,6 @@ class PostRepository extends Repository {
         $items = array_sort($items, function($item) {
             return - $item->date;
         });
-
-        //if ($items) {
-        //    uasort($items, function($a, $b){
-        //        return $a->date < $b->date;
-        //    });
-        //}
 
         Log::debug(sprintf('%d posts loaded', count($items)));
 
