@@ -6,7 +6,7 @@ class PluginTest extends TestCase {
 
     public function testEmojiPlugin()
     {
-        $event = m::mock('App\Events\AfterConvert');
+        $event = m::mock('App\Events\Converted');
         $post = m::mock('Pochika\Entry\Post');
         
         $event->entry = $post;
@@ -20,7 +20,7 @@ class PluginTest extends TestCase {
 
     public function testTocPlugin()
     {
-        $event = m::mock('App\Events\AfterConvert');
+        $event = m::mock('App\Events\Converted');
         $post = m::mock('Pochika\Entry\Post');
         
         $event->entry = $post;

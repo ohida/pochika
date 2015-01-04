@@ -2,10 +2,11 @@
 
 use App\Events\End;
 use Conf;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldBeQueued;
 use Pochika\Support\Facades\PostRepository;
 use Pochika\Support\Facades\PageRepository;
+
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldBeQueued;
 
 class UpdateCache {
 
@@ -27,11 +28,10 @@ class UpdateCache {
 	 */
 	public function handle(End $event)
 	{
-		if (!Conf::get('cache')) {
-			return;
+		if (Conf::get('cache')) {
+			PostRepository::updateCache();
+			PageRepository::updateCache();
 		}
-		PostRepository::updateCache();
-		PageRepository::updateCache();
 	}
 
 }

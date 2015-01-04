@@ -8,14 +8,7 @@ use Post;
 class PostRepository extends Repository {
 
     use MarkdownFinder;
-    use ContentCacheTrait;
-
-    public function __construct()
-    {
-        //if (Conf::get('cache')) {
-        //    $this->enableContentCache();
-        //}
-    }
+    use ContentCachable;
 
     /**
      * collect items
