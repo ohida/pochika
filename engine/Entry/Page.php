@@ -15,7 +15,7 @@ class Page extends Entry {
     protected function process()
     {
         parent::process();
-        
+
         //if (!$this->date) {
         //    $this->date = filemtime($this->path);
         //}
@@ -24,9 +24,9 @@ class Page extends Entry {
     }
 
     /**
-     * render 
-     * 
-     * @param array $payload 
+     * render
+     *
+     * @param array $payload
      * @return string
      */
     public function render($payload = [])
@@ -58,14 +58,14 @@ class Page extends Entry {
     }
 
     /**
-     * payload 
-     * 
+     * payload
+     *
      * @return array
      */
     protected function payload($convert = false)
     {
         if ($convert) {
-             $this->convert();
+            $this->convert();
         }
 
         return [
@@ -87,12 +87,12 @@ class Page extends Entry {
     {
         return url($this->key);
     }
-    
+
     /**
-     * __callStatic 
-     * 
-     * @param string $name 
-     * @param array $argv 
+     * __callStatic
+     *
+     * @param string $name
+     * @param array $argv
      * @return mixed
      */
     public static function __callStatic($name, $argv)
@@ -101,18 +101,7 @@ class Page extends Entry {
             throw new \BadMethodCallException('Undefined method: Page::'.$name);
         }
 
-        switch (count($argv)) {
-            case 0:
-                return PageRepository::$name();
-            case 1:
-                return PageRepository::$name($argv[0]);
-//            case 2:
-//                return PageRepository::$name($argv[0], $argv[1]);
-//            case 3:
-//                return PageRepository::$name($argv[0], $argv[1], $argv[2]);
-            default:
-                throw new \InvalidArgumentException('invalid arguments count');
-        }
+        return PageRepository::$name(...$argv);
     }
 
     public static function getRepository()

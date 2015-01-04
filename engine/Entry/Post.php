@@ -11,8 +11,8 @@ class Post extends Entry {
     public $tags = [];
 
     /**
-     * process 
-     * 
+     * process
+     *
      * @return void
      */
     protected function process()
@@ -40,8 +40,8 @@ class Post extends Entry {
     }
 
     /**
-     * url 
-     * 
+     * url
+     *
      * @access protected
      * @return string
      * @todo customize permalink url
@@ -49,7 +49,7 @@ class Post extends Entry {
     protected function url()
     {
         $date = date('Y/m/d', $this->path_date);
-        
+
         return url($date.'/'.$this->slug);
     }
 
@@ -74,7 +74,7 @@ class Post extends Entry {
 
     /**
      * Convert this post into a hash for use in Twig templates.
-     * 
+     *
      * @return array
      */
     public function payload($convert = false)
@@ -91,7 +91,7 @@ class Post extends Entry {
 
         return array_merge($data, [
             'date' => $this->date,
-            'url'  => $this->url,
+            'url' => $this->url,
             'content' => $this->content,
             'published' => $this->published,
 //          'tags' => $this->tags,
@@ -102,12 +102,12 @@ class Post extends Entry {
 
     /**
      * Sort tags
-     * 
+     *
      * @return void
      */
     public function sortTag()
     {
-        usort($this->tags, function($a, $b){
+        usort($this->tags, function ($a, $b) {
             return $a > $b;
         });
     }
@@ -125,7 +125,7 @@ class Post extends Entry {
 
     /**
      * Get index of the post in collection
-     * 
+     *
      * @return int
      */
     public function index()
@@ -135,7 +135,7 @@ class Post extends Entry {
 
     /**
      * Find next post
-     * 
+     *
      * @return object | null
      */
     public function next()
@@ -149,7 +149,7 @@ class Post extends Entry {
 
     /**
      * Find previous post
-     * 
+     *
      * @return object | null
      */
     public function prev()
@@ -169,14 +169,15 @@ class Post extends Entry {
     public function getContent()
     {
         $this->convert();
+
         return $this->content;
     }
 
     /**
-     * __callStatic 
-     * 
-     * @param string $name 
-     * @param array $argv 
+     * __callStatic
+     *
+     * @param string $name
+     * @param array $argv
      * @return mixed
      */
     public static function __callStatic($name, $argv)
@@ -184,18 +185,8 @@ class Post extends Entry {
         if (!in_array($name, ['all', 'clear', 'count', 'find', 'findByTag', 'search'])) {
             throw new \BadMethodCallException('Undefined method: Post::'.$name);
         }
-        switch (count($argv)) {
-            case 0:
-                return PostRepository::$name();
-            case 1:
-                return PostRepository::$name($argv[0]);
-//            case 2:
-//                return PostRepository::$name($argv[0], $argv[1]);
-//            case 3:
-//                return PostRepository::$name($argv[0], $argv[1], $argv[2]);
-            default:
-                throw new \InvalidArgumentException('Invalid argument count');
-        }
+
+        return PostRepository::$name(...$argv);
     }
 
     public static function getRepository()

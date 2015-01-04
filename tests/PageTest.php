@@ -34,13 +34,13 @@ class PageTest extends TestCase
         $this->assertRegExp('/^<!doctype/i', $html);
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     */
-    public function testInvalidArgumentCount()
-    {
-        Page::find(0, 0, 0);
-    }
+    ///**
+    // * @expectedException InvalidArgumentException
+    // */
+    //public function testInvalidArgumentCount()
+    //{
+    //    Page::find(0, 0, 0);
+    //}
 
     public function testPlainRender()
     {

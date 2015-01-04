@@ -154,13 +154,13 @@ class PostTest extends TestCase {
         Post::load();
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     */
-    public function testInvalidArgumentCount()
-    {
-        Post::find(0, 0, 0);
-    }
+    ///**
+    // * @expectedException InvalidArgumentException
+    // */
+    //public function testInvalidArgumentCount()
+    //{
+    //    Post::find(0, 0, 0);
+    //}
 
     /**
      * @expectedException InvalidEntryException
