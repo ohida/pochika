@@ -9,17 +9,23 @@
     <script>
       $('#query').focus();
     </script>
-    {% if query and paginator.posts %}
-    <section class="search-result">
-      <div class="pagination-info">
-        {{ paginator.start_pos }} - {{ paginator.end_pos }} of {{ paginator.total }}
-      </div>
-    </section>
-    <script>
-      $(function(){
-        highlight('{{ query }}');
-      });
-    </script>
+    {% if query %}
+      {% if paginator.posts %}
+        <section class="search-result">
+          <div class="pagination-info">
+            {{ paginator.start_pos }} - {{ paginator.end_pos }} of {{ paginator.total }}
+          </div>
+        </section>
+        <script>
+          $(function(){
+            highlight('{{ query }}');
+          });
+        </script>
+      {% else %}
+        <p class="no-results">
+          <em>{{ query }}</em> に一致する情報は見つかりませんでした。
+        </p>
+      {% endif %}
     {% endif %}
   </section>
 

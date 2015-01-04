@@ -396,6 +396,11 @@ body > footer {
 .pagination-info {
   margin-top: 20px; }
 
+.search .no-results {
+  margin: 20px 0; }
+  .search .no-results em {
+    font-weight: bold; }
+
 /**
  * highlight color
  */

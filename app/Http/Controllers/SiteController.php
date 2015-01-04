@@ -4,7 +4,6 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App;
-use App\Http\Requests\SearchRequest;
 use Cache;
 use Conf;
 use Feed;
@@ -141,13 +140,13 @@ class SiteController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function search(SearchRequest $request)
+	public function search(Requests\SearchRequest $request)
 	{
 		$query = $request->get('q');
 		$page = $request->get('page');
 
 		$posts = [];
-
+		
 		if ($query) {
 			$posts = Post::search($query);
 		}
