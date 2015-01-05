@@ -209,12 +209,12 @@ EOF;
 			default:
 				return;
 		}
-
-		if ($this->confirm('Open file? [Y|n]')) {
-			exec(sprintf('%s %s', $cmd, $path));
+		
+		if ($this->confirm('Open file? [Y|n]', true)) {
+			exec(sprintf('%s "%s"', $cmd, $path));
 		}
 	}
-
+	
 	/**
 	 * Get the console command arguments.
 	 *

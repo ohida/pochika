@@ -218,10 +218,9 @@ return [
 		'Post'		 => 'Pochika\Entry\Post',
 		'Renderer'	 => 'Pochika\Support\Facades\Renderer',
 		'Theme'	 	 => 'Pochika\Layout\Theme',
-		'Yaml'		 => 'Pochika\Support\Facades\Yaml',
-		'Tag'		 => 'Pochika\Support\Facades\Tag',
-		//'Cache'		 => 'Pochika\Support\Facades\Cache',
 		'Sitemap'    => 'Pochika\Support\Facades\Sitemap',
+		'Tag'		 => 'Pochika\Support\Facades\Tag',
+		'Yaml'		 => 'Pochika\Support\Facades\Yaml',
 
 		// Pochika Repogitories
 		'PageRepository' => 'Pochika\Support\Facades\PageRepository',

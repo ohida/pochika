@@ -1,5 +1,7 @@
 <?php
 
+//use Pochika\Support\Sitemap;
+
 class SitemapTest extends TestCase {
 
     public function testCreate()

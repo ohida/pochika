@@ -3,17 +3,15 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App;
 use Cache;
 use Conf;
 use Feed;
-use Input;
-use Illuminate\Http\Response;
 use Layout;
 use Page;
 use Paginator;
 use Post;
-//use Response;
+use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 use Sitemap;
 
 class SiteController extends Controller {
@@ -46,7 +44,7 @@ class SiteController extends Controller {
 	 * @param string $slug
 	 * @return Response
 	 */
-	public function post(...$args)
+	public function post(Request $request, ...$args)
 	{
 		try {
 			$post = Post::find(implode('-', $args));
@@ -54,11 +52,9 @@ class SiteController extends Controller {
 			return $this->notfound();
 		}
 
-		switch (Input::get('format')) {
-			// only content (for 'read more')
+		switch ($request->get('format')) {
 			case 'content':
 				return $post->getContent();
-			// default
 			case null:
 				return $post->render();
 			default:
@@ -146,7 +142,7 @@ class SiteController extends Controller {
 		$page = $request->get('page');
 
 		$posts = [];
-		
+
 		if ($query) {
 			$posts = Post::search($query);
 		}
@@ -175,36 +171,33 @@ class SiteController extends Controller {
 	public function feed()
 	{
 		if (Conf::get('cache')) {
-			$atom = Cache::rememberForever('atom', function() {
+			$atom = Cache::rememberForever('atom', function () {
 				return Feed::generate();
 			});
 		} else {
 			$atom = Feed::generate();
 		}
 
-		return (new Response($atom, 200, [
+		return new Response($atom, 200, [
 			'content-type' => 'application/xml',
 			'charset' => 'utf-8',
-		]));
-		//return (new Response($atom, 200))
-		//	->header('content-type', 'application/xml')
-		//	->header('charset', 'utf-8');
+		]);
 	}
 
 	public function sitemap()
 	{
 		if (Conf::get('cache')) {
-			$xml = Cache::rememberForever('sitemap', function() {
+			$xml = Cache::rememberForever('sitemap', function () {
 				return Sitemap::generate();
 			});
 		} else {
 			$xml = Sitemap::generate();
 		}
-		
-		return (new Response($xml, 200, [
+
+		return new Response($xml, 200, [
 			'content-type' => 'application/xml',
 			'charset' => 'utf-8',
-		]));
+		]);
 	}
 
 	/**
@@ -222,13 +215,5 @@ class SiteController extends Controller {
 			return new Response($html, 404);
 		}
 	}
-
-	//public function _clear()
-	//{
-	//	\Pochika::clearCache();
-	//	return view('errors.message')->with([
-	//		'message' => 'cache cleared',
-	//	]);
-	//}
 
 }

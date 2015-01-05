@@ -8,21 +8,15 @@ class SiteTest extends TestCase {
         $this->refreshApplication();
     }
 
-    public function testMainPagesStatus()
+    public function testIndex()
     {
         $res = $this->call('GET', '/');
         $this->assertResponseOk();
+    }
 
+    public function testArchives()
+    {
         $res = $this->call('GET', '/archives');
-        $this->assertResponseOk();
-
-        $res = $this->call('GET', '/feed');
-        $this->assertResponseOk();
-
-        $res = $this->call('GET', '/search');
-        $this->assertResponseOk();
-
-        $res = $this->call('GET', '/about');
         $this->assertResponseOk();
     }
 
@@ -59,6 +53,7 @@ class SiteTest extends TestCase {
     {
         $res = $this->call('GET', '/feed');
         $content = $res->getContent();
+        $this->assertResponseOk();
         $this->assertStringStartsWith('<?xml', $content);
         $this->assertStringEndsWith('</feed>', $content);
         $this->assertEquals('application/xml', $res->headers->get('content-type'));
@@ -67,10 +62,13 @@ class SiteTest extends TestCase {
 
     public function testSearch()
     {
+        $res = $this->call('GET', '/search');
+        $this->assertResponseOk();
+        
         $res = $this->call('GET', '/search?q=hello');
         $this->assertResponseOk();
 
-        $q = str_repeat('a', Config::get('pochika.search_query_max')+1);
+        $q = str_repeat('a', Config::get('pochika.search_query_max') + 1);
         $res = $this->call('GET', '/search?q='.$q);
         $this->assertSessionHasErrors();
         $this->assertResponseStatus(302);
@@ -80,6 +78,7 @@ class SiteTest extends TestCase {
     {
         $res = $this->call('GET', '/about');
         $content = $res->getContent();
+        $this->assertResponseOk();
         $this->assertRegExp('|<h1 class="entry-title">About</h1>|', $content);
     }
 
@@ -88,5 +87,5 @@ class SiteTest extends TestCase {
         $res = $this->call('GET', '/');
         $this->assertRegExp('|<link href=".*?/feed"|', $res->getContent());
     }
-
+    
 }

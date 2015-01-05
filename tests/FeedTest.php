@@ -1,6 +1,6 @@
 <?php
 
-//use Symfony\Component\DomCrawler\Crawler;
+use Pochika\Support\Facades\Feed;
 
 class FeedTest extends TestCase {
 

@@ -6,9 +6,14 @@ class FeedServiceProvider extends ServiceProvider {
 
     public function register()
     {
-        $this->app['feed'] = $this->app->share(function() {
+        $this->app->bindShared('feed', function() {
             return new \Pochika\Feed\Atom;
         });
+        
+        //$this->app['feed'] = $this->app->share(function() {
+        //    return new \Pochika\Feed\Atom;
+        //});
+        //$this->app->bind('Feed', '\Pochika\Feed\Atom')
     }
 
 }
