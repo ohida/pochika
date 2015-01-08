@@ -154,8 +154,6 @@ class SiteController extends Controller {
 		}
 
 		$per_page = Conf::get('paginate');
-		$route = sprintf('/search?q=%s&page=:page', rawurlencode($query));
-		$paginator = $posts->paginate($page, $per_page, $route);
 
 		if (count($posts)) {
 			$route = sprintf('/search?q=%s&page=:page', rawurlencode($query));
