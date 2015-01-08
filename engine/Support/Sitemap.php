@@ -2,6 +2,7 @@
 
 use Pochika\Entry\Page;
 use Pochika\Entry\Post;
+use Symfony\Component\Process\Exception\LogicException;
 
 class Sitemap {
 
@@ -28,24 +29,21 @@ class Sitemap {
 
     protected function append($item)
     {
-        if (is_object($item) && 'Illuminate\Support\Collection' == get_class($item)) {
+        if (is_object($item) && 'Pochika\Repository\EntryCollection' == get_class($item)) {
             $item->each(function ($row) {
                 $this->append($row);
             });
             return;
-        }
-
-        if (is_array($item) && !is_assoc($item)) {
+        } elseif (is_array($item) && !is_assoc($item)) {
             foreach ($item as $row) {
                 $this->append($row);
             }
             return;
         }
-
+        
         if (!isset($item['url'])) {
             throw new \LogicException('Sitemap item must have `url` field');
         }
-
         $arr = [
             'loc' => $item['url'],
         ];

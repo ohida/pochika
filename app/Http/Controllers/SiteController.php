@@ -25,9 +25,11 @@ class SiteController extends Controller {
 	public function index($page = null)
 	{
 		$posts = Post::all();
-
-		$paginator = count($posts) ? Paginator::conv($posts, $page) : null;
-
+		
+		$per_page = Conf::get('paginate');
+		
+		$paginator = $posts->paginate($page, $per_page);
+		
 		$html = Layout::find('index')->render([
 			'paginator' => $paginator,
 		]);
@@ -98,7 +100,7 @@ class SiteController extends Controller {
 		$per_page = Conf::get('archives_paginate', 30);
 
 		$pattern = sprintf('/archives/page/:page');
-		$paginator = Paginator::get($posts, $page, $pattern, $per_page);
+		$paginator = $posts->paginate($page, $per_page, 'archives_paged');
 
 		$html = Layout::find('archives')->render([
 			'paginator' => $paginator,
@@ -119,10 +121,14 @@ class SiteController extends Controller {
 		$tag = urldecode($tag);
 
 		$posts = Post::findByTag($tag);
+		
+		$per_page = Conf::get('paginate');
 
-		$pattern = sprintf('/tag/%s/:page', rawurlencode($tag));
-		$paginator = Paginator::conv($posts, $page, $pattern);
-
+		//$pattern = sprintf('/tag/%s/:page', rawurlencode($tag));
+		$paginator = $posts->paginate($page, $per_page, [
+			'index_tagged' => ['tag' => rawurlencode($tag)],
+		]);
+		
 		$html = Layout::find('index')->render([
 			'paginator' => $paginator,
 			'tag' => $tag,
@@ -147,9 +153,13 @@ class SiteController extends Controller {
 			$posts = Post::search($query);
 		}
 
+		$per_page = Conf::get('paginate');
+		$route = sprintf('/search?q=%s&page=:page', rawurlencode($query));
+		$paginator = $posts->paginate($page, $per_page, $route);
+
 		if (count($posts)) {
-			$url = sprintf('/search?q=%s&page=:page', rawurlencode($query));
-			$paginator = Paginator::conv($posts, $page, $url);
+			$route = sprintf('/search?q=%s&page=:page', rawurlencode($query));
+			$paginator = $posts->paginate($page, $per_page, $route);
 		} else {
 			$paginator = null;
 		}

@@ -6,6 +6,23 @@ class PostTest extends TestCase {
     const TAG_COUNT = 4;
     const TAG_FIND_COUNT = 2;
 
+    public function testPostPaginate()
+    {
+        $posts = Post::all();
+        
+        $paginator = $posts->paginate(1, 3);
+        $this->assertEquals(URL::route('index_paged', 2, false), $paginator['next_url']);
+        
+        $paginator = $posts->paginate(1, 10);
+        $this->assertNull($paginator['next_url']);
+        
+        $paginator = $posts->paginate(1, 3, 'archives_paged');
+        $this->assertEquals(URL::route('archives_paged', 2, false), $paginator['next_url']);
+        
+        $paginator = $posts->paginate(1, 3, ['index_tagged' => ['tag' => 'test']]);
+        $this->assertEquals(URL::route('index_tagged', ['tag' => 'test', 'page' => 2], false), $paginator['next_url']);
+    }
+
     public function testAll()
     {
         $this->assertCount(self::POST_COUNT, Post::all());
