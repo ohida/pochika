@@ -12,14 +12,14 @@ class Kernel extends ConsoleKernel {
 	 */
 	protected $commands = [
 		//'App\Console\Commands\Inspire',
-		'App\Console\Commands\PochikaNewCommand',
-		'App\Console\Commands\PochikaClearCacheCommand',
-		'App\Console\Commands\PochikaInstallCommand',
-		'App\Console\Commands\ThemePublishCommand',
-		'App\Console\Commands\ThemeListCommand',
-		'App\Console\Commands\PochikaListCommand',
-		'App\Console\Commands\EmojiUpdateCommand',
-		'App\Console\Commands\PostNewCommand',
+		'App\Console\Commands\PochikaNew',
+		'App\Console\Commands\PochikaClearCache',
+		'App\Console\Commands\PochikaInstall',
+		'App\Console\Commands\ThemePublish',
+		'App\Console\Commands\ThemeList',
+		'App\Console\Commands\PochikaList',
+		'App\Console\Commands\EmojiUpdate',
+		'App\Console\Commands\PostNew',
 	];
 
 	/**

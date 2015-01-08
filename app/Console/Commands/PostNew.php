@@ -6,7 +6,7 @@ use Symfony\Component\Console\Input\InputArgument;
 
 use Pochika;
 
-class PostNewCommand extends Command {
+class PostNew extends Command {
 
 	/**
 	 * The console command name.

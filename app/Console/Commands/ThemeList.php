@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Conf;
 use Finder;
 
-class ThemeListCommand extends Command {
+class ThemeList extends Command {
 
 	/**
 	 * The console command name.

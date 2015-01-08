@@ -6,7 +6,7 @@ use Symfony\Component\Console\Input\InputArgument;
 
 use Conf;
 
-class PochikaInstallCommand extends Command {
+class PochikaInstall extends Command {
 
 	/**
 	 * The console command name.

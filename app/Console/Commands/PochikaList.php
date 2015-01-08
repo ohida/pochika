@@ -5,7 +5,7 @@ use Pochika;
 use Page;
 use Post;
 
-class PochikaListCommand extends Command {
+class PochikaList extends Command {
 
 	/**
 	 * The console command name.

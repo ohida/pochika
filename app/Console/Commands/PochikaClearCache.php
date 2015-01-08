@@ -3,7 +3,7 @@
 use Illuminate\Console\Command;
 use Pochika;
 
-class PochikaClearCacheCommand extends Command {
+class PochikaClearCache extends Command {
 
 	/**
 	 * The console command name.

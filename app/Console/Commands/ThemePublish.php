@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Conf;
 use Theme;
 
-class ThemePublishCommand extends Command {
+class ThemePublish extends Command {
 
 	/**
 	 * The console command name.
