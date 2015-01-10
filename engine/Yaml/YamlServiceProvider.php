@@ -6,7 +6,7 @@ class YamlServiceProvider extends ServiceProvider {
 
     public function register()
     {
-        $this->app['yaml'] = $this->app->share(function() {
+        $this->app->bindShared('yaml', function() {
             return $this->factory();
         });
     }

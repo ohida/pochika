@@ -6,8 +6,8 @@ class RendererServiceProvider extends ServiceProvider {
 
     public function register()
     {
-        $this->app['renderer'] = $this->app->share(function() {
-            return new TwigRenderer();
+        $this->app->bindShared('renderer', function() {
+            return new TwigRenderer;
         });
     }
 

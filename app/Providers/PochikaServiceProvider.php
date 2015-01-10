@@ -41,56 +41,56 @@ class PochikaServiceProvider extends ServiceProvider {
 
     public function registerPochika()
     {
-        $this->app['pochika'] = $this->app->share(function () {
+        $this->app->bindShared('pochika', function () {
             return new Pochika;
         });
     }
 
     public function registerConf()
     {
-        $this->app['conf'] = $this->app->share(function () {
+        $this->app->bindShared('conf', function () {
             return new Config;
         });
     }
 
     public function registerTheme()
     {
-        $this->app['theme'] = $this->app->share(function () {
+        $this->app->bindShared('theme', function () {
             return new Theme;
         });
     }
 
     public function registerPostRepository()
     {
-        $this->app['post_repo'] = $this->app->share(function () {
+        $this->app->bindShared('post_repo', function () {
             return new PostRepository;
         });
     }
 
     public function registerPageRepository()
     {
-        $this->app['page_repo'] = $this->app->share(function () {
+        $this->app->bindShared('page_repo', function () {
             return new PageRepository;
         });
     }
 
     public function registerPluginRepository()
     {
-        $this->app['plugin_repo'] = $this->app->share(function () {
+        $this->app->bindShared('plugin_repo', function () {
             return new PluginRepository;
         });
     }
 
     public function registerTag()
     {
-        $this->app['tag'] = $this->app->share(function () {
+        $this->app->bindShared('tag', function () {
             return new Tag;
         });
     }
 
     public function registerSitemap()
     {
-        $this->app['sitemap'] = $this->app->share(function () {
+        $this->app->bindShared('sitemap', function () {
             return new Sitemap;
         });
     }

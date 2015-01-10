@@ -1,6 +1,7 @@
 <?php namespace Pochika\Entry;
 
 use App\Events\AfterConvert;
+use App\Events\BeforeConvert;
 use Event;
 use Log;
 use Markdown;
@@ -125,7 +126,7 @@ abstract class Entry implements \ArrayAccess {
 
         start_measure('convert:'.$this->key);
 
-        //Event::fire(new BeforeConvert($this));
+        Event::fire(new BeforeConvert($this));
 
         $this->content = Markdown::parse($this->content);
         $this->converted = true;

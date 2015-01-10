@@ -7,7 +7,7 @@ class MarkdownServiceProvider extends ServiceProvider {
 
     public function register()
     {
-        $this->app['markdown'] = $this->app->share(function() {
+        $this->app->bindShared('markdown', function() {
             return new Parsedown;
         });
     }
