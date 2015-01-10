@@ -19,6 +19,8 @@
             <file>./tests/PochikaTest.php</file>
             <file>./tests/HelpersTest.php</file>
             <file>./tests/ConfigTest.php</file>
+            <file>./tests/RepositoryTest.php</file>
+            <file>./tests/MarkdownFinderTest.php</file>
             <file>./tests/PostRepositoryTest.php</file>
             <file>./tests/PostTest.php</file>
             <file>./tests/PageRepositoryTest.php</file>

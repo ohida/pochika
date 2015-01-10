@@ -22,9 +22,6 @@ class Theme {
      */
     public static function check()
     {
-        //static $i = 0;
-        //d(__METHOD__.' '.++$i);
-
         if (!self::exists()) {
             throw new \NotFoundException('Theme not found');
         }

@@ -124,7 +124,6 @@ class SiteController extends Controller {
 		
 		$per_page = Conf::get('paginate');
 
-		//$pattern = sprintf('/tag/%s/:page', rawurlencode($tag));
 		$paginator = $posts->paginate($page, $per_page, [
 			'index_tagged' => ['tag' => rawurlencode($tag)],
 		]);

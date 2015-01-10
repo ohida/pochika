@@ -65,6 +65,14 @@ class PostRepositoryTest extends TestCase {
         PostRepository::findByTag('not-exist-tag');
     }
 
+    /**
+     * @expectedException LogicException
+     */
+    public function testFindByInvalidKey()
+    {
+        PostRepository::find(new stdClass);
+    }
+
     public function testSearch1()
     {
         $q = 'search target';
@@ -201,6 +209,25 @@ class PostRepositoryTest extends TestCase {
 
         Cache::flush();
         Conf::set('cache', false);
+    }
+
+    public function testRemember()
+    {
+        $val = 'hello';
+        $this->assertEquals($val, PostRepository::remember($val));
+        
+        $val = function() {
+            return 'world';
+        };
+        $this->assertEquals($val(), PostRepository::remember($val));
+    }
+
+    /**
+     * @expectedException LogicException
+     */
+    public function testRememberWhenCacheIsDisabled()
+    {
+        PostRepository::remember();
     }
 
 }

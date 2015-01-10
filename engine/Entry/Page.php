@@ -97,7 +97,7 @@ class Page extends Entry {
      */
     public static function __callStatic($name, $argv)
     {
-        if (!in_array($name, ['all', 'clear', 'count', 'find', 'search'])) {
+        if (!in_array($name, ['all', 'count', 'find', 'search'])) {
             throw new \BadMethodCallException('Undefined method: Page::'.$name);
         }
 

@@ -10,18 +10,11 @@ trait MarkdownFinder {
             $dir = source_path($this->dirName());
         }
 
-        //dd($this->cacheID());
-        //$dir = source_path('posts');
-
-        if (!file_exists($dir)) {
-            return [];
-        }
-
         $ext = '/\.(md|markdown|mkdn?|mdown)$/';
 
         $finder = new Finder;
         $finder->files()->name($ext)->in($dir);
-        
+
         return $finder;
     }
 

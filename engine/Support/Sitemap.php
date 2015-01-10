@@ -2,7 +2,6 @@
 
 use Pochika\Entry\Page;
 use Pochika\Entry\Post;
-use Symfony\Component\Process\Exception\LogicException;
 
 class Sitemap {
 
@@ -42,7 +41,7 @@ class Sitemap {
         }
         
         if (!isset($item['url'])) {
-            throw new \LogicException('Sitemap item must have `url` field');
+            throw new \ErrorException('Sitemap item must have `url` field');
         }
         $arr = [
             'loc' => $item['url'],

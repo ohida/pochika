@@ -209,6 +209,12 @@ EOF;
 			default:
 				return;
 		}
+
+		$path = realpath($path);
+
+		if (!is_readable($path)) {
+			$this->error('cannot open file: '.$path);
+		}
 		
 		if ($this->confirm('Open file? [Y|n]', true)) {
 			exec(sprintf('%s "%s"', $cmd, $path));

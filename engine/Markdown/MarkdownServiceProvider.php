@@ -20,9 +20,9 @@ class MarkdownServiceProvider extends ServiceProvider {
         switch ($parser) {
             case 'parsedown':
                 return new Parsedown;
+            // @codeCoverageIgnoreStart
             case 'markdown-extra':
                 return new PHPMarkdownExtra;
-            // @codeCoverageIgnoreStart
             case 'sundown':
                 if (!extension_loaded('sundown')) {
                     throw new \RuntimeException('Sundown extension not loaded');

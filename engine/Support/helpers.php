@@ -21,17 +21,6 @@ if (!function_exists('d')) {
             dump($x);
         }, $args);
     }
-    //function d($msg = null, $exit = false)
-    //{
-    //    if (is_cli()) {
-    //        var_dump($msg);
-    //    } else {
-    //        echo '<pre>';
-    //        var_dump($msg);
-    //        echo '</pre>';
-    //    }
-    //    if ($exit) exit();
-    //}
 }
 
 if (!function_exists('bench')) {
@@ -58,22 +47,6 @@ if (!function_exists('bench')) {
         return microtime(true) - $s;
     }
 }
-
-//if (!function_exists('bench')) {
-//    function bench(callable $f, $count = 1)
-//    {
-//        if (!is_int($count)) {
-//            throw new InvalidArgumentException('Count must be integer');
-//        }
-//
-//        $s = microtime(true);
-//        for ($i = 0; $i < $count; $i ++) {
-//            call_user_func($f);
-//        }
-//
-//        return microtime(true) - $s;
-//    }
-//}
 
 if (!function_exists('is_cli')) {
     function is_cli()
@@ -121,6 +94,9 @@ if (!function_exists('root')) {
     }
 }
 
+/**
+ * @codeCoverageIgnore
+ */
 if (!function_exists('copy_r')) {
     function copy_r($src_dir, $dst_dir)
     {
@@ -174,21 +150,9 @@ if (!function_exists('theme_path')) {
     }
 }
 
-//if (!function_exists('plugin_path')) {
-//    function plugin_path($path = '')
-//    {
-//        return 'testing' == env('APP_ENV') ?
-//            base_path('tests/plugins') : base_path('plugins');
-//    }
-//}
-
-//if (!function_exists('url')) {
-//    function url($path = '')
-//    {
-//        d('hello');
-//        $root = str_finish(URL::to('/'), '/');
-//        d($root);
-//        return $root.$path;
-//    }
-//}
+if (!function_exists('conf')) {
+    function conf()
+    {
+    }
+}
 

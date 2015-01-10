@@ -58,4 +58,16 @@ class PageTest extends TestCase
         Page::find('not-exist');
     }
 
+    function testSearch()
+    {
+        $res = Page::search('about');
+        $this->assertEquals(1, $res->count());
+    }
+    
+    function testSearchNotFound()
+    {
+        $res = Page::search('invalida-query');
+        $this->assertEquals(0, $res->count());
+    }
+
 }

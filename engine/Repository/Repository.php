@@ -44,7 +44,7 @@ abstract class Repository {
     {
         if (!Conf::get('cache')) {
             if ($value) {
-                return is_callable($value) ? $value() : $value;
+                return value($value);
             } else {
                 throw new \LogicException('Cache is not enabled');
             }
@@ -82,9 +82,7 @@ abstract class Repository {
             return Cache::get($cache_id);
         }
 
-        if (is_callable($value)) {
-            $value = $value();
-        }
+        $value = value($value);
 
         Cache::forever($this->cacheID(), $value);
 
@@ -223,46 +221,46 @@ abstract class Repository {
         return $this->collection;
     }
 
-    /**
-     * Clear collection
-     *
-     * @return array
-     */
-    public function clear()
-    {
-        unset($this->collection);
-        $this->collection = null;
-    }
+    ///**
+    // * Clear collection
+    // *
+    // * @return array
+    // */
+    //public function clear()
+    //{
+    //    unset($this->collection);
+    //    $this->collection = null;
+    //}
 
-    /**
-     * Pack value
-     *
-     * @param $value
-     * @return string
-     */
-    protected function pack($value)
-    {
-        if (extension_loaded('msgpack') && Conf::app('msgpack')) {
-            return msgpack_pack($value);
-        } else {
-            return $value;
-        }
-    }
+    ///**
+    // * Pack value
+    // *
+    // * @param $value
+    // * @return string
+    // */
+    //protected function pack($value)
+    //{
+    //    if (extension_loaded('msgpack') && Conf::app('msgpack')) {
+    //        return msgpack_pack($value);
+    //    } else {
+    //        return $value;
+    //    }
+    //}
 
-    /**
-     * Unpack value
-     *
-     * @param $value
-     * @return mixed
-     */
-    protected function unpack($value)
-    {
-        if (extension_loaded('msgpack') && Conf::app('msgpack')) {
-            return msgpack_unpack($value);
-        } else {
-            return $value;
-        }
-    }
+    ///**
+    // * Unpack value
+    // *
+    // * @param $value
+    // * @return mixed
+    // */
+    //protected function unpack($value)
+    //{
+    //    if (extension_loaded('msgpack') && Conf::app('msgpack')) {
+    //        return msgpack_unpack($value);
+    //    } else {
+    //        return $value;
+    //    }
+    //}
 
     /**
      * Clear cache
@@ -308,8 +306,9 @@ abstract class Repository {
         if (false !== $index = array_search($key, $this->keys())) {
             return $index;
         }
-
-        throw new \NotFoundException(sprintf('%s not found: index(%d)', $this->itemClass(), $index));
+        
+        //throw new \NotFoundException(sprintf('%s not found: index(%d)', $this->itemClass(), $index));
+        throw new \NotFoundException(sprintf('index not found: %s', $key));
     }
 
     /**
