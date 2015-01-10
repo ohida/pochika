@@ -14,7 +14,7 @@ class MarkdownTestCase extends TestCase {
     public function testConvert()
     {
         $md = <<<EOF
-#hello
+# hello
 
 hello world
 
