@@ -8,13 +8,17 @@ class PluginTest extends TestCase {
     {
         $event = m::mock('App\Events\AfterConvert');
         $post = m::mock('Pochika\Entry\Post');
-        
+
         $event->entry = $post;
-        $post->content = ':octocat:';
-
+        
         $plugin = PluginRepository::find('emoji');
+        
+        $post->content = ':octocat:';
         $plugin->handle($event);
-
+        $this->assertRegExp('/<img .*?>/', $post->content);
+        
+        $post->content = ':non-potable_water:';
+        $plugin->handle($event);
         $this->assertRegExp('/<img .*?>/', $post->content);
     }
     
@@ -24,12 +28,12 @@ class PluginTest extends TestCase {
         $post = m::mock('Pochika\Entry\Post');
 
         $event->entry = $post;
-        $post->content = '\\:octocat:';
+        $post->content = '\\:non-potable_water:';
 
         $plugin = PluginRepository::find('emoji');
         $plugin->handle($event);
 
-        $this->assertRegExp('/:octocat:/', $post->content);
+        $this->assertRegExp('/:non-potable_water:/', $post->content);
     }
 
     public function testTocPlugin()
