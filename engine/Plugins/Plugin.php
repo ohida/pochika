@@ -22,7 +22,7 @@ abstract class Plugin {
 
     public function __construct()
     {
-        $this->key = $this->makeKey();
+        $this->key = $this->key();
         $this->config = $this->loadConfig();
 
         if (!bool(element('enabled', $this->config, true))) {
@@ -30,14 +30,12 @@ abstract class Plugin {
         }
     }
     
-    protected function makeKey()
+    protected function key()
     {
         $class = static::class;
-        
         if (false !== strpos($class, '\\')) {
             $class = str_replace('Pochika\\Plugins\\', '', $class);
         }
-        
         $class = substr($class, 0, strlen($class) - 6);
 
         return snake_case($class);

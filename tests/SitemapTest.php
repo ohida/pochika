@@ -11,7 +11,7 @@ class SitemapTest extends TestCase {
     }
 
     /**
-     * @expectedException ErrorException
+     * @expectedException LogicException
      */
     function testInvalidAppend()
     {

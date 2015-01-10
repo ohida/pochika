@@ -8,32 +8,31 @@ use Yaml;
 
 abstract class Entry implements \ArrayAccess {
 
-    public $content;
-    public $converted = false;
-    public $published = false;
+    protected $meta;
 
     public $key;
+    public $content;
+    public $date;
     public $path;
-    public $url;
-    public $data = [];
+    public $published = false;
+    public $converted = false;
+
+    abstract public function render($payload);
 
     public function __construct($file)
     {
         $this->path = $file instanceof \SplFileInfo ? $file->getPathname() : $file;
-
         $this->process();
     }
 
-    public function __get($name)
+    public function __get($key)
     {
-        if (isset($this->data[$name])) {
-            return $this->data[$name];
+        if (isset($this->{$key})) {
+            return $this->{$key};
+        } elseif (isset($this->meta[$key])) {
+            return $this->meta[$key];
         }
-
-        #debug
-        return null;
-
-//        throw new \LogicException("Undefined property: Entry::[$name]");
+        //throw new \ErrorException('unknown property: '.$key);
     }
 
     /**
@@ -43,13 +42,12 @@ abstract class Entry implements \ArrayAccess {
      */
     protected function process()
     {
-        $this->key = $this->makeKey();
-        $this->read();
-        $this->readFrontmatter();
+        $this->key = $this->key();
+        $this->readData();
         $this->checkPublishedFlag();
     }
 
-    protected function makeKey()
+    protected function key()
     {
         return pathinfo($this->path, PATHINFO_FILENAME);
     }
@@ -59,56 +57,52 @@ abstract class Entry implements \ArrayAccess {
      * 
      * @return void
      */
-    protected function read()
+    protected function readData()
     {
-        if (!file_exists($this->path)) {
-            throw new \RuntimeException('file not exists: '.$this->path);
+        if (!is_readable($this->path)) {
+            throw new \RuntimeException('cannot read file: '.$this->path);
         }
 
-        $this->content = file_get_contents($this->path);
+        $buff = file_get_contents($this->path);
+        $this->readFrontmatter($buff);
     }
 
     /**
-     * Read the YAML frontmatter.
+     * Read frontmatter and content
      * 
      * @return void
      */
-    protected function readFrontmatter()
+    protected function readFrontmatter($buff)
     {
         $regex = '/^---\s*\n(.*?\n?)^---\s*$\n?(.*?)\n*\z/ms';
-        if (preg_match($regex, $this->content, $m)) {
-            $this->data = [];
+        $this->meta = [];
+        if (preg_match($regex, $buff, $m)) {
             foreach (Yaml::parse($m[1]) as $key => $val) {
                 $key = preg_replace('/-|\./', '_', $key);
-                $this->data[$key] = $val;
+                $this->meta[$key] = $val;
             }
             $this->content = $m[2];
-            $this->readDate();
+            $this->parseDate();
         } else {
-            //#debug
+            $this->content = $buff;
             //throw new \InvalidEntryException;
         }
     }
 
-    /**
-     * Read date from frontmatter
-     */
-    protected function readDate()
+    protected function parseDate()
     {
-        if ($date = element('date', $this->data)) {
-            if (!is_int($date)) {
-                $date = strtotime($date);
-            }
-            $this->date = $date;
+        if (($date = element('date', $this->meta))) {
+            $this->date = strtotime($date);
+            unset($this->meta['date']);
         }
     }
 
     protected function checkPublishedFlag()
     {
-        if (!isset($this->data['published'])) {
+        if (!isset($this->meta['published'])) {
             $this->published = true;
         } else {
-            $this->published = bool($this->data['published']);
+            $this->published = bool($this->meta['published']);
         }
 
         if (false === $this->published) {
@@ -143,15 +137,6 @@ abstract class Entry implements \ArrayAccess {
     }
 
     /**
-     * Render html
-     *
-     * @param array $payload
-     * @return string
-     * @codeCoverageIgnore
-     */
-    abstract public function render($payload);
-
-    /**
      * Determine if an item exists at an offset.
      *
      * @param  mixed  $key
@@ -159,7 +144,7 @@ abstract class Entry implements \ArrayAccess {
      */
     public function offsetExists($key)
     {
-        return isset($this->$key) || isset($this->data[$key]);
+        return isset($this->{$key}) || isset($this->meta[$key]);
     }
 
     /**
@@ -170,7 +155,13 @@ abstract class Entry implements \ArrayAccess {
      */
     public function offsetGet($key)
     {
-        return $this->$key;
+        if (isset($this->{$key})) {
+            return $this->{$key};
+        } elseif (isset($this->meta[$key])) {
+            return $this->meta[$key];
+        }
+        
+        return null;
     }
 
     /**
@@ -182,7 +173,7 @@ abstract class Entry implements \ArrayAccess {
      */
     public function offsetSet($key, $value)
     {
-        $this->data[$key] = $value;
+        $this->meta[$key] = $value;
     }
 
     /**
@@ -193,7 +184,7 @@ abstract class Entry implements \ArrayAccess {
      */
     public function offsetUnset($key)
     {
-        unset($this->data[$key]);
+        unset($this->meta[$key]);
     }
 
 }

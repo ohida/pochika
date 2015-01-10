@@ -8,9 +8,9 @@ trait ContentCachable {
 
     public function storeConvertedKey($entry)
     {
-        if (!$entry->nocache) {
+        //if (!$entry->nocache) {
             $this->converted_keys[] = $entry->key;
-        }
+        //}
     }
 
     public function updateCache()

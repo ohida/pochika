@@ -4,8 +4,8 @@ use Layout;
 use PageRepository;
 
 class Page extends Entry {
-
-    public $date;
+    
+    public $url;
 
     /**
      * process
@@ -37,7 +37,7 @@ class Page extends Entry {
             'page' => $this->payload(),
         ], $payload);
 
-        $layout = element('layout', $this->data);
+        $layout = element('layout', $this->meta);
         if ($layout) {
             return Layout::find($layout)->render($payload);
         } else {
@@ -48,10 +48,9 @@ class Page extends Entry {
     /**
      * @todo
      */
-    protected function makeKey()
+    protected function key()
     {
         $dir = source_path('pages');
-
         $key = ltrim(str_replace($dir, '', $this->path), '/');
 
         return preg_replace('/\..*$/', '', $key);
@@ -68,12 +67,11 @@ class Page extends Entry {
             $this->convert();
         }
 
-        return [
-            'title' => $this->title,
+        return array_merge($this->meta, [
             'content' => $this->content,
             'published' => $this->published,
             'url' => $this->url,
-        ];
+        ]);
     }
 
     /**

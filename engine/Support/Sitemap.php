@@ -7,10 +7,6 @@ class Sitemap {
 
     protected $items = [];
 
-    public function __construct()
-    {
-    }
-
     public function generate()
     {
         $this->append([
@@ -41,7 +37,7 @@ class Sitemap {
         }
         
         if (!isset($item['url'])) {
-            throw new \ErrorException('Sitemap item must have `url` field');
+            throw new \LogicException('Sitemap item must have `url` field');
         }
         $arr = [
             'loc' => $item['url'],

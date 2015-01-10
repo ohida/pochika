@@ -174,7 +174,7 @@ class PostTest extends TestCase {
     public function testGetNonExistValue()
     {
         $post = Post::find(0);
-        $this->assertEquals(null, $post->xxx);
+        $this->assertNull($post->xxx);
     }
 
     /**
@@ -253,19 +253,19 @@ class PostTest extends TestCase {
         $this->assertEquals(URL::route('index_tagged', ['tag' => 'test', 'page' => 2], false), $paginator['next_url']);
     }
 
-    function testOffsetGet()
-    {
-        $post = Post::find(0);
-        $this->assertEquals('happy', $post['slug']);
-    }
-
-    function testOffsetSet()
-    {
-        $this->markTestIncomplete();
-        
-        $post = Post::find(0);
-        $post['slug'] = 'hello';
-        $this->assertEquals('hello', $post['slug']);
-    }
+    //function testOffsetGet()
+    //{
+    //    $post = Post::find(0);
+    //    $this->assertEquals('happy', $post['slug']);
+    //}
+    //
+    //function testOffsetSet()
+    //{
+    //    $this->markTestIncomplete();
+    //
+    //    $post = Post::find(0);
+    //    $post['slug'] = 'hello';
+    //    $this->assertEquals('hello', $post['slug']);
+    //}
 
 }

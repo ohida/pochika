@@ -19,9 +19,6 @@ class RepositoryTest extends TestCase {
         $stub->expects($this->any())
              ->method('collect')
              ->will($this->returnValue($this->items));
-        $stub->expects($this->any())
-             ->method('itemClass')
-             ->will($this->returnValue('Test'));
         $this->stub = $stub;
     }
 

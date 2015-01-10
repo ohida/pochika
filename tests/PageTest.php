@@ -46,7 +46,7 @@ class PageTest extends TestCase
     {
         $page = Page::find('plain');
         $html = $page->render();
-
+        
         $this->assertRegExp('|^<h2>plain</h2>|', $html);
     }
 

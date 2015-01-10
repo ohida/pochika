@@ -7,8 +7,8 @@ class Post extends Entry {
 
     public $slug;
     public $path_date;
-    public $date;
     public $tags = [];
+    public $url;
 
     /**
      * process
@@ -25,17 +25,22 @@ class Post extends Entry {
         } else {
             throw new \InvalidEntryException;
         }
-
+        
         $this->url = $this->url();
-        $this->title = element('title', $this->data);
+        //$this->title = element('title', $this->meta);
 
         if (!$this->date) {
             $this->date = $this->path_date;
         }
 
-        // tags
-        if ($tags = element('tags', $this->data)) {
+        $this->parseTag();
+    }
+    
+    protected function parseTag()
+    {
+        if ($tags = element('tags', $this->meta)) {
             $this->tags = is_array($tags) ? $tags : [$tags];
+            unset($this->meta['tags']);
         }
     }
 
@@ -67,7 +72,7 @@ class Post extends Entry {
             'post' => $this,
         ]);
 
-        $layout = element('layout', $this->data, 'post');
+        $layout = element('layout', $this->meta, 'post');
 
         return Layout::find($layout)->render($payload);
     }
@@ -83,13 +88,13 @@ class Post extends Entry {
             $this->convert();
         }
 
-        $data = [];
-        foreach ($this->data as $key => $val) {
-            $key = preg_replace('/-|\./', '_', $key);
-            $data[$key] = $val;
-        }
+        //$data = [];
+        //foreach ($this->meta as $key => $val) {
+        //    $key = preg_replace('/-|\./', '_', $key);
+        //    $data[$key] = $val;
+        //}
 
-        return array_merge($data, [
+        return array_merge($this->meta, [
             'date' => $this->date,
             'url' => $this->url,
             'content' => $this->content,
