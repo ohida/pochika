@@ -51,8 +51,7 @@ class EntryTest extends TestCase {
     {
         $entry = $this->factory();
         
-        $this->assertEquals(1362247200, $entry->date);
-        $this->assertEquals(1362247200, $entry['date']);
+        $this->assertEquals($entry->date, $entry['date']);
     }
 
     function testNonExistKey()
