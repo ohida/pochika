@@ -1,6 +1,6 @@
 <?php namespace Pochika\Plugins;
 
-use App\Events\Converted;
+use App\Events\AfterConvert;
 use DOMDocument;
 use DOMXPath;
 
@@ -10,10 +10,10 @@ class TocPlugin extends Plugin {
 
     public function register()
     {
-        $this->listen(Converted::class);
+        $this->listen(AfterConvert::class);
     }
 
-    public function handle(Converted $event)
+    public function handle(AfterConvert $event)
     {
         $this->content = &$event->entry->content;
 

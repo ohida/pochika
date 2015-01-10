@@ -1,6 +1,6 @@
 <?php namespace App\Handlers\Events;
 
-use App\Events\Converted;
+use App\Events\AfterConvert;
 use Conf;
 use Pochika\Entry\Entry;
 
@@ -25,7 +25,7 @@ class StoreConvertedKeys {
 	 * @param  EntryConverted  $event
 	 * @return void
 	 */
-	public function handle(Converted $event)
+	public function handle(AfterConvert $event)
 	{
 		if (Conf::get('cache')) {
 			$entry = $event->entry;

@@ -5,7 +5,7 @@ use Pochika\Entry\Entry;
 
 use Illuminate\Queue\SerializesModels;
 
-class Converted extends Event {
+class AfterConvert extends Event {
 
 	use SerializesModels;
 	

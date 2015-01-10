@@ -1,6 +1,6 @@
 <?php namespace Pochika\Plugins;
 
-use App\Events\Converted;
+use App\Events\AfterConvert;
 
 class EmojiPlugin extends Plugin {
 
@@ -8,10 +8,10 @@ class EmojiPlugin extends Plugin {
 
     public function register()
     {
-        $this->listen(Converted::class);
+        $this->listen(AfterConvert::class);
     }
     
-    public function handle(Converted $event)
+    public function handle(AfterConvert $event)
     {
         $content = &$event->entry->content;
         $data = $this->data();

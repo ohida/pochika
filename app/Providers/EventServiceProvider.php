@@ -1,7 +1,7 @@
 <?php namespace App\Providers;
 
 use App\Events\End;
-use App\Events\Converted;
+use App\Events\AfterConvert;
 use App\Handlers\Events\StoreConvertedKeys;
 use App\Handlers\Events\UpdateCache;
 
@@ -18,7 +18,9 @@ class EventServiceProvider extends ServiceProvider {
 		//'event.name' => [
 		//	'EventListener',
 		//],
-		Converted::class => [
+		//BeforeConvert::class => [
+		//],
+		AfterConvert::class => [
 			StoreConvertedKeys::class,
 		],
 		End::class => [
