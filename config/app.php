@@ -212,24 +212,24 @@ return [
 		'Layout'	 => 'Pochika\Layout\Layout',
 		'Markdown'	 => 'Pochika\Support\Facades\Markdown',
 		'Page'		 => 'Pochika\Entry\Page',
-		'Paginator'  => 'Pochika\Support\Paginator',
 		'Plugin'	 => 'Pochika\Plugins\Plugin',
 		'Pochika'	 => 'Pochika\Support\Facades\Pochika',
 		'Post'		 => 'Pochika\Entry\Post',
 		'Renderer'	 => 'Pochika\Support\Facades\Renderer',
-		'Theme'	 	 => 'Pochika\Layout\Theme',
 		'Sitemap'    => 'Pochika\Support\Facades\Sitemap',
+		'Theme'	 	 => 'Pochika\Layout\Theme',
 		'Tag'		 => 'Pochika\Support\Facades\Tag',
 		'Yaml'		 => 'Pochika\Support\Facades\Yaml',
 
 		// Pochika Repogitories
-		'PageRepository' => 'Pochika\Support\Facades\PageRepository',
-		'PostRepository' => 'Pochika\Support\Facades\PostRepository',
+		'PageRepository'   => 'Pochika\Support\Facades\PageRepository',
 		'PluginRepository' => 'Pochika\Support\Facades\PluginRepository',
+		'PostRepository'   => 'Pochika\Support\Facades\PostRepository',
 
 		// Pochika Exceptions
-		'InvalidEntryException' => 'Pochika\Exception\InvalidEntryException',
-		'NotFoundException' => 'Pochika\Exception\NotFoundException',
+		'InvalidEntryException'   => 'Pochika\Exception\InvalidEntryException',
+		'InvalidPageException'    => 'Pochika\Exception\InvalidPageException',
+		'NotFoundException'       => 'Pochika\Exception\NotFoundException',
 		'NotInitializedException' => 'Pochika\Exception\NotInitializedException',
 	],
 

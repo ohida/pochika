@@ -1,7 +1,7 @@
 <?php namespace Pochika\Repository;
 
 use Collection;
-use Paginator;
+use Pochika\Support\Paginator;
 
 class EntryCollection extends Collection {
 

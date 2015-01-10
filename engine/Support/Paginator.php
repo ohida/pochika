@@ -1,7 +1,7 @@
 <?php namespace Pochika\Support;
 
-use Pochika\Repository\EntryCollection as Collection;
 use Conf;
+use Pochika\Repository\EntryCollection as Collection;
 use Route;
 use URL;
 
@@ -15,6 +15,10 @@ class Paginator {
             $page = 1;
         }
 
+        if (!is_numeric($page) || 0 > $page) {
+            throw new \InvalidPageException;
+        }
+
         $per_page = $per_page ?: Conf::get('paginate', self::DEFAULT_COUNT);
         $offset = $per_page * ($page - 1);
 
@@ -22,7 +26,7 @@ class Paginator {
         $pages = (int)ceil($total / $per_page);
 
         if ($pages && $page > $pages) {
-            throw new \LogicException("Page number can't be greater than total pages: {$page} > {$pages}");
+            throw new \InvalidPageException("Page number can't be greater than total pages: {$page} > {$pages}");
         }
 
         $next_page = ($pages && $page != $pages) ? $page + 1 : null;

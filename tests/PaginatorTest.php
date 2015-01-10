@@ -1,5 +1,7 @@
 <?php
 
+use Pochika\Support\Paginator;
+
 class PaginatorTest extends TestCase
 {
     const TOTAL_POSTS = 5;
@@ -14,7 +16,7 @@ class PaginatorTest extends TestCase
     }
 
     /**
-     * @expectedException LogicException
+     * @expectedException InvalidPageException
      */
     public function testOverTotalPage()
     {
@@ -26,6 +28,28 @@ class PaginatorTest extends TestCase
         $res = Paginator::get([]);
 
         $this->assertNull($res['next_url']);
+    }
+
+    /**
+     * @expectedException InvalidPageException
+     */
+    function testPageIsNotNumeric()
+    {
+        Paginator::get([], 'a');
+    }
+
+    function testPageIsNumericString()
+    {
+        $res = Paginator::get([], '1');
+        $this->assertEquals(1, $res['page']);
+    }
+    
+    /**
+     * @expectedException InvalidPageException
+     */
+    function testPageIsNegativeInt()
+    {
+        Paginator::get([], -1);
     }
 
     /*

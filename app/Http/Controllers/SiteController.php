@@ -28,7 +28,11 @@ class SiteController extends Controller {
 		
 		$per_page = Conf::get('paginate');
 		
-		$paginator = $posts->paginate($page, $per_page);
+		try {
+			$paginator = $posts->paginate($page, $per_page);
+		} catch (\InvalidPageException $e){
+			return $this->notfound();
+		}
 		
 		$html = Layout::find('index')->render([
 			'paginator' => $paginator,

@@ -1,5 +1,7 @@
 <?php
 
+use Pochika\Support\Paginator;
+
 class TwigExtensionTest extends TestCase {
 
     public function setUp()
