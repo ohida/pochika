@@ -1,9 +1,9 @@
 <?php namespace Pochika\Repository;
 
 use Cache;
+use Conf;
 //use Collection;
 use Pochika\Repository\EntryCollection as Collection;
-use Conf;
 
 abstract class Repository {
 

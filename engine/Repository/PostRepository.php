@@ -1,6 +1,5 @@
 <?php namespace Pochika\Repository;
 
-use Conf;
 use Finder;
 use Log;
 use Post;
