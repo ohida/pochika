@@ -75,18 +75,25 @@ abstract class Entry implements \ArrayAccess {
      */
     protected function readFrontmatter($buff)
     {
-        $regex = '/^---\s*\n(.*?\n?)^---\s*$\n?(.*?)\n*\z/ms';
+        list($meta, $this->content) = $this->splitFrontmatter($buff);
+        
         $this->meta = [];
-        if (preg_match($regex, $buff, $m)) {
-            foreach (Yaml::parse($m[1]) as $key => $val) {
+        if ($meta) {
+            foreach (Yaml::parse($meta) as $key => $val) {
                 $key = preg_replace('/-|\./', '_', $key);
                 $this->meta[$key] = $val;
             }
-            $this->content = $m[2];
             $this->parseDate();
+        }
+    }
+
+    protected function splitFrontmatter($buff)
+    {
+        $regex = '/^---\s*\n(.*?\n?)^---\s*$\n?(.*?)\n*\z/ms';
+        if (preg_match($regex, $buff, $m)) {
+            return [$m[1], $m[2]];
         } else {
-            $this->content = $buff;
-            //throw new \InvalidEntryException;
+            return [null, $buff];
         }
     }
 

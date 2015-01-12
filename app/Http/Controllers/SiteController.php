@@ -57,7 +57,11 @@ class SiteController extends Controller {
 		} catch (\NotFoundException $e) {
 			return $this->notfound();
 		}
-
+		
+		if (!is_null($request->get('edit'))) {
+			return $this->edit($post);
+		}
+		
 		switch ($request->get('format')) {
 			case 'content':
 				return $post->getContent();
@@ -66,6 +70,17 @@ class SiteController extends Controller {
 			default:
 				throw new \UnexpectedValueException();
 		}
+	}
+
+	protected function edit($post)
+	{
+		if ('local' == env('APP_ENV')) {
+			if (open($post->path)) {
+				return \Redirect::to(\URL::current());
+			}
+		}
+		
+		throw new \RuntimeException('cannot open file: '.$post->path);
 	}
 
 	/**
@@ -104,7 +119,7 @@ class SiteController extends Controller {
 		$per_page = Conf::get('archives_paginate', 30);
 
 		$pattern = sprintf('/archives/page/:page');
-		$paginator = $posts->paginate($page, $per_page, 'archives_paged');
+		$paginator = $posts->paginate($page, $per_page, 'archives_paged', false);
 
 		$html = Layout::find('archives')->render([
 			'paginator' => $paginator,

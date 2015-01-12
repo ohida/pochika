@@ -44,6 +44,7 @@ class TwigRenderer {
         }
 
         $twig->addGlobal('site', Conf::all());
+        $twig->addGlobal('env', env('APP_ENV'));
 
         return $twig;
     }
