@@ -2,6 +2,7 @@
 
 use Conf;
 use Event;
+use PluginRepository;
 
 abstract class Plugin {
 
@@ -61,4 +62,19 @@ abstract class Plugin {
         Event::listen($event, $handler);
     }
 
+    /**
+     * __callStatic
+     *
+     * @param string $name
+     * @param array $argv
+     * @return mixed
+     */
+    public static function __callStatic($name, $argv)
+    {
+        if (!in_array($name, ['all', 'count', 'find'])) {
+            throw new \BadMethodCallException('Undefined method: Post::'.$name);
+        }
+
+        return PluginRepository::$name(...$argv);
+    }
 }

@@ -1,5 +1,6 @@
 <?php namespace Pochika\Repository;
 
+use Pochika\Repository\EntryCollection;
 use Finder;
 use Log;
 use Page;
@@ -29,8 +30,8 @@ class PageRepository extends Repository {
         }
 
         Log::debug(sprintf('%d pages loaded', count($items)));
-
-        return $items;
+        
+        return new EntryCollection($items);
     }
 
     /**

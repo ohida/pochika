@@ -2,8 +2,6 @@
 
 use Cache;
 use Conf;
-//use Collection;
-use Pochika\Repository\EntryCollection as Collection;
 
 abstract class Repository {
 
@@ -27,11 +25,9 @@ abstract class Repository {
             throw new \LogicException('Already loaded: '.$this->cacheID());
         }
 
-        $items = $this->remember(function () {
+        $this->collection = $this->remember(function () {
             return $this->collect();
         });
-
-        $this->collection = new Collection($items);
     }
 
     /**
@@ -123,7 +119,7 @@ abstract class Repository {
         } elseif (is_callable($key)) {
             return $this->findByFunc($key);
         } else {
-            throw new \LogicException('Invalid type of key: '.get_class($key));
+            throw new \LogicException('Invalid type of key');
         }
     }
 
@@ -221,60 +217,6 @@ abstract class Repository {
         return $this->collection;
     }
 
-    ///**
-    // * Clear collection
-    // *
-    // * @return array
-    // */
-    //public function clear()
-    //{
-    //    unset($this->collection);
-    //    $this->collection = null;
-    //}
-
-    ///**
-    // * Pack value
-    // *
-    // * @param $value
-    // * @return string
-    // */
-    //protected function pack($value)
-    //{
-    //    if (extension_loaded('msgpack') && Conf::app('msgpack')) {
-    //        return msgpack_pack($value);
-    //    } else {
-    //        return $value;
-    //    }
-    //}
-
-    ///**
-    // * Unpack value
-    // *
-    // * @param $value
-    // * @return mixed
-    // */
-    //protected function unpack($value)
-    //{
-    //    if (extension_loaded('msgpack') && Conf::app('msgpack')) {
-    //        return msgpack_unpack($value);
-    //    } else {
-    //        return $value;
-    //    }
-    //}
-
-    /**
-     * Clear cache
-     *
-     * @param mixed $name
-     * @access protected
-     * @return void
-     */
-    public function clearCache()
-    {
-        \Log::debug('clearcache');
-        Cache::forget($this->cacheID());
-    }
-
     /**
      * Get collection source array
      *
@@ -343,5 +285,59 @@ abstract class Repository {
         unset($this->collection);
         $this->collection = null;
     }
+
+    /**
+     * Clear cache
+     *
+     * @param mixed $name
+     * @access protected
+     * @return void
+     */
+    public function clearCache()
+    {
+        \Log::debug('clearcache');
+        Cache::forget($this->cacheID());
+    }
+
+    ///**
+    // * Clear collection
+    // *
+    // * @return array
+    // */
+    //public function clear()
+    //{
+    //    unset($this->collection);
+    //    $this->collection = null;
+    //}
+
+    ///**
+    // * Pack value
+    // *
+    // * @param $value
+    // * @return string
+    // */
+    //protected function pack($value)
+    //{
+    //    if (extension_loaded('msgpack') && Conf::app('msgpack')) {
+    //        return msgpack_pack($value);
+    //    } else {
+    //        return $value;
+    //    }
+    //}
+
+    ///**
+    // * Unpack value
+    // *
+    // * @param $value
+    // * @return mixed
+    // */
+    //protected function unpack($value)
+    //{
+    //    if (extension_loaded('msgpack') && Conf::app('msgpack')) {
+    //        return msgpack_unpack($value);
+    //    } else {
+    //        return $value;
+    //    }
+    //}
 
 }

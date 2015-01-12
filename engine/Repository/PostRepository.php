@@ -1,5 +1,6 @@
 <?php namespace Pochika\Repository;
 
+use Pochika\Repository\EntryCollection;
 use Finder;
 use Log;
 use Post;
@@ -33,8 +34,8 @@ class PostRepository extends Repository {
         });
 
         Log::debug(sprintf('%d posts loaded', count($items)));
-
-        return $items;
+        
+        return new EntryCollection($items);
     }
 
     /**

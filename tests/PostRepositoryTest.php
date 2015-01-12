@@ -8,7 +8,8 @@ class PostRepositoryTest extends TestCase {
 
     public function testAll()
     {
-        $all = PostRepository::all();
+        $posts = PostRepository::all();
+        $this->assertEquals('Pochika\Repository\EntryCollection', get_class($posts));
         $this->assertCount(self::POST_COUNT, PostRepository::all());
     }
 

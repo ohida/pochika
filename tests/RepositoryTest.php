@@ -14,11 +14,11 @@ class RepositoryTest extends TestCase {
     function setUp()
     {
         parent::setUp();
-
+        
         $stub = $this->getMockForAbstractClass('Pochika\Repository\Repository');
         $stub->expects($this->any())
              ->method('collect')
-             ->will($this->returnValue($this->items));
+             ->will($this->returnValue(new Collection($this->items)));
         $this->stub = $stub;
     }
 
@@ -41,15 +41,45 @@ class RepositoryTest extends TestCase {
         $this->stub->load();
         $res = $this->stub->all();
         
-        $this->assertEquals('Pochika\Repository\EntryCollection', get_class($res));
+        $this->assertEquals('Illuminate\Support\Collection', get_class($res));
     }
 
     function testFind()
     {
         $this->stub->load();
+        
         $res = $this->stub->find('a');
-
         $this->assertEquals($this->items['a'], $res);
+        
+        $res = $this->stub->find(0);
+        $this->assertEquals($this->items['a'], $res);
+    }
+
+    /**
+     * @expectedException LogicException
+     */
+    function testFindInvalidKey()
+    {
+        $this->stub->load();
+        $this->stub->find(-1);
+    }
+    
+    /**
+     * @expectedException LogicException
+     */
+    function testFindInvalidKey2()
+    {
+        $this->stub->load();
+        $this->stub->find(new stdClass);
+    }
+    
+    /**
+     * @expectedException LogicException
+     */
+    function testFindInvalidKey3()
+    {
+        $this->stub->load();
+        $this->stub->find('invalid-key');
     }
 
     function testIndex()

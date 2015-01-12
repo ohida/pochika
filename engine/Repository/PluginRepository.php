@@ -1,6 +1,7 @@
 <?php namespace Pochika\Repository;
 
 use App;
+use Collection;
 use Conf;
 use Finder;
 use Log;
@@ -29,8 +30,8 @@ class PluginRepository extends Repository {
         $items += $this->collectCorePlugin();
 
         Log::debug(sprintf('%d plugins loaded', count($items)));
-
-        return $items;
+        
+        return new Collection($items);
     }
 
     protected function collectUserPlugin()

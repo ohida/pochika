@@ -6,9 +6,8 @@ class PageRepositoryTest extends TestCase {
 
     public function testAll()
     {
-        Log::debug("testAll");
         $pages = PageRepository::all();
-        Log::debug("end testAll");
+        $this->assertEquals('Pochika\Repository\EntryCollection', get_class($pages));
         $this->assertCount(self::PAGE_COUNT, $pages->all());
     }
 

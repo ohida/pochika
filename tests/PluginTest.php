@@ -3,6 +3,25 @@
 use Mockery as m;
 
 class PluginTest extends TestCase {
+    
+    const PLUGIN_COUNT = 3;
+
+    function testAll()
+    {
+        $plugins = Plugin::all();
+        $this->assertEquals('Illuminate\Support\Collection', get_class($plugins));
+    }
+    
+    function testFind()
+    {
+        $emoji = Plugin::find('emoji');
+        $this->assertEquals('Pochika\Plugins\EmojiPlugin', get_class($emoji));
+    }
+
+    function testCount()
+    {
+        $this->assertEquals(self::PLUGIN_COUNT, Plugin::count());
+    }
 
     public function testEmojiPlugin()
     {
@@ -11,7 +30,7 @@ class PluginTest extends TestCase {
 
         $event->entry = $post;
         
-        $plugin = PluginRepository::find('emoji');
+        $plugin = Plugin::find('emoji');
         
         $post->content = ':octocat:';
         $plugin->handle($event);
@@ -30,7 +49,7 @@ class PluginTest extends TestCase {
         $event->entry = $post;
         $post->content = '\\:non-potable_water:';
 
-        $plugin = PluginRepository::find('emoji');
+        $plugin = Plugin::find('emoji');
         $plugin->handle($event);
 
         $this->assertRegExp('/:non-potable_water:/', $post->content);
@@ -43,7 +62,7 @@ class PluginTest extends TestCase {
         
         $event->entry = $post;
         
-        $plugin = PluginRepository::find('toc');
+        $plugin = Plugin::find('toc');
 
         $post->content = <<<EOF
 {:TOC}
@@ -76,7 +95,7 @@ EOF;
 
         $event->entry = $post;
 
-        $plugin = PluginRepository::find('toc');
+        $plugin = Plugin::find('toc');
 
         $post->content = '\{:TOC}';
 
