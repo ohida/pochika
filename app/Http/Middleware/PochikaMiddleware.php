@@ -18,12 +18,6 @@ class PochikaMiddleware implements Middleware {
 	 */
 	public function handle($request, Closure $next)
 	{
-		#todo
-		# Debugbar looks 'app.debug' value in L4
-		if (!env('APP_DEBUG')) {
-			Debugbar::disable();
-		}
-
 		try {
 			Pochika::init();
             $response = $next($request);
