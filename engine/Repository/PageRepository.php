@@ -1,6 +1,5 @@
 <?php namespace Pochika\Repository;
 
-use Pochika\Repository\EntryCollection;
 use Finder;
 use Log;
 use Page;
