@@ -25,10 +25,10 @@ Route::get('/tag/{tag}/{page?}', ['as' => 'index_tagged', 'uses' => 'SiteControl
 // post
 Route::get('/{year}/{month}/{day}/{slug}', ['as' => 'post', 'uses' => 'SiteController@post'])
 	->where([
-        'year' => '[\d]{4}',
-        'month' => '[\d]{2}',
-        'day' => '[\d]{2}',
-        'slug' => '[\w\-]+',
+		'year' => '[\d]{4}',
+		'month' => '[\d]{2}',
+		'day' => '[\d]{2}',
+		'slug' => '[\w\-]+',
 	]);
 
 // archives

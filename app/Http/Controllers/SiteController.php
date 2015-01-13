@@ -1,230 +1,243 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use Cache;
 use Conf;
 use Feed;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Layout;
 use Page;
 use Paginator;
 use Post;
-use Illuminate\Http\Response;
-use Illuminate\Http\Request;
 use Sitemap;
 
 class SiteController extends Controller {
 
-	/**
-	 * Index
-	 *
-	 * @param int $page
-	 * @return Response
-	 */
-	public function index($page = null)
-	{
-		$posts = Post::all();
-		
-		$per_page = Conf::get('paginate');
-		
-		try {
-			$paginator = $posts->paginate($page, $per_page);
-		} catch (\InvalidPageException $e){
-			return $this->notfound();
-		}
-		
-		$html = Layout::find('index')->render([
-			'paginator' => $paginator,
-		]);
+    /**
+     * Index
+     *
+     * @param int $page
+     * @return Response
+     */
+    public function index($page = null)
+    {
+        $posts = Post::all();
 
-		return new Response($html);
-	}
+        $per_page = Conf::get('paginate');
 
-	/**
-	 * Post permalink
-	 *
-	 * @param int $year
-	 * @param int $month
-	 * @param int $day
-	 * @param string $slug
-	 * @return Response
-	 */
-	public function post(Request $request, ...$args)
-	{
-		try {
-			$post = Post::find(implode('-', $args));
-		} catch (\NotFoundException $e) {
-			return $this->notfound();
-		}
+        try {
+            $paginator = $posts->paginate($page, $per_page);
+        } catch (\InvalidPageException $e) {
+            return $this->notfound();
+        }
 
-		switch ($request->get('format')) {
-			case 'content':
-				return $post->getContent();
-			case null:
-				return $post->render();
-			default:
-				throw new \UnexpectedValueException();
-		}
-	}
+        $html = Layout::find('index')->render([
+            'paginator' => $paginator,
+        ]);
 
-	/**
-	 * Page permalink
-	 *
-	 * @param mixed $arg
-	 * @return Response
-	 */
-	public function page(...$name)
-	{
-		if (is_array($name)) {
-			$name = implode('/', $name);
-		}
+        return new Response($html);
+    }
 
-		try {
-			$html = Page::find($name)->render([
-				'posts' => Post::all(),
-			]);
-		} catch (\NotFoundException $e) {
-			return $this->notfound();
-		}
+    /**
+     * Post permalink
+     *
+     * @param int $year
+     * @param int $month
+     * @param int $day
+     * @param string $slug
+     * @return Response
+     */
+    public function post(Request $request, ...$args)
+    {
+        try {
+            $post = Post::find(implode('-', $args));
+        } catch (\NotFoundException $e) {
+            return $this->notfound();
+        }
 
-		return new Response($html);
-	}
+        if (!is_null($request->get('edit'))) {
+            return $this->edit($post);
+        }
 
-	/**
-	 * Archives
-	 *
-	 * @param int $page
-	 * @return Response
-	 */
-	public function archives($page = null)
-	{
-		$posts = Post::all();
+        switch ($request->get('format')) {
+            case 'content':
+                return $post->getContent();
+            case null:
+                return $post->render();
+            default:
+                throw new \UnexpectedValueException();
+        }
+    }
 
-		$per_page = Conf::get('archives_paginate', 30);
+    protected function edit($post)
+    {
+        if ('local' == env('APP_ENV')) {
+            if (open($post->path)) {
+                return \Redirect::to(\URL::current());
+            }
+        }
 
-		$pattern = sprintf('/archives/page/:page');
-		$paginator = $posts->paginate($page, $per_page, 'archives_paged');
+        throw new \RuntimeException('cannot open file: '.$post->path);
+    }
 
-		$html = Layout::find('archives')->render([
-			'paginator' => $paginator,
-		]);
+    /**
+     * Page permalink
+     *
+     * @param mixed $arg
+     * @return Response
+     */
+    public function page(...$name)
+    {
+        if (is_array($name)) {
+            $name = implode('/', $name);
+        }
 
-		return new Response($html);
-	}
+        try {
+            $html = Page::find($name)->render([
+                'posts' => Post::all(),
+            ]);
+        } catch (\NotFoundException $e) {
+            return $this->notfound();
+        }
 
-	/**
-	 * tag
-	 *
-	 * @param string $tag
-	 * @param int $page
-	 * @return Response
-	 */
-	public function tag($tag, $page = null)
-	{
-		$tag = urldecode($tag);
+        return new Response($html);
+    }
 
-		$posts = Post::findByTag($tag);
-		
-		$per_page = Conf::get('paginate');
+    /**
+     * Archives
+     *
+     * @param int $page
+     * @return Response
+     */
+    public function archives($page = null)
+    {
+        $posts = Post::all();
 
-		$paginator = $posts->paginate($page, $per_page, [
-			'index_tagged' => ['tag' => rawurlencode($tag)],
-		]);
-		
-		$html = Layout::find('index')->render([
-			'paginator' => $paginator,
-			'tag' => $tag,
-		]);
+        $per_page = Conf::get('archives_paginate', 30);
 
-		return new Response($html);
-	}
+        $pattern = sprintf('/archives/page/:page');
+        $paginator = $posts->paginate($page, $per_page, 'archives_paged', false);
 
-	/**
-	 * Search
-	 *
-	 * @return Response
-	 */
-	public function search(Requests\SearchRequest $request)
-	{
-		$query = $request->get('q');
-		$page = $request->get('page');
+        $html = Layout::find('archives')->render([
+            'paginator' => $paginator,
+        ]);
 
-		$posts = [];
+        return new Response($html);
+    }
 
-		if ($query) {
-			$posts = Post::search($query);
-		}
+    /**
+     * tag
+     *
+     * @param string $tag
+     * @param int $page
+     * @return Response
+     */
+    public function tag($tag, $page = null)
+    {
+        $tag = urldecode($tag);
 
-		$per_page = Conf::get('paginate');
+        $posts = Post::findByTag($tag);
 
-		if (count($posts)) {
-			$route = sprintf('/search?q=%s&page=:page', rawurlencode($query));
-			$paginator = $posts->paginate($page, $per_page, $route);
-		} else {
-			$paginator = null;
-		}
+        $per_page = Conf::get('paginate');
 
-		$html = Layout::find('search')->render([
-			'search' => true,
-			'query' => $query,
-			'paginator' => $paginator,
-		]);
+        $paginator = $posts->paginate($page, $per_page, [
+            'index_tagged' => ['tag' => rawurlencode($tag)],
+        ]);
 
-		return new Response($html);
-	}
+        $html = Layout::find('index')->render([
+            'paginator' => $paginator,
+            'tag'       => $tag,
+        ]);
 
-	/**
-	 * Feed
-	 *
-	 * @return Response
-	 */
-	public function feed()
-	{
-		if (Conf::get('cache')) {
-			$atom = Cache::rememberForever('atom', function () {
-				return Feed::generate();
-			});
-		} else {
-			$atom = Feed::generate();
-		}
+        return new Response($html);
+    }
 
-		return new Response($atom, 200, [
-			'content-type' => 'application/xml',
-			'charset' => 'utf-8',
-		]);
-	}
+    /**
+     * Search
+     *
+     * @return Response
+     */
+    public function search(Requests\SearchRequest $request)
+    {
+        $query = $request->get('q');
+        $page = $request->get('page');
 
-	public function sitemap()
-	{
-		if (Conf::get('cache')) {
-			$xml = Cache::rememberForever('sitemap', function () {
-				return Sitemap::generate();
-			});
-		} else {
-			$xml = Sitemap::generate();
-		}
+        $posts = [];
 
-		return new Response($xml, 200, [
-			'content-type' => 'application/xml',
-			'charset' => 'utf-8',
-		]);
-	}
+        if ($query) {
+            $posts = Post::search($query);
+        }
 
-	/**
-	 * Not Found
-	 *
-	 * @return Response
-	 */
-	public function notfound()
-	{
-		try {
-			$html = Layout::find('errors/404')->render();
-		} catch (\NotFoundException $e) {
-			$html = view('errors.404');
-		} finally {
-			return new Response($html, 404);
-		}
-	}
+        $per_page = Conf::get('paginate');
+
+        if (count($posts)) {
+            $route = sprintf('/search?q=%s&page=:page', rawurlencode($query));
+            $paginator = $posts->paginate($page, $per_page, $route);
+        } else {
+            $paginator = null;
+        }
+
+        $html = Layout::find('search')->render([
+            'search'    => true,
+            'query'     => $query,
+            'paginator' => $paginator,
+        ]);
+
+        return new Response($html);
+    }
+
+    /**
+     * Feed
+     *
+     * @return Response
+     */
+    public function feed()
+    {
+        if (Conf::get('cache')) {
+            $atom = Cache::rememberForever('atom', function () {
+                return Feed::generate();
+            });
+        } else {
+            $atom = Feed::generate();
+        }
+
+        return new Response($atom, 200, [
+            'content-type' => 'application/xml',
+            'charset'      => 'utf-8',
+        ]);
+    }
+
+    public function sitemap()
+    {
+        if (Conf::get('cache')) {
+            $xml = Cache::rememberForever('sitemap', function () {
+                return Sitemap::generate();
+            });
+        } else {
+            $xml = Sitemap::generate();
+        }
+
+        return new Response($xml, 200, [
+            'content-type' => 'application/xml',
+            'charset'      => 'utf-8',
+        ]);
+    }
+
+    /**
+     * Not Found
+     *
+     * @return Response
+     */
+    public function notfound()
+    {
+        try {
+            $html = Layout::find('errors/404')->render();
+        } catch (\NotFoundException $e) {
+            $html = view('errors.404');
+        } finally {
+            return new Response($html, 404);
+        }
+    }
 
 }

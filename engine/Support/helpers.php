@@ -150,9 +150,23 @@ if (!function_exists('theme_path')) {
     }
 }
 
-if (!function_exists('conf')) {
-    function conf()
+if (!function_exists('command_exists')) {
+    function command_exists($cmd)
     {
+        $ret = shell_exec("which $cmd");
+        return empty($ret) ? false : true;
     }
 }
 
+if (!function_exists('open')) {
+    function open($path)
+    {
+        $cmd = 'open';
+        if (command_exists($cmd)) {
+            $out = [];
+            $val = null;
+            exec(sprintf('%s "%s"', $cmd, $path), $out, $val);
+            return $val == 0;
+        }
+    }
+}
