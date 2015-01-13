@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dd9d62fb405557b6a9c878196a4e3371",
+    "hash": "6b2382552944cf25803561222acb4ec1",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -391,12 +391,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "92f08a0e5579e7cfbdf9e062b49914f80d961b71"
+                "reference": "164206bf2daced533d011e321b36d193f91c625d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/92f08a0e5579e7cfbdf9e062b49914f80d961b71",
-                "reference": "92f08a0e5579e7cfbdf9e062b49914f80d961b71",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/164206bf2daced533d011e321b36d193f91c625d",
+                "reference": "164206bf2daced533d011e321b36d193f91c625d",
                 "shasum": ""
             },
             "require": {
@@ -502,7 +502,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-01-12 20:31:20"
+            "time": "2015-01-13 15:00:26"
         },
         {
             "name": "league/flysystem",
@@ -1748,23 +1748,23 @@
     "packages-dev": [
         {
             "name": "barryvdh/laravel-debugbar",
-            "version": "dev-master",
+            "version": "2.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "d4ebe58f0be834bda4383491948587a28d1be03a"
+                "reference": "9ad5b997ca90ae87d9d53a436a4c612ce54cf864"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/d4ebe58f0be834bda4383491948587a28d1be03a",
-                "reference": "d4ebe58f0be834bda4383491948587a28d1be03a",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/9ad5b997ca90ae87d9d53a436a4c612ce54cf864",
+                "reference": "9ad5b997ca90ae87d9d53a436a4c612ce54cf864",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "4.*|5.0.*",
+                "illuminate/support": "5.0.*",
                 "maximebf/debugbar": "~1.10.2",
-                "php": ">=5.3.0",
-                "symfony/finder": "~2.3"
+                "php": ">=5.4.0",
+                "symfony/finder": "~2.6"
             },
             "type": "library",
             "extra": {
@@ -1798,7 +1798,7 @@
                 "profiler",
                 "webprofiler"
             ],
-            "time": "2015-01-13 12:39:59"
+            "time": "2015-01-10 16:54:14"
         },
         {
             "name": "doctrine/instantiator",
@@ -2933,8 +2933,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "embed/embed": 20,
         "erusev/parsedown": 20,
+        "embed/embed": 20,
         "mockery/mockery": 20,
         "barryvdh/laravel-debugbar": 20
     },
