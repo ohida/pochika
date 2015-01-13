@@ -11,6 +11,7 @@ class Config {
     public function __construct()
     {
         #todo L5 returns testing/pochika.php's value even if env is 'local'
+        //d(env('APP_ENV'), $this->app('config_path'));
         if ('testing' == env('APP_ENV')) {
             //todo
             //$config_path = $this->app('config_path') ?: 'tests/config.yml';
