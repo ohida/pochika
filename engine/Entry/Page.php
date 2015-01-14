@@ -6,6 +6,7 @@ use PageRepository;
 class Page extends Entry {
     
     public $url;
+    public $title;
 
     /**
      * process
@@ -21,6 +22,8 @@ class Page extends Entry {
         //}
 
         $this->url = $this->url();
+        
+        $this->parseTitle();
     }
 
     /**
@@ -68,6 +71,7 @@ class Page extends Entry {
         }
 
         return array_merge($this->meta, [
+            'title' => $this->title,
             'content' => $this->content,
             'published' => $this->published,
             'url' => $this->url,

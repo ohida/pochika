@@ -9,6 +9,7 @@ class Post extends Entry {
     public $path_date;
     public $tags = [];
     public $url;
+    public $title;
 
     /**
      * process
@@ -27,7 +28,9 @@ class Post extends Entry {
         }
         
         $this->url = $this->url();
+
         //$this->title = element('title', $this->meta);
+        $this->parseTitle();
 
         if (!$this->date) {
             $this->date = $this->path_date;
@@ -35,7 +38,7 @@ class Post extends Entry {
 
         $this->parseTag();
     }
-    
+
     protected function parseTag()
     {
         if ($tags = element('tags', $this->meta)) {
@@ -95,6 +98,7 @@ class Post extends Entry {
         //}
 
         return array_merge($this->meta, [
+            'title' => $this->title,
             'date' => $this->date,
             'url' => $this->url,
             'content' => $this->content,

@@ -29,15 +29,19 @@ class PluginTest extends TestCase {
         $post = m::mock('Pochika\Entry\Post');
 
         $event->entry = $post;
-        
-        $plugin = Plugin::find('emoji');
-        
+
+        $post->title = ':octocat:';
         $post->content = ':octocat:';
+
+        $plugin = Plugin::find('emoji');
+
         $plugin->handle($event);
+        $this->assertRegExp('/<img .*?>/', $post->title);
         $this->assertRegExp('/<img .*?>/', $post->content);
-        
+
         $post->content = ':non-potable_water:';
         $plugin->handle($event);
+        $this->assertRegExp('/<img .*?>/', $post->title);
         $this->assertRegExp('/<img .*?>/', $post->content);
     }
     
@@ -47,11 +51,13 @@ class PluginTest extends TestCase {
         $post = m::mock('Pochika\Entry\Post');
 
         $event->entry = $post;
+        $post->title = '\\:non-potable_water:';
         $post->content = '\\:non-potable_water:';
 
         $plugin = Plugin::find('emoji');
         $plugin->handle($event);
 
+        $this->assertRegExp('/:non-potable_water:/', $post->title);
         $this->assertRegExp('/:non-potable_water:/', $post->content);
     }
 

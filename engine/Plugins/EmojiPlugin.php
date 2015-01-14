@@ -13,24 +13,32 @@ class EmojiPlugin extends Plugin {
 
     public function handle(AfterConvert $event)
     {
-        $content = &$event->entry->content;
+        $this->convert($event->entry->content);
+        
+        if (isset($event->entry->title)) {
+            $this->convert($event->entry->title);
+        }
+    }
+
+    protected function convert(&$text)
+    {
         $data = $this->data();
         $css_class = element('class', $this->config, 'emoji');
 
         $escaped = false;
-        if (false !== strpos($content, '\\:')) {
-            $content = preg_replace("/\\\:([a-z0-9-_]+):/", "<!--emoji[$1]-->", $content);
+        if (false !== strpos($text, '\\:')) {
+            $text = preg_replace("/\\\:([a-z0-9-_]+):/", "<!--emoji[$1]-->", $text);
             $escaped = true;
         }
 
-        $content = preg_replace_callback('/:([\w\+\-]+):/', function ($matches) use ($data, $css_class) {
+        $text = preg_replace_callback('/:([\w\+\-]+):/', function ($matches) use ($data, $css_class) {
             if (array_key_exists($name = $matches[1], $data)) {
                 return sprintf('<img alt="%s" src="%s" class="%s">', $name, $data[$name], $css_class);
             }
-        }, $content);
+        }, $text);
 
         if ($escaped) {
-            $content = preg_replace('/<!--emoji\[([a-z0-9-_]+)\]-->/', ":$1:", $content);
+            $text = preg_replace('/<!--emoji\[([a-z0-9-_]+)\]-->/', ":$1:", $text);
         }
     }
 
