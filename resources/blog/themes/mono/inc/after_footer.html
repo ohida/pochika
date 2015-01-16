@@ -75,4 +75,6 @@
   }
 </script>
 
-{% include "inc/forkme.html" %}
+{% if site.forkme %}
+  {% include "inc/forkme.html" %}
+{% endif %}
