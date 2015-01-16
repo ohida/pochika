@@ -70,38 +70,41 @@ class SiteController extends Controller {
         }
     }
 
-    protected function edit($post)
-    {
-        if ('local' == env('APP_ENV')) {
-            if (open($post->path)) {
-                return \Redirect::to(\URL::current());
-            }
-        }
-
-        throw new \RuntimeException('cannot open file: '.$post->path);
-    }
-
     /**
      * Page permalink
      *
      * @param mixed $arg
      * @return Response
      */
-    public function page(...$name)
+    public function page(Request $request, ...$name)
     {
         if (is_array($name)) {
             $name = implode('/', $name);
         }
 
         try {
-            $html = Page::find($name)->render([
-                'posts' => Post::all(),
-            ]);
+            $page = Page::find($name);
         } catch (\NotFoundException $e) {
             return $this->notfound();
         }
 
-        return new Response($html);
+        if (!is_null($request->get('edit'))) {
+            return $this->edit($page);
+        }
+
+        return $page->render();
+    }
+
+    #todo
+    protected function edit($entry)
+    {
+        if ('local' == env('APP_ENV')) {
+            if (open($entry->path)) {
+                return \Redirect::to(\URL::current());
+            }
+        }
+
+        throw new \RuntimeException('cannot open file: '.$entry->path);
     }
 
     /**
@@ -117,7 +120,7 @@ class SiteController extends Controller {
         $per_page = Conf::get('archives_paginate', 30);
 
         $pattern = sprintf('/archives/page/:page');
-        $paginator = $posts->paginate($page, $per_page, 'archives_paged', false);
+        $paginator = $posts->paginate($page, $per_page, 'archives_paged');
 
         $html = Layout::find('archives')->render([
             'paginator' => $paginator,

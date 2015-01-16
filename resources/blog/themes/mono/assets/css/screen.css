@@ -466,6 +466,16 @@ article.post {
       color: #333; }
       article.post > header h2 a:hover {
         color: #999; }
+    article.post > header h2 img.emoji {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      display: inline;
+      width: 28px;
+      height: 28px;
+      -moz-box-shadow: none;
+      -webkit-box-shadow: none;
+      box-shadow: none; }
   article.post .meta {
     font-size: 1em; }
     article.post .meta .tags {

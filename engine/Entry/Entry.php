@@ -105,6 +105,14 @@ abstract class Entry implements \ArrayAccess {
         }
     }
 
+    protected function parseTitle()
+    {
+        if ($title = element('title', $this->meta)) {
+            $this->title = $title;
+            unset($this->meta['title']);
+        }
+    }
+
     protected function checkPublishedFlag()
     {
         if (!isset($this->meta['published'])) {
