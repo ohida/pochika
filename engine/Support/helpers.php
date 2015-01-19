@@ -133,20 +133,30 @@ if (!function_exists('source_path')) {
             foreach ($path as $row) {
                 $res[] = source_path($row);
             }
-
             return $res;
         }
 
-        $path = sprintf('%s%s', Conf::get('source', 'source'), ($path ? '/'.$path : ''));
+        $path = path(Conf::get('source', 'source'), $path);
 
-        return app()->make('path.base').($path ? '/'.$path : $path);
+        if ($path[0] == '/' OR $path[0] == '~') {
+            return $path;
+        } else {
+            return path(app('path.base'), $path);
+        }
+    }
+}
+
+if (!function_exists('path')) {
+    function path($dir, $path)
+    {
+        return rtrim($dir, '/').($path ? '/'.$path : '');
     }
 }
 
 if (!function_exists('theme_path')) {
     function theme_path($path = '')
     {
-        return source_path('themes/'.Conf::get('theme').($path ? '/'.$path : ''));
+        return path(source_path('themes/'.Conf::get('theme')), $path);
     }
 }
 
