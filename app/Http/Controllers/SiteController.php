@@ -20,8 +20,12 @@ class SiteController extends Controller {
      * @param int $page
      * @return Response
      */
-    public function index($page = null)
+    public function index(Request $req, $page = null)
     {
+        if ($index = Conf::get('index')) {
+            return $this->page($req, $index);
+        }
+
         $posts = Post::all();
 
         $per_page = Conf::get('paginate');
