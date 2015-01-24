@@ -787,6 +787,10 @@ section.page article.post .post-content h4 {
       color: #333343; }
       .archives article h2 a:hover {
         color: #aaa; }
+    .archives article h2 img.emoji {
+      display: inline;
+      width: 18px;
+      height: 18px; }
   .archives article time {
     font-size: 0.9em;
     margin-top: 0px;
