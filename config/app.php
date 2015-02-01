@@ -153,7 +153,7 @@ return [
 		'Pochika\Renderer\RendererServiceProvider',
 		'Pochika\Feed\FeedServiceProvider',
 
-		'Barryvdh\Debugbar\ServiceProvider',
+		//'Barryvdh\Debugbar\ServiceProvider',
 
 	],
 
@@ -180,6 +180,7 @@ return [
 		'Cookie'    => 'Illuminate\Support\Facades\Cookie',
 		'Crypt'     => 'Illuminate\Support\Facades\Crypt',
 		'DB'        => 'Illuminate\Support\Facades\DB',
+		'Eloquent'  => 'Illuminate\Database\Eloquent\Model',
 		'Event'     => 'Illuminate\Support\Facades\Event',
 		'File'      => 'Illuminate\Support\Facades\File',
 		'Hash'      => 'Illuminate\Support\Facades\Hash',
@@ -197,6 +198,7 @@ return [
 		'Route'     => 'Illuminate\Support\Facades\Route',
 		'Schema'    => 'Illuminate\Support\Facades\Schema',
 		'Session'   => 'Illuminate\Support\Facades\Session',
+		'Storage'   => 'Illuminate\Support\Facades\Storage',
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
@@ -204,7 +206,7 @@ return [
 		// Added by ohida
 		'Collection' => 'Illuminate\Support\Collection',
 		'Finder'	 => 'Symfony\Component\Finder\Finder',
-		'Debugbar'   => 'Barryvdh\Debugbar\Facade',
+		//'Debugbar'   => 'Barryvdh\Debugbar\Facade',
 
 		// Pochika
 		'Conf'	 	 => 'Pochika\Support\Facades\Conf',

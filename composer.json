@@ -5,7 +5,7 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "~5.0",
+		"laravel/framework": "5.0.*@dev",
 	  	"twig/twig": "~1.0",
 		"erusev/parsedown": "dev-master",
 		"embed/embed": "dev-master"
@@ -13,8 +13,7 @@
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
 		"phpspec/phpspec": "~2.1",
-        "mockery/mockery": "dev-master@dev",
-	  	"barryvdh/laravel-debugbar": "~2.0@dev"
+        "mockery/mockery": "dev-master@dev"
 	},
 	"autoload": {
 		"classmap": [
@@ -26,7 +25,8 @@
 			"Pochika\\": "engine"
 		},
 		"files": [
-			"engine/Support/helpers.php"
+			"engine/Support/helpers.php",
+            "engine/Support/debugbar_stub.php"
 		]
 	},
 	"autoload-dev": {
@@ -52,6 +52,5 @@
 	},
 	"config": {
 		"preferred-install": "dist"
-	},
-	"minimum-stability": "dev"
+	}
 }
