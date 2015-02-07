@@ -1,6 +1,7 @@
 <?php namespace Pochika\Renderer\Twig;
 
 use Conf;
+use Request;
 use Twig_SimpleFilter;
 use Twig_SimpleFunction;
 use URL;
@@ -122,12 +123,18 @@ class Extension extends \Twig_Extension {
 
     protected function getAssetsDir()
     {
-        return URL::to('assets');
+        return Url::to('assets', [], $this->secure());
+    }
+
+    protected function secure()
+    {
+        return Request::secure() || Request::server('HTTP_X_FORWARDED_PROTO') == 'https';
     }
 
     public function url($name)
     {
-        return url($name);
+        return Url::to($name, [], $this->secure());
+        //return url($name);
         //if (starts_with($name, ':')) {
         //    $name = substr($name, 1);
         //    return url($name);
