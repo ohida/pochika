@@ -68,16 +68,12 @@ class Extension extends \Twig_Extension {
 
         if (':jquery' == $name) {
             $name = '//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js';
-        }
-
-        if (false === strpos($name, '//')) {
+        } elseif (false === strpos($name, '//')) {
             if ('js' != pathinfo($name, PATHINFO_EXTENSION)) {
                 $name .= '.js';
             }
-            //$dir = $this->getAssetsDir();
-            //$name = $dir.'/js/'.$name;
-            $name = url('/assets/js/'.$name);
-            $this->appendTimeStamp($name);
+            $name = sprintf('%s/js/%s', $this->getAssetsDir(), $name);
+            //$name = $this->appendTimeStamp($name);
         }
 
         return sprintf('<script src="%s"></script>', $name);
@@ -98,20 +94,23 @@ class Extension extends \Twig_Extension {
             if ('css' != pathinfo($name, PATHINFO_EXTENSION)) {
                 $name .= '.css';
             }
-            $path = sprintf('%s/css/%s', $this->getAssetsDir(), $name);
-            $this->appendTimeStamp($path);
+            $name = sprintf('%s/css/%s', $this->getAssetsDir(), $name);
+            //$name = $this->appendTimeStamp($name);
         }
 
-        return sprintf('<link href="%s" rel="stylesheet">', $path);
+        return sprintf('<link href="%s" rel="stylesheet">', $name);
     }
 
     #todo cache?
-    protected function appendTimeStamp(&$path)
+    protected function appendTimeStamp($path)
     {
+        $path = ltrim(str_replace(URL::to('/'), '', $path), '/');
         $fullpath = public_path($path);
         if (file_exists($fullpath)) {
             $path .= '?'.filemtime($fullpath);
         }
+        
+        return $path;
     }
 
     public function asset($path)
@@ -123,8 +122,7 @@ class Extension extends \Twig_Extension {
 
     protected function getAssetsDir()
     {
-        //return app('url.root').'assets';
-        return url('assets');
+        return URL::to('assets');
     }
 
     public function url($name)
