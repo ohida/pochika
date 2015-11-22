@@ -8,11 +8,42 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="true"
-         syntaxCheck="false"
->
+         syntaxCheck="false">
     <testsuites>
         <testsuite name="Application Test Suite">
-            <directory>./app/tests/</directory>
+            <!-- directory>./tests/</directory -->
+            <!--<file>./tests/TagTest.php</file>-->
+            <!--<file>./tests/L5Test.php</file>-->
+            <!--<file>./tests/CacheTest.php</file>-->
+            <!--<file>./tests/DependencyTest.php</file>-->
+            <file>./tests/PochikaTest.php</file>
+            <file>./tests/HelpersTest.php</file>
+            <file>./tests/ConfigTest.php</file>
+            <file>./tests/RepositoryTest.php</file>
+            <file>./tests/MarkdownFinderTest.php</file>
+            <file>./tests/EntryTest.php</file>
+            <file>./tests/PostRepositoryTest.php</file>
+            <file>./tests/PostTest.php</file>
+            <file>./tests/PageRepositoryTest.php</file>
+            <file>./tests/PageTest.php</file>
+            <file>./tests/PluginRepositoryTest.php</file>
+            <file>./tests/PluginTest.php</file>
+            <file>./tests/MarkdownTest.php</file>
+            <file>./tests/MarkdownParsedownTest.php</file>
+            <file>./tests/PaginatorTest.php</file>
+            <file>./tests/LayoutTest.php</file>
+            <file>./tests/ThemeTest.php</file>
+            <file>./tests/RendererTest.php</file>
+            <file>./tests/YamlTest.php</file>
+            <file>./tests/TwigExtensionTest.php</file>
+            <file>./tests/SiteTest.php</file>
+            <file>./tests/FeedTest.php</file>
+            <file>./tests/SitemapTest.php</file>
         </testsuite>
     </testsuites>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="CACHE_DRIVER" value="array"/>
+        <env name="SESSION_DRIVER" value="array"/>
+    </php>
 </phpunit>

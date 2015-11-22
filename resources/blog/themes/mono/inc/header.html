@@ -1,0 +1,24 @@
+<header role="banner">
+
+  <h1><a href="{{ site.url }}" data-pjax>{{ site.title }}</a></h1>
+
+  {% if site.with_cat or site.cat %}
+    <figure>
+      <img src="{{ asset('images/cat.png') }}">
+    </figure>
+  {% else %}
+    <div class="subtitle">
+      {{ site.subtitle }}
+    </div>
+  {% endif %}
+
+  <nav role="navigation">
+    <ul data-pjax>
+      <li><a href="{{ url('/') }}">Blog</a></li>
+      <li><a href="{{ url('about') }}">About</a></li>
+      <li><a href="{{ url('archives') }}">Archives</a></li>
+      <li><a href="{{ url('search') }}">Search</a></li>
+    </ul>
+  </nav>
+
+</header>

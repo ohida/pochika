@@ -1,0 +1,18 @@
+{% spaceless %}
+  {% if 0 and post.external_url %}
+    <h2 class="page-header external-url"><a href="{{ post.external_url }}">
+  {% else %}
+    <h2 class="page-header"><a data-pjax href="{{ post.url }}">
+  {% endif %}
+  {{- post.title|raw }}
+  {%- if post.external_url -%}
+    <a href="{{ post.external_url }}"><span class="link-icon" data-icon="&#x25;"></span></a>
+  {% endif %}
+  {%- if not post.published -%}
+    <span class="lock-icon" data-icon="&#x24;"></span>
+  {% endif %}
+  {%- if env == 'local' -%}
+    <a href="{{ post.url }}?edit" style="font-size:10pt; font-weight:normal; margin-left:10px; color:#999;">edit</a>
+  {% endif %}
+  </a></h2>
+{% endspaceless %}

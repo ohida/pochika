@@ -1,0 +1,15 @@
+# --------------- #
+#      TEST       #
+# --------------- #
+cache: off
+
+theme: test
+paginate: 3
+
+source: tests/source
+plugins: tests/plugins
+
+url: /
+title: pochika-test
+subtitle: this is a test blog
+author: test-user

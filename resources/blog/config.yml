@@ -1,0 +1,20 @@
+# ----------------------- #
+#      Main Configs       #
+# ----------------------- #
+
+cache: off
+theme: mono
+
+url: /
+
+title: Pochika
+subtitle: a lightweight blog engine
+
+description:
+
+author: author
+author_fullname: Author Name
+
+paginate: 6
+archives_paginate: 25
+

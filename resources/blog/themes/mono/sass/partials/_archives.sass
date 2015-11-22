@@ -1,0 +1,93 @@
+.archives
+  padding-bottom: 40px
+  //padding: 55px 0 0
+
+// page header: "Archives"
+//.archives h2
+//  font-family: $header-font
+//  font-size: 1.55em
+//  font-weight: bold
+//  line-height: 1.0em
+//  margin: 0
+//  padding: 0
+
+// year block
+.archives .year-posts
+  position: relative
+  margin-top: 40px
+  // year number
+  h3
+    position: absolute
+    padding: 0
+    margin: 0
+    font-size: 20px
+    line-height: 1em
+    //top: 0
+    +respond-to(handhelds)
+      display: none
+
+.archives .posts
+  margin: 0
+  padding: 0
+  margin-top: 30px
+
+  li
+    position: relative
+    list-style: none
+    border-bottom: 1px dotted #ddd
+    padding-bottom: 10px
+    margin-bottom: 13px
+    &:last-child
+      margin-bottom: 0
+      padding-bottom: 0
+      border-bottom: none
+
+.archives article
+  margin-left: 5em
+  padding-left: 4.5em
+  margin-top: 0
+  margin-bottom: 0
+  position: relative
+  padding-bottom: 0
+  footer
+    padding: 0
+    margin: 0
+    margin-top: 5px
+    font-size: 0.5em
+    color: #666
+    a.tag
+      background: rgba(255,255,255,.7)
+      color: inherit
+      margin-right: 3px
+      &:hover
+        background: #eee
+  +respond-to(handhelds)
+    position: static
+    padding-left: 0
+    margin-left: 0
+
+  h2
+    margin: 0
+    color: $text-color
+    font-size: 1.1em
+    font-weight: normal
+    line-height: 1.0em
+    a
+      +link-colors($text-color, $link-hover-color)
+    img.emoji
+      display: inline
+      width: 18px
+      height: 18px
+
+  time
+    font-size: .9em
+    margin-top: 0px
+    position: absolute
+    //text-align: right
+    left: 0em
+    top: 0em
+    +respond-to(handhelds)
+      position: static
+      display: block
+      margin-top: 8px
+

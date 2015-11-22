@@ -1,0 +1,29 @@
+body > footer
+  font-size: 0.9em
+  text-align: center
+  background: #333
+  //background: $blue-black
+  padding: 36px
+  color: #ddd
+  a
+    +link-colors(#ddd, orange)
+
+  ul.copyright
+    list-style: none
+    margin: 0
+    li
+      margin-bottom: 10px
+    li:last-child
+      margin-bottom: 0
+
+  ul.footer-icons
+    margin: 20px 0 0 0
+    li
+      display: inline
+      font-size: 18px
+      margin-right: 17px
+      a
+        +link-colors(#ccc, orange)
+      margin-bottom: 5px
+    li:last-child
+      margin: 0
