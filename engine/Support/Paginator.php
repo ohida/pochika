@@ -1,12 +1,14 @@
-<?php namespace Pochika\Support;
+<?php
+
+namespace Pochika\Support;
 
 use Conf;
 use Pochika\Repository\EntryCollection as Collection;
 use Route;
 use URL;
 
-class Paginator {
-
+class Paginator
+{
     const DEFAULT_COUNT = 10;
 
     public static function get($posts, $page = 1, $per_page = null, $route = null, $convert = false)
@@ -77,5 +79,4 @@ class Paginator {
             return $post->payload($convert);
         });
     }
-
 }

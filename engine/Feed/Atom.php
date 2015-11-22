@@ -1,11 +1,13 @@
-<?php namespace Pochika\Feed;
+<?php
+
+namespace Pochika\Feed;
 
 use Conf;
 use Post;
 use View;
 
-class Atom extends Feed {
-
+class Atom extends Feed
+{
     /**
      * Generate atom feed
      *
@@ -82,7 +84,6 @@ class Atom extends Feed {
 
     protected function escape($value)
     {
-        return htmlspecialchars($value, ENT_QUOTES|ENT_XML1, 'UTF-8');
+        return htmlspecialchars($value, ENT_QUOTES | ENT_XML1, 'UTF-8');
     }
-
 }

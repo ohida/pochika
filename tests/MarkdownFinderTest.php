@@ -2,11 +2,11 @@
 
 use Pochika\Repository\MarkdownFinder;
 
-class MarkdownFinderTest extends TestCase {
-    
+class MarkdownFinderTest extends TestCase
+{
     use MarkdownFinder;
 
-    function testFind()
+    public function testFind()
     {
         $this->finder();
     }
@@ -14,14 +14,13 @@ class MarkdownFinderTest extends TestCase {
     /**
      * @expectedException InvalidArgumentException
      */
-    function testFindNonExistDir()
+    public function testFindNonExistDir()
     {
         $this->finder('/tmp/non-exist-dir');
     }
 
-    function itemClass()
+    public function itemClass()
     {
         return 'Post';
     }
-
 }

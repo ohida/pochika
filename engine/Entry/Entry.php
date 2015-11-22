@@ -1,4 +1,6 @@
-<?php namespace Pochika\Entry;
+<?php
+
+namespace Pochika\Entry;
 
 use App\Events\AfterConvert;
 use App\Events\BeforeConvert;
@@ -7,8 +9,8 @@ use Log;
 use Markdown;
 use Yaml;
 
-abstract class Entry implements \ArrayAccess {
-
+abstract class Entry implements \ArrayAccess
+{
     protected $meta;
 
     public $key;
@@ -76,7 +78,7 @@ abstract class Entry implements \ArrayAccess {
     protected function readFrontmatter($buff)
     {
         list($meta, $this->content) = $this->splitFrontmatter($buff);
-        
+
         $this->meta = [];
         if ($meta) {
             foreach (Yaml::parse($meta) as $key => $val) {
@@ -176,7 +178,7 @@ abstract class Entry implements \ArrayAccess {
         } elseif (isset($this->meta[$key])) {
             return $this->meta[$key];
         }
-        
+
         return null;
     }
 
@@ -202,5 +204,4 @@ abstract class Entry implements \ArrayAccess {
     {
         unset($this->meta[$key]);
     }
-
 }

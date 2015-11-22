@@ -1,9 +1,11 @@
-<?php namespace Pochika\Support\Facades;
+<?php
+
+namespace Pochika\Support\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class PluginRepository extends Facade {
-
+class PluginRepository extends Facade
+{
     /**
      * Get the registered name of the component.
      *
@@ -13,5 +15,4 @@ class PluginRepository extends Facade {
     {
         return 'plugin_repo';
     }
-
 }

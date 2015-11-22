@@ -1,7 +1,7 @@
 <?php
 
-class LayoutTest extends TestCase {
-
+class LayoutTest extends TestCase
+{
     public function testFind()
     {
         $layout = Layout::find('index');
@@ -46,5 +46,4 @@ class LayoutTest extends TestCase {
     //    $html = Layout::find('errors/404')->render();
     //    Layout::find('errors/404');
     //}
-
 }

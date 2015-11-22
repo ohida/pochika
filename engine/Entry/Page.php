@@ -1,10 +1,12 @@
-<?php namespace Pochika\Entry;
+<?php
+
+namespace Pochika\Entry;
 
 use Layout;
 use PageRepository;
 
-class Page extends Entry {
-    
+class Page extends Entry
+{
     public $url;
     public $title;
 
@@ -22,7 +24,7 @@ class Page extends Entry {
         //}
 
         $this->url = $this->url();
-        
+
         $this->parseTitle();
     }
 
@@ -81,7 +83,6 @@ class Page extends Entry {
     /**
      * url
      *
-     * @access protected
      * @return string
      * @todo customize permalink url
      */
@@ -110,5 +111,4 @@ class Page extends Entry {
     {
         return app('page_repo');
     }
-
 }

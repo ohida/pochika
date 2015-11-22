@@ -1,12 +1,18 @@
 <?php
 
-class ConfigTest extends TestCase {
-
+class ConfigTest extends TestCase
+{
     public function testApp()
     {
         $path1 = Conf::app('config_path');
         $path2 = Conf::app('pochika.config_path');
         $this->assertEquals($path1, $path2);
+    }
+
+    public function testBool()
+    {
+        $res = Conf::get('cache');
+        $this->assertFalse($res);
     }
 
     public function testConfigPath()
@@ -154,5 +160,4 @@ class ConfigTest extends TestCase {
         Conf::set('num', 1);
         $this->assertFalse(is_bool(Conf::get('num')));
     }
-
 }

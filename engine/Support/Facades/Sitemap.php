@@ -1,9 +1,11 @@
-<?php namespace Pochika\Support\Facades;
+<?php
+
+namespace Pochika\Support\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Sitemap extends Facade {
-
+class Sitemap extends Facade
+{
     /**
      * Get the registered name of the component.
      *
@@ -13,5 +15,4 @@ class Sitemap extends Facade {
     {
         return 'sitemap';
     }
-
 }

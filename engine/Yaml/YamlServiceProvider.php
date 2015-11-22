@@ -1,12 +1,14 @@
-<?php namespace Pochika\Yaml;
+<?php
+
+namespace Pochika\Yaml;
 
 use Illuminate\Support\ServiceProvider;
 
-class YamlServiceProvider extends ServiceProvider {
-
+class YamlServiceProvider extends ServiceProvider
+{
     public function register()
     {
-        $this->app->bindShared('yaml', function() {
+        $this->app->bindShared('yaml', function () {
             return $this->factory();
         });
     }
@@ -19,5 +21,4 @@ class YamlServiceProvider extends ServiceProvider {
             return new SymfonyYaml;
         }
     }
-
 }

@@ -1,4 +1,6 @@
-<?php namespace Pochika\Renderer\Twig;
+<?php
+
+namespace Pochika\Renderer\Twig;
 
 use Conf;
 use Request;
@@ -6,8 +8,8 @@ use Twig_SimpleFilter;
 use Twig_SimpleFunction;
 use URL;
 
-class Extension extends \Twig_Extension {
-
+class Extension extends \Twig_Extension
+{
     public function getName()
     {
         return 'pochika';
@@ -110,7 +112,7 @@ class Extension extends \Twig_Extension {
         if (file_exists($fullpath)) {
             $path .= '?'.filemtime($fullpath);
         }
-        
+
         return $path;
     }
 
@@ -180,5 +182,4 @@ class Extension extends \Twig_Extension {
 //        $write = new AssetWriter($path);
 //        $write->writeAsset($js);
 //    }
-
 }

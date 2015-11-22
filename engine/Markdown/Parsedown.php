@@ -1,7 +1,9 @@
-<?php namespace Pochika\Markdown;
+<?php
 
-class Parsedown extends MarkdownAbstract {
+namespace Pochika\Markdown;
 
+class Parsedown extends MarkdownAbstract
+{
     protected $parser;
 
     public function __construct()
@@ -13,5 +15,4 @@ class Parsedown extends MarkdownAbstract {
     {
         return $this->parser->text($md);
     }
-
 }

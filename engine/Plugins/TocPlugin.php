@@ -1,11 +1,13 @@
-<?php namespace Pochika\Plugins;
+<?php
+
+namespace Pochika\Plugins;
 
 use App\Events\AfterConvert;
 use DOMDocument;
 use DOMXPath;
 
-class TocPlugin extends Plugin {
-    
+class TocPlugin extends Plugin
+{
     protected $content;
 
     public function register()
@@ -32,7 +34,7 @@ class TocPlugin extends Plugin {
             $html = '<div class="toc">'.$this->makeList($headers).'</div>';
             $this->content = str_replace('{:TOC}', $html, $this->content);
         }
-        
+
         if ($escaped) {
             $this->unescape($this->content);
         }
@@ -41,11 +43,11 @@ class TocPlugin extends Plugin {
     protected function escape(&$text)
     {
         if (false !== strpos($text, '\{:TOC}')) {
-            $text = str_replace('\{:TOC}', "<!--[toc]-->", $text);
+            $text = str_replace('\{:TOC}', '<!--[toc]-->', $text);
             return true;
         }
     }
-    
+
     protected function unescape(&$text)
     {
         $text = str_replace('<!--[toc]-->', '{:TOC}', $text);
@@ -75,7 +77,7 @@ class TocPlugin extends Plugin {
                 $headers[] = ['name' => $h2, 'children' => []];
             } elseif ('h3' == $item->nodeName) {
                 $h3 = utf8_decode($item->nodeValue);
-                $headers[count($headers)-1]['children'][] = ['name' => $h3];
+                $headers[count($headers) - 1]['children'][] = ['name' => $h3];
             }
         }
 
@@ -104,7 +106,7 @@ class TocPlugin extends Plugin {
         if (!is_array($items)) {
             return;
         }
-        
+
         $html = '<ul>';
         foreach ($items as $i => $item) {
             $num = $this->makeTocNum($i, $parent_num);
@@ -117,7 +119,7 @@ class TocPlugin extends Plugin {
             $html .= '</li>';
         }
         $html .= '</ul>';
-        
+
         return $html;
     }
 
@@ -134,5 +136,4 @@ class TocPlugin extends Plugin {
         $new = sprintf('<h%d><span id="toc-%s">%s</span></h%d>', $lv, $num, e($val), $lv);
         $this->content = str_replace($old, $new, $this->content);
     }
-
 }

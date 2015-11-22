@@ -46,7 +46,7 @@ class PageTest extends TestCase
     {
         $page = Page::find('plain');
         $html = $page->render();
-        
+
         $this->assertRegExp('|^<h2>plain</h2>|', $html);
     }
 
@@ -58,16 +58,15 @@ class PageTest extends TestCase
         Page::find('not-exist');
     }
 
-    function testSearch()
+    public function testSearch()
     {
         $res = Page::search('about');
         $this->assertEquals(1, $res->count());
     }
-    
-    function testSearchNotFound()
+
+    public function testSearchNotFound()
     {
         $res = Page::search('invalida-query');
         $this->assertEquals(0, $res->count());
     }
-
 }

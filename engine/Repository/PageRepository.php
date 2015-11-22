@@ -1,18 +1,19 @@
-<?php namespace Pochika\Repository;
+<?php
+
+namespace Pochika\Repository;
 
 use Finder;
 use Log;
 use Page;
 
-class PageRepository extends Repository {
-
+class PageRepository extends Repository
+{
     use MarkdownFinder;
     use ContentCachable;
 
     /**
      * collect items
      *
-     * @access protected
      * @return array
      */
     protected function collect()
@@ -29,7 +30,7 @@ class PageRepository extends Repository {
         }
 
         Log::debug(sprintf('%d pages loaded', count($items)));
-        
+
         return new EntryCollection($items);
     }
 
@@ -41,7 +42,7 @@ class PageRepository extends Repository {
      */
     public function search($query)
     {
-        return $this->collection->filter(function($page) use ($query) {
+        return $this->collection->filter(function ($page) use ($query) {
             return (
                 false !== stripos($page->content, $query)
 //                    ||
@@ -49,5 +50,4 @@ class PageRepository extends Repository {
             );
         });
     }
-
 }

@@ -1,10 +1,12 @@
-<?php namespace Pochika\Config;
+<?php
+
+namespace Pochika\Config;
 
 use Illuminate\Support\Facades\Config as LaravelConfig;
 use Yaml;
 
-class Config {
-
+class Config
+{
     protected $path;
     protected $data = [];
 
@@ -60,7 +62,12 @@ class Config {
 
     public function all()
     {
-        return $this->data;
+        $data = [];
+        foreach ($this->data as $key => $val) {
+            $data[$key] = $this->get($key);
+        }
+
+        return $data;
     }
 
     public function set($key, $value = null)

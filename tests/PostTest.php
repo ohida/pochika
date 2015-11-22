@@ -1,7 +1,7 @@
 <?php
 
-class PostTest extends TestCase {
-
+class PostTest extends TestCase
+{
     const POST_COUNT = 5;
     const TAG_COUNT = 4;
     const TAG_FIND_COUNT = 2;
@@ -41,7 +41,7 @@ class PostTest extends TestCase {
         $this->assertInstanceOf('Post', $post);
         $this->assertEquals('test-0318', $post->title);
     }
-            
+
     public function testFindByIndex2()
     {
         $post = Post::find(1);
@@ -52,10 +52,10 @@ class PostTest extends TestCase {
 
     public function testFindByIndexLast()
     {
-        $post = Post::find(self::POST_COUNT-1);
+        $post = Post::find(self::POST_COUNT - 1);
         $this->assertTrue(is_object($post));
         $this->assertInstanceOf('Post', $post);
-        $this->assertEquals(self::POST_COUNT-1, $post->index());
+        $this->assertEquals(self::POST_COUNT - 1, $post->index());
     }
 
     /**
@@ -208,7 +208,7 @@ class PostTest extends TestCase {
         $post = Post::find(2)->next();
         $this->assertEquals(3, $post->index());
 
-        $post = Post::find(self::POST_COUNT-1)->next();
+        $post = Post::find(self::POST_COUNT - 1)->next();
         $this->assertNull($post);
     }
 
@@ -267,5 +267,4 @@ class PostTest extends TestCase {
     //    $post['slug'] = 'hello';
     //    $this->assertEquals('hello', $post['slug']);
     //}
-
 }

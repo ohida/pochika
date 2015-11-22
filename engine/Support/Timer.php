@@ -1,10 +1,12 @@
-<?php namespace Pochika\Support;
+<?php
+
+namespace Pochika\Support;
 
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 
-class Timer {
-
+class Timer
+{
     protected $logger = null;
     protected $path = null;
     protected $enabled = false;
@@ -29,7 +31,7 @@ class Timer {
     {
         $logger = new Logger('timer');
         $stream = new StreamHandler($path, Logger::DEBUG);
-        $formatter = new \Monolog\Formatter\LineFormatter("%datetime% %message%".PHP_EOL, "H:i:s");
+        $formatter = new \Monolog\Formatter\LineFormatter('%datetime% %message%'.PHP_EOL, 'H:i:s');
         $stream->setFormatter($formatter);
         $logger->pushHandler($stream);
 
@@ -38,7 +40,9 @@ class Timer {
 
     public function start()
     {
-        if (!$this->enabled) return false;
+        if (!$this->enabled) {
+            return false;
+        }
 
         $this->write('Boot', microtime(true) - LARAVEL_START);
         $this->start_time = microtime(true);
@@ -46,7 +50,9 @@ class Timer {
 
     public function stop()
     {
-        if (!$this->enabled) return false;
+        if (!$this->enabled) {
+            return false;
+        }
 
         $this->write('Total', microtime(true) - $this->start_time);
 
@@ -57,7 +63,9 @@ class Timer {
 
     public function measure($name, callable $f, $count = 1)
     {
-        if (!$this->enabled) return false;
+        if (!$this->enabled) {
+            return false;
+        }
 
         if (!is_int($count)) {
             throw new InvalidArgumentException('Count must be integer');
@@ -75,14 +83,18 @@ class Timer {
 
     public function startMeasure($name)
     {
-        if (!$this->enabled) return false;
+        if (!$this->enabled) {
+            return false;
+        }
 
         $this->timers[$name] = microtime(true);
     }
 
     public function stopMeasure($name)
     {
-        if (!$this->enabled) return false;
+        if (!$this->enabled) {
+            return false;
+        }
 
         if (isset($this->timers[$name])) {
             $time = microtime(true) - $this->timers[$name];
@@ -93,11 +105,12 @@ class Timer {
 
     public function write($name, $time)
     {
-        if (!$this->enabled) return false;
+        if (!$this->enabled) {
+            return false;
+        }
 
-        $time_str = sprintf("%7s", sprintf("%.2f", $time*1000));
+        $time_str = sprintf('%7s', sprintf('%.2f', $time * 1000));
 
-        $this->logger->debug(sprintf("%s %s", $time_str, $name));
+        $this->logger->debug(sprintf('%s %s', $time_str, $name));
     }
-
 }

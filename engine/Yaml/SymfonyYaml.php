@@ -1,9 +1,11 @@
-<?php namespace Pochika\Yaml;
+<?php
+
+namespace Pochika\Yaml;
 
 use Symfony\Component\Yaml\Yaml;
 
-class SymfonyYaml implements YamlInterface {
-
+class SymfonyYaml implements YamlInterface
+{
     public static function parse($yaml)
     {
         return Yaml::parse($yaml);
@@ -13,5 +15,4 @@ class SymfonyYaml implements YamlInterface {
 //    {
 //        return Yaml::dump($data);
 //    }
-
 }

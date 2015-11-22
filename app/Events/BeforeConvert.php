@@ -1,24 +1,23 @@
-<?php namespace App\Events;
+<?php
 
-use App\Events\Event;
-use Pochika\Entry\Entry;
+namespace App\Events;
 
 use Illuminate\Queue\SerializesModels;
+use Pochika\Entry\Entry;
 
-class BeforeConvert extends Event {
+class BeforeConvert extends Event
+{
+    use SerializesModels;
 
-	use SerializesModels;
-	
-	public $entry;
+    public $entry;
 
-	/**
-	 * Create a new event instance.
-	 *
-	 * @return void
-	 */
-	public function __construct(Entry $entry)
-	{
-		$this->entry = $entry;
-	}
-
+    /**
+     * Create a new event instance.
+     *
+     * @return void
+     */
+    public function __construct(Entry $entry)
+    {
+        $this->entry = $entry;
+    }
 }

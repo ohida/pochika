@@ -1,7 +1,9 @@
-<?php namespace Pochika\Yaml;
+<?php
 
-class PeclYaml implements YamlInterface {
+namespace Pochika\Yaml;
 
+class PeclYaml implements YamlInterface
+{
     public static function parse($yaml)
     {
         return yaml_parse($yaml);
@@ -11,5 +13,4 @@ class PeclYaml implements YamlInterface {
 //    {
 //        return yaml_emit($data);
 //    }
-
 }

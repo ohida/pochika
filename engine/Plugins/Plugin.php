@@ -1,11 +1,13 @@
-<?php namespace Pochika\Plugins;
+<?php
+
+namespace Pochika\Plugins;
 
 use Conf;
 use Event;
 use PluginRepository;
 
-abstract class Plugin {
-
+abstract class Plugin
+{
     public $key;
 
     protected $config = [];
@@ -30,7 +32,7 @@ abstract class Plugin {
             throw new \InvalidEntryException;
         }
     }
-    
+
     protected function key()
     {
         $class = static::class;

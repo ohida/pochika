@@ -1,9 +1,11 @@
-<?php namespace Pochika\Repository;
+<?php
+
+namespace Pochika\Repository;
 
 use Log;
 
-trait ContentCachable {
-
+trait ContentCachable
+{
     protected $converted_keys = [];
 
     public function storeConvertedKey($entry)
@@ -22,7 +24,7 @@ trait ContentCachable {
         $cache_id = $this->cacheID();
 
         Log::debug('converted '.$cache_id.' detected ('.count($this->converted_keys).')');
-        
+
         $class = $this->itemClass();
         $items = $this->remember();
 
@@ -34,5 +36,4 @@ trait ContentCachable {
 
         Log::debug('cache updated: '.$cache_id);
     }
-
 }

@@ -1,7 +1,7 @@
 <?php
 
-class ThemeTest extends TestCase {
-
+class ThemeTest extends TestCase
+{
     public function testName()
     {
         $this->assertEquals('test', Theme::name());
@@ -27,5 +27,4 @@ class ThemeTest extends TestCase {
     //    $this->assertTrue(Theme::createAssetsLink());
     //    $this->assertTrue(Theme::hasAssetsLink());
     //}
-
 }

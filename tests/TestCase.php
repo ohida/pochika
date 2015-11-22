@@ -1,26 +1,27 @@
 <?php
 
-class TestCase extends Illuminate\Foundation\Testing\TestCase {
+class TestCase extends Illuminate\Foundation\Testing\TestCase
+{
+    protected $baseUrl = 'http://localhost';
+    
+    public function setUp()
+    {
+        //$this->app = $this->createApplication();
+        $this->refreshApplication();
+        Pochika::init();
+    }
 
-	public function setUp()
-	{
-		//$this->app = $this->createApplication();
-		$this->refreshApplication();
-		Pochika::init();
-	}
+    /**
+     * Creates the application.
+     *
+     * @return \Illuminate\Foundation\Application
+     */
+    public function createApplication()
+    {
+        $app = require __DIR__.'/../bootstrap/app.php';
 
-	/**
-	 * Creates the application.
-	 *
-	 * @return \Illuminate\Foundation\Application
-	 */
-	public function createApplication()
-	{
-		$app = require __DIR__.'/../bootstrap/app.php';
+        $app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
 
-		$app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
-
-		return $app;
-	}
-
+        return $app;
+    }
 }

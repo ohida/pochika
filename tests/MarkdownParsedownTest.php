@@ -2,8 +2,8 @@
 
 require_once 'MarkdownTestCase.php';
 
-class MarkdownParsedownTest extends MarkdownTestCase {
-
+class MarkdownParsedownTest extends MarkdownTestCase
+{
     public function setUp()
     {
         parent::setUp();
@@ -20,5 +20,4 @@ class MarkdownParsedownTest extends MarkdownTestCase {
     {
         parent::testAll();
     }
-
 }

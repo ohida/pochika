@@ -1,7 +1,7 @@
 <?php
 
-class MarkdownTestCase extends TestCase {
-
+class MarkdownTestCase extends TestCase
+{
     public function testAll()
     {
         $this->testConvert();
@@ -44,7 +44,7 @@ EOF;
 
     public function testConvertAutoLink()
     {
-        $md = "http://www.github.com/";
+        $md = 'http://www.github.com/';
         $html = $this->markdown->run($md);
         $this->assertRegExp('/<a href=/', $html);
     }
@@ -111,5 +111,4 @@ EOF;
         $res = $this->markdown->run('_日本_');
         $this->assertRegExp('|<em>日本</em>|', $res);
     }
-
 }

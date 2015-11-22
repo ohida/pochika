@@ -1,4 +1,6 @@
-<?php namespace Pochika\Renderer;
+<?php
+
+namespace Pochika\Renderer;
 
 use App;
 use Conf;
@@ -10,8 +12,8 @@ use Twig_Environment;
 use Twig_Extension_Debug;
 use Twig_Loader_Filesystem;
 
-class TwigRenderer {
-
+class TwigRenderer
+{
     protected $twig;
 
     public function __construct()
@@ -64,17 +66,17 @@ class TwigRenderer {
     }
 
     /**
-     * render 
-     * 
-     * @param string $template 
-     * @param array $payload 
+     * render
+     *
+     * @param string $template
+     * @param array $payload
      * @return string
      */
     public function render($template, $payload = [])
     {
         $event_params = (object) [
             'template' => &$template,
-            'payload' => &$payload
+            'payload' => &$payload,
         ];
 
         //Event::fire(new \App\Events\BeforeRender, $event_params);
@@ -110,5 +112,4 @@ class TwigRenderer {
     {
         return $this->twig->getGlobals();
     }
-
 }

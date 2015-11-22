@@ -1,6 +1,9 @@
-<?php namespace Pochika\Exception;
+<?php
+
+namespace Pochika\Exception;
 
 use RuntimeException;
 
-class InvalidEntryException extends RuntimeException {
+class InvalidEntryException extends RuntimeException
+{
 }

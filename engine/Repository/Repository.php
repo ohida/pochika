@@ -1,10 +1,12 @@
-<?php namespace Pochika\Repository;
+<?php
+
+namespace Pochika\Repository;
 
 use Cache;
 use Conf;
 
-abstract class Repository {
-
+abstract class Repository
+{
     protected $collection;
 
     /**
@@ -248,7 +250,7 @@ abstract class Repository {
         if (false !== $index = array_search($key, $this->keys())) {
             return $index;
         }
-        
+
         //throw new \NotFoundException(sprintf('%s not found: index(%d)', $this->itemClass(), $index));
         throw new \NotFoundException(sprintf('index not found: %s', $key));
     }
@@ -290,7 +292,6 @@ abstract class Repository {
      * Clear cache
      *
      * @param mixed $name
-     * @access protected
      * @return void
      */
     public function clearCache()
@@ -339,5 +340,4 @@ abstract class Repository {
     //        return $value;
     //    }
     //}
-
 }

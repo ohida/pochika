@@ -2,8 +2,8 @@
 
 use Pochika\Support\Paginator;
 
-class TwigExtensionTest extends TestCase {
-
+class TwigExtensionTest extends TestCase
+{
     public function setUp()
     {
         parent::setUp();
@@ -100,5 +100,4 @@ class TwigExtensionTest extends TestCase {
         $res = $this->e->asset('favicon.ico');
         $this->assertRegExp('|http://.*/assets/favicon.ico|', $res);
     }
-
 }

@@ -1,9 +1,11 @@
-<?php namespace Pochika\Support\Facades;
+<?php
+
+namespace Pochika\Support\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Yaml extends Facade {
-
+class Yaml extends Facade
+{
     /**
      * Get the registered name of the component.
      *
@@ -13,5 +15,4 @@ class Yaml extends Facade {
     {
         return 'yaml';
     }
-
 }

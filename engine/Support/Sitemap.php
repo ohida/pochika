@@ -1,10 +1,12 @@
-<?php namespace Pochika\Support;
+<?php
+
+namespace Pochika\Support;
 
 use Pochika\Entry\Page;
 use Pochika\Entry\Post;
 
-class Sitemap {
-
+class Sitemap
+{
     protected $items = [];
 
     public function generate()
@@ -35,7 +37,7 @@ class Sitemap {
             }
             return;
         }
-        
+
         if (!isset($item['url'])) {
             throw new \LogicException('Sitemap item must have `url` field');
         }
@@ -53,5 +55,4 @@ class Sitemap {
     {
         return view('sitemap')->with('items', $this->items)->render();
     }
-
 }

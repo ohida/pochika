@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers;
+<?php
+
+namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Cache;
@@ -12,8 +14,8 @@ use Paginator;
 use Post;
 use Sitemap;
 
-class SiteController extends Controller {
-
+class SiteController extends Controller
+{
     /**
      * Index
      *
@@ -246,5 +248,4 @@ class SiteController extends Controller {
             return new Response($html, 404);
         }
     }
-
 }

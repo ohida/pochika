@@ -1,7 +1,7 @@
 <?php
 
-class HelpersTest extends TestCase {
-
+class HelpersTest extends TestCase
+{
     //public function testD()
     //{
     //    dump(true);
@@ -34,16 +34,16 @@ class HelpersTest extends TestCase {
 
     public function testBench()
     {
-        $res = bench(function(){
+        $res = bench(function () {
             file_exists(__FILE__);
         }, 10);
         $this->assertTrue(is_float($res));
 
         $res = bench([
-            function(){
+            function () {
                 file_exists(__FILE__);
             },
-            function() {
+            function () {
                 file_exists(__FILE__);
             },
         ], 100);
@@ -55,7 +55,7 @@ class HelpersTest extends TestCase {
      */
     public function testBenchArg2Exception()
     {
-        bench(function(){}, 'a');
+        bench(function () {}, 'a');
     }
 
     #todo
@@ -99,7 +99,6 @@ class HelpersTest extends TestCase {
         $this->assertFalse(bool('none'));
         $this->assertFalse(bool('null'));
         $this->assertFalse(bool(false));
-
     }
 
     /**

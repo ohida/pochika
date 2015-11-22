@@ -1,7 +1,7 @@
 <?php
 
-class PageRepositoryTest extends TestCase {
-
+class PageRepositoryTest extends TestCase
+{
     const PAGE_COUNT = 4;
 
     public function testAll()

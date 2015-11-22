@@ -1,7 +1,7 @@
 <?php
 
-class PluginRepositoryTest extends TestCase {
-
+class PluginRepositoryTest extends TestCase
+{
     const PLUGIN_COUNT = 3;
 
     //public function setUp()
@@ -15,7 +15,7 @@ class PluginRepositoryTest extends TestCase {
         $plugins = PluginRepository::all();
         $this->assertCount(self::PLUGIN_COUNT, $plugins->all());
     }
-    
+
     public function testLoadOnCache()
     {
         Conf::set('cache', true);
@@ -40,5 +40,4 @@ class PluginRepositoryTest extends TestCase {
     {
         PluginRepository::find(99);
     }
-
 }

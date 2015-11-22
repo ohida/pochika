@@ -2,8 +2,8 @@
 
 use Symfony\Component\Finder\Finder;
 
-class RendererTest extends TestCase {
-
+class RendererTest extends TestCase
+{
     public function testRender()
     {
         $html = Renderer::render('test.html', ['name' => 'php']);
@@ -52,5 +52,4 @@ class RendererTest extends TestCase {
         $this->assertTrue(isset($globals['test-key']));
         $this->assertEquals('test-value', $globals['test-key']);
     }
-
 }

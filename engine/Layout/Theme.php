@@ -1,9 +1,11 @@
-<?php namespace Pochika\Layout;
+<?php
+
+namespace Pochika\Layout;
 
 use Conf;
 
-class Theme {
-
+class Theme
+{
     /**
      * Get current theme's name
      *
@@ -37,8 +39,8 @@ class Theme {
     /**
      * Check existence of theme dir
      *
-     * @return bool
      * @throws \NotFoundException
+     * @return bool
      */
     public static function exists()
     {
@@ -69,7 +71,7 @@ class Theme {
         }
 
         if ($create_link) {
-           return self::createAssetsLink();
+            return self::createAssetsLink();
         }
 
         return false;
@@ -100,5 +102,4 @@ class Theme {
 
         return true;
     }
-
 }

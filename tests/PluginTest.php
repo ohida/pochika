@@ -2,23 +2,23 @@
 
 use Mockery as m;
 
-class PluginTest extends TestCase {
-    
+class PluginTest extends TestCase
+{
     const PLUGIN_COUNT = 3;
 
-    function testAll()
+    public function testAll()
     {
         $plugins = Plugin::all();
         $this->assertEquals('Illuminate\Support\Collection', get_class($plugins));
     }
-    
-    function testFind()
+
+    public function testFind()
     {
         $emoji = Plugin::find('emoji');
         $this->assertEquals('Pochika\Plugins\EmojiPlugin', get_class($emoji));
     }
 
-    function testCount()
+    public function testCount()
     {
         $this->assertEquals(self::PLUGIN_COUNT, Plugin::count());
     }
@@ -44,7 +44,7 @@ class PluginTest extends TestCase {
         $this->assertRegExp('/<img .*?>/', $post->title);
         $this->assertRegExp('/<img .*?>/', $post->content);
     }
-    
+
     public function testEmojiEscape()
     {
         $event = m::mock('App\Events\AfterConvert');
@@ -65,9 +65,9 @@ class PluginTest extends TestCase {
     {
         $event = m::mock('App\Events\AfterConvert');
         $post = m::mock('Pochika\Entry\Post');
-        
+
         $event->entry = $post;
-        
+
         $plugin = Plugin::find('toc');
 
         $post->content = <<<EOF
@@ -84,16 +84,16 @@ This is pochika.
 <h2>three</h2>
 php
 EOF;
-        
+
         $plugin->handle($event);
         $this->assertNotFalse(strpos($post->content, '<div class="toc">'));
-        
+
         // should not work if content has no {:TOC} tag
         $post->content = 'hello';
         $plugin->handle($event);
         $this->assertFalse(strpos($post->content, '<div class="toc">'));
     }
-    
+
     public function testTocEscape()
     {
         $event = m::mock('App\Events\AfterConvert');
@@ -113,7 +113,7 @@ EOF;
     {
         m::close();
     }
-    
+
 //    // gfm - fenced code block
 //    public function testFencedCodeBlock()
 //    {
@@ -156,5 +156,4 @@ EOF;
     //
     //    $this->assertRegExp('|^\[http:.*\]\(http:.*\)$|', $entry->md);
     //}
-
 }

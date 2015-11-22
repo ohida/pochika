@@ -1,15 +1,20 @@
 <?php
 
 if (!function_exists('measure')) {
-    function measure($name, callable $closure) {
+    function measure($name, callable $closure)
+    {
         $closure();
     }
 }
 
 if (!function_exists('start_measure')) {
-    function start_measure($name) {}
+    function start_measure($name)
+    {
+    }
 }
 
 if (!function_exists('stop_measure')) {
-    function stop_measure($name) {}
+    function stop_measure($name)
+    {
+    }
 }

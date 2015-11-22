@@ -1,9 +1,8 @@
 <?php
 
-use Mockery as m;
 
-class RepositoryTest extends TestCase {
-
+class RepositoryTest extends TestCase
+{
     protected $stub;
     protected $items = [
         'a' => ['a-1', 'a-2', 'a-3'],
@@ -11,10 +10,10 @@ class RepositoryTest extends TestCase {
         'c' => ['c-1', 'c-2', 'c-3'],
     ];
 
-    function setUp()
+    public function setUp()
     {
         parent::setUp();
-        
+
         $stub = $this->getMockForAbstractClass('Pochika\Repository\Repository');
         $stub->expects($this->any())
              ->method('collect')
@@ -22,13 +21,13 @@ class RepositoryTest extends TestCase {
         $this->stub = $stub;
     }
 
-    function testLoad()
+    public function testLoad()
     {
         $this->stub->load();
         $this->assertEquals($this->items, $this->stub->items());
     }
 
-    function testUnload()
+    public function testUnload()
     {
         $this->stub->load();
         $this->stub->unload();
@@ -36,21 +35,21 @@ class RepositoryTest extends TestCase {
         $this->assertNull($this->stub->all());
     }
 
-    function testAll()
+    public function testAll()
     {
         $this->stub->load();
         $res = $this->stub->all();
-        
+
         $this->assertEquals('Illuminate\Support\Collection', get_class($res));
     }
 
-    function testFind()
+    public function testFind()
     {
         $this->stub->load();
-        
+
         $res = $this->stub->find('a');
         $this->assertEquals($this->items['a'], $res);
-        
+
         $res = $this->stub->find(0);
         $this->assertEquals($this->items['a'], $res);
     }
@@ -58,40 +57,40 @@ class RepositoryTest extends TestCase {
     /**
      * @expectedException LogicException
      */
-    function testFindInvalidKey()
+    public function testFindInvalidKey()
     {
         $this->stub->load();
         $this->stub->find(-1);
     }
-    
+
     /**
      * @expectedException LogicException
      */
-    function testFindInvalidKey2()
+    public function testFindInvalidKey2()
     {
         $this->stub->load();
         $this->stub->find(new stdClass);
     }
-    
+
     /**
      * @expectedException LogicException
      */
-    function testFindInvalidKey3()
+    public function testFindInvalidKey3()
     {
         $this->stub->load();
         $this->stub->find('invalid-key');
     }
 
-    function testIndex()
+    public function testIndex()
     {
         $this->stub->load();
-        
+
         $res = $this->stub->index('a');
         $this->assertEquals(0, $res);
-        
+
         $res = $this->stub->index('b');
         $this->assertEquals(1, $res);
-        
+
         $res = $this->stub->index('c');
         $this->assertEquals(2, $res);
     }
@@ -99,18 +98,17 @@ class RepositoryTest extends TestCase {
     /**
      * @expectedException NotFoundException
      */
-    function testIndexInvalid()
+    public function testIndexInvalid()
     {
         $this->stub->load();
         $res = $this->stub->index('invalid-key');
     }
 
-    function testKeys()
+    public function testKeys()
     {
         $this->stub->load();
         $res = $this->stub->keys();
-        
+
         $this->assertEquals(array_keys($this->items), $res);
     }
-    
 }

@@ -3,8 +3,8 @@
 use Pochika\Yaml\PeclYaml;
 use Pochika\Yaml\SymfonyYaml;
 
-class YamlTest extends TestCase {
-
+class YamlTest extends TestCase
+{
     public function setUp()
     {
     }
@@ -52,5 +52,4 @@ EOF;
         $this->assertTrue(is_bool($res['str-on']));
         $this->assertEquals(1, $res['num']);
     }
-
 }

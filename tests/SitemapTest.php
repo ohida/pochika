@@ -2,9 +2,9 @@
 
 //use Pochika\Support\Sitemap;
 
-class SitemapTest extends TestCase {
-
-    function testGenerate()
+class SitemapTest extends TestCase
+{
+    public function testGenerate()
     {
         $xml = Sitemap::generate();
         $this->assertRegExp('/^<\?xml.*?\?>/', $xml);
@@ -13,11 +13,10 @@ class SitemapTest extends TestCase {
     /**
      * @expectedException LogicException
      */
-    function testInvalidAppend()
+    public function testInvalidAppend()
     {
         $post = Post::find(0);
         $post->url = null;
         Sitemap::generate();
     }
-    
 }

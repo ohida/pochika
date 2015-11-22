@@ -1,9 +1,11 @@
-<?php namespace Pochika\Entry;
+<?php
+
+namespace Pochika\Entry;
 
 use Collection;
 
-class Tag {
-    
+class Tag
+{
     protected $collection;
 
     public function all()
@@ -14,10 +16,10 @@ class Tag {
     public function load()
     {
         $posts = Post::all();
-        
+
         $items = [];
-        
-        $posts->each(function($post) use(&$items) {
+
+        $posts->each(function ($post) use (&$items) {
             if (!$post->tags) {
                 return;
             }
@@ -32,7 +34,7 @@ class Tag {
 
         $this->collection = new Collection($items);
     }
-    
+
     //public function load2()
     //{
     //    $posts = Post::all();
@@ -64,5 +66,4 @@ class Tag {
     //    };
     //    dd(bench([$load1, $load2], 1000));
     //}
-
 }
