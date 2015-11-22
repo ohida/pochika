@@ -1,9 +1,11 @@
-<?php namespace Pochika\Markdown;
+<?php
+
+namespace Pochika\Markdown;
 
 use Event;
 
-abstract class MarkdownAbstract {
-
+abstract class MarkdownAbstract
+{
     public function parse($md)
     {
         $event_params = (object) ['md' => &$md];
@@ -21,5 +23,4 @@ abstract class MarkdownAbstract {
      * @codeCoverageIgnore
      */
     abstract public function run($md);
-
 }

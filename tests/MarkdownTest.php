@@ -1,7 +1,7 @@
 <?php
 
-class MarkdownTest extends TestCase {
-
+class MarkdownTest extends TestCase
+{
     public function testFacadeRoot()
     {
         $class = get_class(Markdown::getFacadeRoot());
@@ -60,5 +60,4 @@ class MarkdownTest extends TestCase {
     //{
     //    Conf::set('markdown', 'sundown');
     //}
-
 }

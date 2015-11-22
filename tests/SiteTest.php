@@ -1,7 +1,7 @@
 <?php
 
-class SiteTest extends TestCase {
-
+class SiteTest extends TestCase
+{
     public function setUp()
     {
         //$this->app = $this->createApplication();
@@ -64,7 +64,7 @@ class SiteTest extends TestCase {
     {
         $res = $this->call('GET', '/search');
         $this->assertResponseOk();
-        
+
         $res = $this->call('GET', '/search?q=hello');
         $this->assertResponseOk();
 
@@ -87,5 +87,4 @@ class SiteTest extends TestCase {
         $res = $this->call('GET', '/');
         $this->assertRegExp('|<link href=".*?/feed"|', $res->getContent());
     }
-    
 }

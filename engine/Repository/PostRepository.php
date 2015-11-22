@@ -1,18 +1,19 @@
-<?php namespace Pochika\Repository;
+<?php
+
+namespace Pochika\Repository;
 
 use Finder;
 use Log;
 use Post;
 
-class PostRepository extends Repository {
-
+class PostRepository extends Repository
+{
     use MarkdownFinder;
     use ContentCachable;
 
     /**
      * collect items
      * 
-     * @access protected
      * @return array
      */
     protected function collect()
@@ -28,12 +29,12 @@ class PostRepository extends Repository {
             }
         }
 
-        $items = array_sort($items, function($item) {
+        $items = array_sort($items, function ($item) {
             return - $item->date;
         });
 
         Log::debug(sprintf('%d posts loaded', count($items)));
-        
+
         return new EntryCollection($items);
     }
 
@@ -45,8 +46,8 @@ class PostRepository extends Repository {
      */
     public function findByTag($tag)
     {
-        return $this->find(function() use ($tag) {
-            return $this->collection->filter(function($post) use ($tag) {
+        return $this->find(function () use ($tag) {
+            return $this->collection->filter(function ($post) use ($tag) {
                 return in_array($tag, $post->tags);
             });
         });
@@ -61,7 +62,7 @@ class PostRepository extends Repository {
      */
     public function search($query)
     {
-        return $this->collection->filter(function($post) use ($query) {
+        return $this->collection->filter(function ($post) use ($query) {
             return (
                 false !== stripos($post->content, $query) ||
                 false !== stripos($post->title, $query) ||
@@ -69,5 +70,4 @@ class PostRepository extends Repository {
             );
         });
     }
-
 }

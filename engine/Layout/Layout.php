@@ -1,9 +1,11 @@
-<?php namespace Pochika\Layout;
+<?php
+
+namespace Pochika\Layout;
 
 use Renderer;
 
-class Layout {
-
+class Layout
+{
     public $key;
     public $data = [];
 
@@ -49,10 +51,9 @@ class Layout {
         $path = theme_path($key.'.html');
 
         if (file_exists($path)) {
-            return new Layout($key);
+            return new self($key);
         }
 
         throw new \NotFoundException('Layout not found: '.$key);
     }
-
 }

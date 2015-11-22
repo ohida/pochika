@@ -1,4 +1,6 @@
-<?php namespace Pochika\Repository;
+<?php
+
+namespace Pochika\Repository;
 
 use App;
 use Collection;
@@ -7,8 +9,8 @@ use Finder;
 use Log;
 use Plugin;
 
-class PluginRepository extends Repository {
-    
+class PluginRepository extends Repository
+{
     /**
      * Load items
      */
@@ -30,14 +32,14 @@ class PluginRepository extends Repository {
         $items += $this->collectCorePlugin();
 
         Log::debug(sprintf('%d plugins loaded', count($items)));
-        
+
         return new Collection($items);
     }
 
     protected function collectUserPlugin()
     {
         $dir = base_path(Conf::get('plugins', 'plugins'));
-        
+
         return $this->collectPlugin($dir);
     }
 
@@ -64,7 +66,7 @@ class PluginRepository extends Repository {
                 continue;
             }
         }
-        
+
         return $items;
     }
 
@@ -75,11 +77,10 @@ class PluginRepository extends Repository {
      */
     public function register()
     {
-        $this->collection->each(function($plugin) {
+        $this->collection->each(function ($plugin) {
             $plugin->register();
             App::instance($plugin->key, $plugin);
             Log::debug('plugin registered: '.$plugin->key);
         });
     }
-
 }

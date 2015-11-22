@@ -1,7 +1,7 @@
 <?php
 
-class PostRepositoryTest extends TestCase {
-
+class PostRepositoryTest extends TestCase
+{
     const POST_COUNT = 5;
     const TAG_COUNT = 4;
     const TAG_FIND_COUNT = 2;
@@ -108,13 +108,13 @@ class PostRepositoryTest extends TestCase {
 
     public function testFilter()
     {
-        $posts = PostRepository::filter(function($post) {
+        $posts = PostRepository::filter(function ($post) {
             return preg_match('/i love dogs/', $post->content);
         });
 
         $this->assertEquals(1, count($posts));
 
-        $posts = PostRepository::filter(function($post) {
+        $posts = PostRepository::filter(function ($post) {
             return preg_match('/search target/', $post->content);
         });
         $this->assertEquals(2, $posts->count());
@@ -127,7 +127,7 @@ class PostRepositoryTest extends TestCase {
     {
         $posts = PostRepository::all();
 
-        $posts->each(function($post) {
+        $posts->each(function ($post) {
             $this->assertFalse(!!preg_match('/\.(md|markdown)$/', $post->key));
         });
     }
@@ -194,16 +194,16 @@ class PostRepositoryTest extends TestCase {
 
         $post = Post::find(0);
         $this->assertFalse($post->converted);
-        
+
         $post->content = 'test';
         $post->converted = true;
 
         $repo->storeConvertedKey($post);
         $repo->updateCache();
-        
+
         $repo->unload();
         $repo->load();
-        
+
         $post = Post::find(0);
         $this->assertEquals('test', $post->content);
         $this->assertTrue($post->converted);
@@ -216,8 +216,8 @@ class PostRepositoryTest extends TestCase {
     {
         $val = 'hello';
         $this->assertEquals($val, PostRepository::remember($val));
-        
-        $val = function() {
+
+        $val = function () {
             return 'world';
         };
         $this->assertEquals($val(), PostRepository::remember($val));
@@ -230,5 +230,4 @@ class PostRepositoryTest extends TestCase {
     {
         PostRepository::remember();
     }
-
 }

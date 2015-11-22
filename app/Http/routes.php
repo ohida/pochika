@@ -16,27 +16,27 @@ Route::get('/', ['as' => 'root', 'uses' => 'SiteController@index']);
 
 // index with page
 Route::get('/page/{page}', ['as' => 'index_paged', 'uses' => 'SiteController@index'])
-	->where('page', '[\d]+');
+    ->where('page', '[\d]+');
 
 // index with tag
 Route::get('/tag/{tag}/{page?}', ['as' => 'index_tagged', 'uses' => 'SiteController@tag'])
-	->where('page', '[\d]+');
+    ->where('page', '[\d]+');
 
 // post
 Route::get('/{year}/{month}/{day}/{slug}', ['as' => 'post', 'uses' => 'SiteController@post'])
-	->where([
-		'year' => '[\d]{4}',
-		'month' => '[\d]{2}',
-		'day' => '[\d]{2}',
-		'slug' => '[\w\-]+',
-	]);
+    ->where([
+        'year' => '[\d]{4}',
+        'month' => '[\d]{2}',
+        'day' => '[\d]{2}',
+        'slug' => '[\w\-]+',
+    ]);
 
 // archives
 Route::get('/archives', ['as' => 'archives', 'uses' => 'SiteController@archives']);
 
 // archives pagination
 Route::get('/archives/page/{page}', ['as' => 'archives_paged', 'uses' => 'SiteController@archives'])
-	->where('page', '[\d]+');
+    ->where('page', '[\d]+');
 
 // search
 Route::get('/search', ['as' => 'search', 'uses' => 'SiteController@search']);
@@ -46,16 +46,16 @@ Route::get('/feed', ['as' => 'feed', 'uses' => 'SiteController@feed']);
 
 // sitemap
 Route::get('/sitemap{extention?}', ['as' => 'sitemap', 'uses' => 'SiteController@sitemap'])
-	->where('extention', '\.xml');
+    ->where('extention', '\.xml');
 
 //// clear cache (debug)
 //Route::get('/_clear', ['uses' => 'SiteController@_clear']);
 
 // page
 Route::get('/{a0}/{a1?}/{a2?}/{a3?}/{a4?}', ['as' => 'page', 'uses' => 'SiteController@page'])
-	->where([
-		'a0' => '^[^_].*', // for _debugbar ...
-	]);
+    ->where([
+        'a0' => '^[^_].*', // for _debugbar ...
+    ]);
 
 // page
 //Route::get('/{name}', ['as' => 'page', 'uses' => 'SiteController@page']);

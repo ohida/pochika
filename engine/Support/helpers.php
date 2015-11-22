@@ -17,7 +17,7 @@ if (!function_exists('element')) {
 if (!function_exists('d')) {
     function d(...$args)
     {
-        array_map(function($x) {
+        array_map(function ($x) {
             dump($x);
         }, $args);
     }
@@ -107,13 +107,13 @@ if (!function_exists('copy_r')) {
         if (is_dir($src_dir)) {
             if ($dh = opendir($src_dir)) {
                 while (($file = readdir($dh)) !== false) {
-                    if ($file == "." || $file == "..") {
+                    if ($file == '.' || $file == '..') {
                         continue;
                     }
-                    if (is_dir($src_dir."/".$file)) {
-                        copy_r($src_dir."/".$file, $dst_dir."/".$file);
+                    if (is_dir($src_dir.'/'.$file)) {
+                        copy_r($src_dir.'/'.$file, $dst_dir.'/'.$file);
                     } else {
-                        copy($src_dir."/".$file, $dst_dir."/".$file);
+                        copy($src_dir.'/'.$file, $dst_dir.'/'.$file);
                     }
                 }
                 closedir($dh);
@@ -122,7 +122,6 @@ if (!function_exists('copy_r')) {
 
         return true;
     }
-
 }
 
 if (!function_exists('source_path')) {
@@ -138,7 +137,7 @@ if (!function_exists('source_path')) {
 
         $path = path(Conf::get('source', 'source'), $path);
 
-        if ($path[0] == '/' OR $path[0] == '~') {
+        if ($path[0] == '/' or $path[0] == '~') {
             return $path;
         } else {
             return path(app('path.base'), $path);

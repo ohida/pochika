@@ -1,9 +1,11 @@
-<?php namespace Pochika\Plugins;
+<?php
+
+namespace Pochika\Plugins;
 
 use App\Events\AfterConvert;
 
-class EmojiPlugin extends Plugin {
-
+class EmojiPlugin extends Plugin
+{
     protected $data;
 
     public function register()
@@ -14,7 +16,7 @@ class EmojiPlugin extends Plugin {
     public function handle(AfterConvert $event)
     {
         $this->convert($event->entry->content);
-        
+
         if (isset($event->entry->title)) {
             $this->convert($event->entry->title);
         }
@@ -27,7 +29,7 @@ class EmojiPlugin extends Plugin {
 
         $escaped = false;
         if (false !== strpos($text, '\\:')) {
-            $text = preg_replace("/\\\:([a-z0-9-_]+):/", "<!--emoji[$1]-->", $text);
+            $text = preg_replace("/\\\:([a-z0-9-_]+):/", '<!--emoji[$1]-->', $text);
             $escaped = true;
         }
 
@@ -38,7 +40,7 @@ class EmojiPlugin extends Plugin {
         }, $text);
 
         if ($escaped) {
-            $text = preg_replace('/<!--emoji\[([a-z0-9-_]+)\]-->/', ":$1:", $text);
+            $text = preg_replace('/<!--emoji\[([a-z0-9-_]+)\]-->/', ':$1:', $text);
         }
     }
 
@@ -47,12 +49,11 @@ class EmojiPlugin extends Plugin {
         if ($this->data) {
             return $this->data;
         }
-        
+
         $path = storage_path('emoji/emojis.json');
         $buff = file_get_contents($path);
         $this->data = json_decode($buff, true);
-        
+
         return $this->data;
     }
-
 }

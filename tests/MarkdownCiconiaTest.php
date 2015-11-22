@@ -2,8 +2,8 @@
 
 require_once 'MarkdownTestCase.php';
 
-class MarkdownCiconiaTest extends MarkdownTestCase {
-
+class MarkdownCiconiaTest extends MarkdownTestCase
+{
     public function setUp()
     {
         $this->markdown = new \Pochika\Markdown\Ciconia;
@@ -16,5 +16,4 @@ class MarkdownCiconiaTest extends MarkdownTestCase {
     {
         parent::testAll();
     }
-
 }

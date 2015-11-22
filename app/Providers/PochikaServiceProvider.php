@@ -1,17 +1,18 @@
-<?php namespace App\Providers;
+<?php
+
+namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
-use Pochika\Pochika;
 use Pochika\Config\Config;
 use Pochika\Entry\Tag;
-use Pochika\Repository\PostRepository;
+use Pochika\Pochika;
 use Pochika\Repository\PageRepository;
 use Pochika\Repository\PluginRepository;
+use Pochika\Repository\PostRepository;
 use Pochika\Support\Sitemap;
 
-class PochikaServiceProvider extends ServiceProvider {
-
+class PochikaServiceProvider extends ServiceProvider
+{
     /**
      * Bootstrap the application services.
      *
@@ -94,5 +95,4 @@ class PochikaServiceProvider extends ServiceProvider {
             return new Sitemap;
         });
     }
-
 }

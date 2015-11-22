@@ -2,8 +2,8 @@
 
 use Pochika\Support\Facades\Feed;
 
-class FeedTest extends TestCase {
-
+class FeedTest extends TestCase
+{
     protected $feed;
 
     public function setUp()
@@ -68,5 +68,4 @@ class FeedTest extends TestCase {
         $this->assertRegExp('/www\.w3\.org\/2005\/Atom/', $atom);
         $this->assertStringEndsWith('</feed>', $atom);
     }
-
 }

@@ -1,7 +1,7 @@
 <?php
 
-class CacheTest extends TestCase {
-
+class CacheTest extends TestCase
+{
     public function setUp()
     {
         parent::setUp();
@@ -14,12 +14,12 @@ class CacheTest extends TestCase {
         //$this->assertEquals('test', Cache::get('key'));
 
         $value = ['a', 'b', 'c'];
-        Cache::rememberForever('key', function() use($value) {
+        Cache::rememberForever('key', function () use ($value) {
             return $value;
         });
         $this->assertEquals($value, Cache::get('key'));
 
-        Cache::rememberForever('key', function() use($value) {
+        Cache::rememberForever('key', function () use ($value) {
             return [];
         });
         $this->assertEquals($value, Cache::get('key'));
@@ -37,5 +37,4 @@ class CacheTest extends TestCase {
         Cache::put('key', 'value', 1);
         $this->assertEquals('value', Cache::get('key'));
     }
-
 }

@@ -1,14 +1,15 @@
-<?php namespace Pochika\Markdown;
+<?php
+
+namespace Pochika\Markdown;
 
 use Illuminate\Support\ServiceProvider;
 
-class MarkdownServiceProvider extends ServiceProvider {
-
+class MarkdownServiceProvider extends ServiceProvider
+{
     public function register()
     {
-        $this->app->bindShared('markdown', function() {
+        $this->app->bindShared('markdown', function () {
             return new Parsedown;
         });
     }
-
 }

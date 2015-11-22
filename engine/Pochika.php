@@ -1,4 +1,6 @@
-<?php namespace Pochika;
+<?php
+
+namespace Pochika;
 
 use App\Events\End;
 use Cache;
@@ -11,8 +13,8 @@ use Renderer;
 use Tag;
 use Theme;
 
-class Pochika {
-
+class Pochika
+{
     private $initialized = false;
 
     /**
@@ -26,13 +28,13 @@ class Pochika {
             throw new \LogicException('Already Initialized');
         }
 
-        measure('pochika:init', function() {
+        measure('pochika:init', function () {
             Log::debug('pochika::init (env='.env('APP_ENV').')');
             $this->check();
             $this->load();
             $this->initialized = true;
         });
-        
+
         //Event::fire(new \App\Events\AppInit);
     }
 
@@ -52,7 +54,7 @@ class Pochika {
         PluginRepository::load();
         PostRepository::load();
         PageRepository::load();
-        
+
         //Tag::load();
     }
 
@@ -104,5 +106,4 @@ class Pochika {
         PostRepository::unload();
         PageRepository::unload();
     }
-
 }

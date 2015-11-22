@@ -1,7 +1,7 @@
 <?php
 
-class PochikaTest extends TestCase {
-
+class PochikaTest extends TestCase
+{
     public function setUp()
     {
         $this->refreshApplication();
@@ -46,5 +46,4 @@ class PochikaTest extends TestCase {
         Pochika::init();
         Pochika::init();
     }
-
 }

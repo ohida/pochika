@@ -1,7 +1,7 @@
 <?php
 
-class DependencyTest extends TestCase {
-
+class DependencyTest extends TestCase
+{
     public function setUp()
     {
     }
@@ -19,11 +19,11 @@ class DependencyTest extends TestCase {
 
     public function testArraySort()
     {
-        $items = ['a'=>1, 'b'=>2, 'c'=>3];
-        $items = array_sort($items, function($item) {
+        $items = ['a' => 1, 'b' => 2, 'c' => 3];
+        $items = array_sort($items, function ($item) {
             return -$item;
         });
-        $this->assertEquals(['c'=>3,'b'=>2,'a'=>1], $items);
+        $this->assertEquals(['c' => 3, 'b' => 2, 'a' => 1], $items);
     }
 
     //public function testURLs()
@@ -31,5 +31,4 @@ class DependencyTest extends TestCase {
     //    $this->assertEquals('http://localhost', URL::to('/'));
     //    $this->assertEquals('http://localhost/archives', URL::to('archives'));
     //}
-
 }

@@ -1,10 +1,12 @@
-<?php namespace Pochika\Entry;
+<?php
+
+namespace Pochika\Entry;
 
 use Layout;
 use PostRepository;
 
-class Post extends Entry {
-
+class Post extends Entry
+{
     public $slug;
     public $path_date;
     public $tags = [];
@@ -26,7 +28,7 @@ class Post extends Entry {
         } else {
             throw new \InvalidEntryException;
         }
-        
+
         $this->url = $this->url();
 
         //$this->title = element('title', $this->meta);
@@ -50,7 +52,6 @@ class Post extends Entry {
     /**
      * url
      *
-     * @access protected
      * @return string
      * @todo customize permalink url
      */
@@ -202,5 +203,4 @@ class Post extends Entry {
     {
         return app('post_repo');
     }
-
 }

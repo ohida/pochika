@@ -1,7 +1,7 @@
 <?php
 
-class L5Test extends TestCase {
-
+class L5Test extends TestCase
+{
     public function tearDown()
     {
     }
@@ -10,7 +10,7 @@ class L5Test extends TestCase {
     {
         $this->assertEquals('testing', env('APP_ENV'));
         $this->assertStringStartsWith('tests', Config::get('pochika.config_path'));
-        
+
         putenv('APP_ENV=local');
         $this->assertEquals('local', env('APP_ENV'));
         $this->assertStringStartsWith('tests', Config::get('pochika.config_path'));
@@ -20,5 +20,4 @@ class L5Test extends TestCase {
     //{
     //    //$this->assertNotEquals(env('APP_DEBUG'), Debugbar::isEnabled());
     //}
-
 }

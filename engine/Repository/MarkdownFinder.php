@@ -1,9 +1,11 @@
-<?php namespace Pochika\Repository;
+<?php
+
+namespace Pochika\Repository;
 
 use Finder;
 
-trait MarkdownFinder {
-
+trait MarkdownFinder
+{
     protected function finder($dir = null)
     {
         if (!$dir) {
@@ -27,5 +29,4 @@ trait MarkdownFinder {
     {
         return str_plural(strtolower($this->itemClass()));
     }
-
 }

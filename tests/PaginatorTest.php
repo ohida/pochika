@@ -33,21 +33,21 @@ class PaginatorTest extends TestCase
     /**
      * @expectedException InvalidPageException
      */
-    function testPageIsNotNumeric()
+    public function testPageIsNotNumeric()
     {
         Paginator::get([], 'a');
     }
 
-    function testPageIsNumericString()
+    public function testPageIsNumericString()
     {
         $res = Paginator::get([], '1');
         $this->assertEquals(1, $res['page']);
     }
-    
+
     /**
      * @expectedException InvalidPageException
      */
-    function testPageIsNegativeInt()
+    public function testPageIsNegativeInt()
     {
         Paginator::get([], -1);
     }
@@ -60,5 +60,4 @@ class PaginatorTest extends TestCase
         $res = Paginator::make($posts, count($posts), 10);
     }
     */
-
 }

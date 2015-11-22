@@ -1,4 +1,7 @@
-<?php namespace Pochika\Exception;
+<?php
 
-class InvalidPageException extends \UnexpectedValueException {
+namespace Pochika\Exception;
+
+class InvalidPageException extends \UnexpectedValueException
+{
 }
